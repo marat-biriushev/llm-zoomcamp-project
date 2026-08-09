@@ -1,0 +1,10 @@
+# The PCI DSS PDF is free to download but not free to redistribute,
+# so it is fetched by ingest.download_pdf() instead of being committed.
+data/*.pdf
+
+.env
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
