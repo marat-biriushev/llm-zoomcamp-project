@@ -60,8 +60,8 @@ LLM Zoomcamp modules; steps 8–11 cover what the course did not.
 ### Progress
 
 - [x] 1 — Data
-- [ ] 2 — Text search
-- [ ] 3 — First RAG
+- [x] 2 — Text search
+- [x] 3 — First RAG
 - [ ] 4 — Ground truth
 - [ ] 5 — Search evaluation
 - [ ] 6 — Vector & hybrid search
