@@ -34,13 +34,12 @@ class RAGBase:
         self.model = model
 
     def search(self, query, num_results=5):
-        boost_dict = {'req_ids': 3.0, 'text': 1.0}
-
-        return self.index.search(
-            query,
-            num_results=num_results,
-            boost_dict=boost_dict
-        )
+        # No boost_dict on purpose. Step 5 measured weights from 0.5 to 10 on
+        # `req_ids` and every one of them scored identically: a requirement number
+        # matches exactly one page, so any positive weight already puts it first.
+        # Removing the field altogether is what hurts (hit rate 0.97 -> 0.84 on
+        # questions that quote a number), so the field stays and the weight goes.
+        return self.index.search(query, num_results=num_results)
 
     def build_context(self, search_results):
         lines = []

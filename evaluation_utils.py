@@ -94,6 +94,63 @@ class RAGWithUsage(RAGBase):
         return calc_total_price(self.usages)
 
 
+def hit_rate(relevance_total):
+    """Share of questions where the right document made it into the results at all."""
+    cnt = 0
+
+    for line in relevance_total:
+        if 1 in line:
+            cnt = cnt + 1
+
+    return cnt / len(relevance_total)
+
+
+def mrr(relevance_total):
+    """Mean Reciprocal Rank — rewards the right document being near the top.
+
+    Rank 1 scores 1.0, rank 2 scores 0.5, rank 3 scores 0.33, not found scores 0.
+    """
+    total_score = 0.0
+
+    for line in relevance_total:
+        for rank in range(len(line)):
+            if line[rank] == 1:
+                total_score = total_score + 1 / (rank + 1)
+                break
+
+    return total_score / len(relevance_total)
+
+
+def compute_relevance(q, search_function):
+    doc_id = q['document']
+    results = search_function(query=q['question'])
+
+    relevance = []
+
+    for d in results:
+        relevance.append(int(d['page'] == doc_id))
+
+    return relevance
+
+
+def compute_relevance_total(ground_truth, search_function):
+    relevance_total = []
+
+    for q in tqdm(ground_truth):
+        relevance_total.append(compute_relevance(q, search_function))
+
+    return relevance_total
+
+
+def evaluate(ground_truth, search_function):
+    relevance_total = compute_relevance_total(ground_truth, search_function)
+
+    return {
+        'hit_rate': hit_rate(relevance_total),
+        'mrr': mrr(relevance_total),
+    }
+
+
 def map_progress(pool, seq, f):
     """Run f over seq in parallel, with a progress bar, keeping the input order."""
     results = []
