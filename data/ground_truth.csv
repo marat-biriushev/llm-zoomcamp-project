@@ -1,0 +1,1306 @@
+question,document
+What does 1.1 say has to be defined and understood for network security controls?,44
+"Under 1.1.1, what has to be true for the policies and procedures listed in Requirement 1?",44
+How do you verify compliance with 1.1.1?,44
+What’s the expected handling of Requirement 1 policies and procedures over time?,44
+"Which requirement number covers keeping Requirement 1 security policies and operational procedures documented, current, in use, and known to affected people?",44
+"What has to be documented, assigned, and understood for Requirement 1 activities?",45
+How do you prove the people doing Requirement 1 tasks know their responsibilities?,45
+Which test checks that Requirement 1 roles are actually assigned as documented?,45
+What should an assessor review and ask for requirement 1.1.2?,45
+"In 1.1.2, what is the expected outcome for day-to-day responsibility ownership?",45
+What has to be true of network security control ruleset standards under 1.2.1?,46
+How do you verify the NSC rulesets are set up to match the documented standards?,46
+"Which requirement says NSC configuration standards must be defined, implemented, and maintained?",46
+What should an examiner look at to confirm the ruleset standards meet 1.2.1?,46
+What is the objective for how NSCs are configured and operated in the customized approach?,46
+How are changes to network connections and NSC settings supposed to be handled under requirement 1.2.2?,47
+What does 1.2.2.a say the assessor should review to confirm change control covers network connections and NSC configurations?,47
+How do you verify that a network connection change was approved and managed correctly under 1.2.2.b?,47
+What evidence is used to check changes to NSC configurations for 1.2.2.c?,47
+"What kinds of changes count under 1.2.2 — just new devices, or also removals and config edits?",47
+What does requirement 1.2.3 say has to be kept up to date in the network documentation?,48
+How do you check compliance with 1.2.3.a?,48
+"What do the diagrams need to show about the CDE and other networks, including wireless?",48
+What kind of changes should trigger an update under 1.2.3.b?,48
+"Can something other than a diagram satisfy 1.2.3, and if so what?",48
+What has to be shown in the data-flow diagram for requirement 1.2.4?,49
+When do we need to update the account data-flow diagram?,49
+How do you test compliance with 1.2.4.a?,49
+How do you test compliance with 1.2.4.b?,49
+"Can a technical or topology-based diagram satisfy 1.2.4, or does it have to be a traditional data-flow diagram?",49
+"What has to be documented for every allowed service, protocol, and port under 1.2.5?",51
+"Who should approve allowed services, protocols, and ports, and what should they know?",51
+"How do you check that only approved services, protocols, and ports are actually enabled?",51
+What evidence does 1.2.5.a ask the assessor to review?,51
+"What is the business purpose of restricting services, protocols, and ports in the CDE?",51
+"What needs to be in place for insecure services, protocols, or ports that are still used?",52
+"How do I prove the risky services, protocols, and ports have been identified and addressed?",52
+What should an assessor look for in NSC settings to check this control?,52
+What is required under PCI DSS 1.2.6 for insecure ports and protocols?,52
+How is 1.2.6 tested for documented security features and their implementation?,52
+"What does 1.2.7 require for network security control configuration reviews, and how often do they have to happen?",53
+How would an assessor verify compliance with 1.2.7 for NSC configuration reviews?,53
+What documentation and interviews are needed to show the six-month review process for NSCs is in place?,53
+What has to happen when an NSC rule or setting no longer has a business justification?,53
+What is the objective of the customized approach for 1.2.7 regarding trusted-network connections?,53
+What does PCI DSS 1.2.8 require for network security control configuration files?,54
+How do you verify that NSC configuration files meet requirement 1.2.8?,54
+What kinds of files or settings count as a configuration file for an NSC under 1.2.8?,54
+Must stored NSC configs be protected from unauthorized access and kept aligned with what is running?,54
+What is the objective of the customized approach for requirement 1.2.8?,54
+What does requirement 1.3 say about network access into and out of the CDE?,55
+"Under 1.3.1, what inbound traffic to the CDE is allowed and what must be denied?",55
+How do you verify compliance with 1.3.1 in the written configuration standards?,55
+What should be checked in network security control configurations to test 1.3.1?,55
+What is the objective of 1.3.1 for preventing unauthorized traffic into the CDE?,55
+What does PCI require for outbound traffic leaving the CDE under 1.3.2?,56
+"How should outbound CDE traffic be restricted, and what must be denied?",56
+What do I need to review in NSC configuration standards to confirm 1.3.2 is met?,56
+What do I need to check in the actual NSC settings for outbound CDE traffic?,56
+What is the objective behind requirement 1.3.2?,56
+What has to be placed between wireless networks and the CDE?,57
+How should traffic from wireless networks into the CDE be handled by default?,57
+What kind of wireless traffic is allowed into the CDE?,57
+How do you verify compliance with requirement 1.3.3 for wireless-to-CDE controls?,57
+What is the objective of 1.3.3 for network boundaries between wireless and wired environments?,57
+What network boundaries have to be protected with NSCs under requirement 1.4.1?,58
+How do you verify that NSCs are set up between trusted and untrusted networks?,58
+What should the configuration standards and network diagrams show for 1.4.1?,58
+What does PCI say is the goal of controlling connections between trusted and untrusted networks?,58
+Can a DMZ count as part of the CDE if it processes or transmits account data?,58
+What inbound traffic is allowed from an untrusted network into a trusted one under 1.4.2?,59
+How do you test that 1.4.2 is enforced on network security controls?,59
+Does 1.4.2 allow UDP or other connectionless protocols if the NSC tracks state?,59
+What traffic must be denied between untrusted and trusted networks in requirement 1.4.2?,59
+"What kinds of inbound communications can reach publicly accessible services, protocols, and ports?",59
+What anti-spoofing controls are required for traffic entering the trusted network under 1.4.3?,60
+How do you verify that the network controls are blocking forged source IPs?,60
+Can packets with spoofed source addresses be allowed into the trusted network?,60
+What do the vendor docs and NSC settings need to show for requirement 1.4.3?,60
+What is the objective of 1.4.3 for packets with forged IP addresses?,60
+What does 1.4.4 require for systems that store cardholder data and untrusted networks?,61
+How do you check compliance with 1.4.4 using diagrams and network controls?,61
+What does 1.4.4.b say to review in NSC configurations?,61
+Does 1.4.4 apply to cardholder data kept only in volatile memory?,61
+When is account data allowed to be kept in memory under 1.4.4?,61
+What has to be done with internal IP addresses and routing details under 1.4.5?,62
+How do I prove the controls keep internal address and routing info from being exposed to the wrong people?,62
+What should an assessor check in NSC settings for requirement 1.4.5?,62
+Who is allowed to see internal IP and routing information?,62
+What is the objective of PCI DSS requirement 1.4.5?,62
+What has to be done to reduce CDE risk from devices that also connect to the internet or other untrusted networks?,63
+"For requirement 1.5.1, what three conditions must be true for security controls on dual-connected devices?",63
+How do auditors verify the controls on laptops or other devices that connect to both the CDE and untrusted networks?,63
+"Can users change the security controls on those devices, or is that restricted?",63
+What is the objective of requirement 1.5 for devices that can reach both untrusted networks and the CDE?,63
+What has to be true for the security policies and operating procedures in Requirement 2?,66
+How do you check compliance with 2.1.1?,66
+Are the policies and procedures in Requirement 2 required to be current and actually used?,66
+What does PCI mean by security policy versus operational procedure in Requirement 2?,66
+What is the control objective for 2.1?,66
+What does 2.1.2 require for roles and responsibilities tied to Requirement 2?,67
+How do you test compliance with 2.1.2?,67
+Are the people doing Requirement 2 tasks supposed to understand their assigned responsibilities?,67
+What evidence should be reviewed to confirm 2.1.2 is in place?,67
+"Under Requirement 2, can roles and responsibilities be kept in a separate document or do they have to be in the policy?",67
+What has to be included in our configuration standards for system components under 2.2.1?,68
+How do we need to prove the configuration standards are current when new vulnerabilities are found?,68
+When should secure configuration be applied to a new system before it goes into production?,68
+What do assessors look at to confirm 2.2.1 is being followed?,68
+Do our baseline settings have to cover every system component and match hardening guidance from vendors or industry standards?,68
+What has to be done with vendor default accounts if they’re going to stay in use?,69
+"If a default vendor account won’t be used, what’s required for that account?",69
+How do you test compliance with Requirement 2.2.2 for default accounts?,69
+What does Requirement 2.2.2 say about managing vendor default accounts?,69
+Which kinds of systems and accounts are covered by the default-account rule?,69
+What are the allowed ways to handle primary functions that need different security levels on the same system component?,70
+How do you test compliance with requirement 2.2.3 in system config standards and actual configurations?,70
+"If virtualization is in use, what must be true about functions with different security needs on the same host?",70
+"Can a single system component run multiple primary functions with different security levels, and under what conditions?",70
+What is the objective of requirement 2.2.3 for lower-security functions versus higher-security functions?,70
+"What does PCI DSS require for services, protocols, daemons, and functions on a system component?",72
+How do you check whether only required functionality is enabled and the rest is turned off?,72
+What must be documented in the system configuration standards for requirement 2.2.4?,72
+What does testing step 2.2.4.a ask the assessor to review?,72
+"Under 2.2.4, what kinds of unnecessary functionality should be removed or disabled?",72
+"What has to be documented if an insecure service, protocol, or daemon is still in use?",73
+"What extra protections are required when an insecure service, protocol, or daemon exists?",73
+How do you verify 2.2.5 is being followed for insecure services and protocols?,73
+What do you check in configuration to confirm insecure services are risk-reduced?,73
+"Under requirement 2.2.5, what’s the objective for systems that have insecure services or daemons enabled?",73
+What security setting requirement applies to system components under 2.2.6?,74
+How do you prove administrators know the common security parameters for the systems they manage?,74
+What should the configuration standards say about security parameters with known security impact?,74
+What do you check in system settings to confirm they follow the configuration standard?,74
+What is the goal of 2.2.6 in the customized approach?,74
+What does PCI DSS require for remote or other non-console admin access under 2.2.7?,75
+How do you test that non-console administrative access is encrypted with strong cryptography?,75
+Which insecure remote login services must be disabled for non-console admin access?,75
+Does the encryption requirement for admin access cover browser-based interfaces and APIs?,75
+What should you check in vendor docs or staff interviews for requirement 2.2.7?,75
+What has to be done with wireless vendor defaults when a wireless network is connected to the CDE or carries card data?,76
+Which default wireless settings are called out specifically in requirement 2.3.1?,76
+How would an assessor check that wireless defaults were handled properly under 2.3.1?,76
+Do wireless access points have to avoid default passwords and SNMP defaults?,76
+What is the security goal behind requirement 2.3 for wireless networks?,76
+When do wireless encryption keys need to be rotated for systems connected to the CDE or carrying card data?,77
+What has to happen to a wireless key when an employee who knew it leaves or changes to a role that no longer needs it?,77
+How should a suspected or confirmed compromise of a wireless encryption key be handled under 2.3.2?,77
+What evidence does the assessor look for to confirm compliance with wireless key changes under requirement 2.3.2?,77
+"For requirement 2.3.2, what is the stated security objective for wireless key knowledge?",77
+What does PCI require for the security policies and procedures tied to Requirement 3?,79
+How do you verify that the policies and operational procedures in Requirement 3 are being managed correctly?,79
+"Are the Requirement 3 documents supposed to be current and actually used, or just written down?",79
+Who needs to know the security policies and operational procedures for Requirement 3?,79
+What is the testing step for requirement 3.1.1?,79
+What does 3.1.2 require about who is responsible for Requirement 3 activities?,80
+How do you test whether Requirement 3 roles and responsibilities are properly assigned?,80
+What should be documented for the people handling Requirement 3 tasks under 3.1.2?,80
+How do you confirm staff understand their assigned Requirement 3 responsibilities?,80
+What is the objective of the customized approach for Requirement 3 responsibilities?,80
+What has to be covered in the data retention and disposal policy for stored account data?,81
+How often does the process need to check that data kept past the retention period has been securely deleted or made unrecoverable?,81
+What is the testing step for verifying account data storage stays within the retention policy?,81
+What does requirement 3.2 say about how much account data may be stored?,81
+What must the deletion process do when account data is no longer needed?,81
+What has to happen to sensitive authentication data after authorization is complete?,83
+"Can SAD be kept if it’s encrypted, or must it still be deleted?",83
+How do auditors verify compliance with requirement 3.3.1?,83
+"Is temporary storage of SAD in RAM ever allowed after authorization, and under what conditions?",83
+Which organizations are exempt from 3.3 because they have a legitimate business need to store SAD?,83
+What does 3.3.1.1 require about storing full track data after authorization?,84
+How do you check whether any track contents are still being kept after the auth process?,84
+Which data sources should be reviewed for accidental retention of track data?,84
+What track data elements are allowed to remain for normal business needs?,84
+Is requirement 3.3.1.1 allowed under the customized approach?,84
+What does PCI DSS require for card verification codes after authorization is done?,85
+How do you check whether verification codes are being kept anywhere they shouldn't be?,85
+Which data sources need to be reviewed to confirm the card verification code isn't retained?,85
+What is requirement 3.3.1.2 about?,85
+Can 3.3.1.2 be met using the customized approach?,85
+What has to happen to a PIN and PIN block after authorization finishes?,86
+How do you verify compliance with requirement 3.3.1.3 for PIN data retention?,86
+Is storing an encrypted PIN block after authorization allowed under 3.3.1.3?,86
+Which requirement says PINs and PIN blocks must not be kept after the authorization process?,86
+What data sources should be checked for leftover PINs or PIN blocks?,86
+What does 3.3.2 require for stored SAD before authorization is finished?,87
+How do you test compliance with 3.3.2?,87
+Is 3.3.2 allowed under the customized approach?,87
+What kind of cryptography must protect electronically stored SAD prior to authorization completion?,87
+What evidence can be reviewed to confirm stored SAD is encrypted?,87
+What does PCI DSS 3.3.3 require issuers to do before keeping sensitive authentication data?,89
+"Under 3.3.3, when is storing sensitive authentication data allowed for issuing services?",89
+How do you test compliance with requirement 3.3.3 for stored sensitive authentication data?,89
+What do auditors look for in 3.3.3.a to prove the storage is justified?,89
+What is the expected control for 3.3.3.b when checking data stores and system settings?,89
+What has to be in place so full PAN can be seen or copied only by people who need it for their job?,91
+"When PAN is shown, how many digits are allowed to be visible at most?",91
+"Which roles need to be documented if they can see more than the BIN and last four digits, and what else must be documented for each role?",91
+How do auditors check that PAN masking is working in system settings and on actual screens or receipts?,91
+What does requirement 3.4.1 say about displaying the BIN and the last four digits of PAN?,91
+"What controls are needed to stop PAN being copied or moved through remote access tools, except for approved users with a real business need?",93
+How do assessors verify compliance with PCI DSS 3.4.2 for remote-access technologies?,93
+What evidence has to exist for people who are allowed to copy or relocate PAN?,93
+Which remote-access setting check is required under 3.4.2.b?,93
+When does requirement 3.4.2 stop being a best practice and become mandatory?,93
+How do we make stored PAN unreadable under 3.5.1?,94
+"What does 3.5.1 say about using hashes, truncation, tokens, or encryption for PAN storage?",94
+What do I need to check to verify 3.5.1 is met in systems and logs?,94
+"If both hashed and truncated PAN versions exist, what extra control is required?",94
+Does 3.5 cover PAN in backups and audit or troubleshooting logs?,94
+What does PCI DSS 3.5.1.1 require for hashing PAN so it’s considered unreadable?,95
+Which key-management requirements have to go with the PAN hash under 3.5.1.1?,95
+How do you test compliance with 3.5.1.1 in documentation and logs?,95
+Does 3.5.1.1 apply to the whole PAN or just part of it?,95
+What evidence should be reviewed to show PAN is rendered unreadable by hashing?,95
+When is disk- or partition-level encryption allowed for making PAN unreadable?,97
+"If I use disk-level encryption on a server, what else has to be true for Requirement 3.5.1.2?",97
+What kinds of media can rely on disk- or partition-level encryption under 3.5.1.2?,97
+How do I test compliance with 3.5.1.2.a for encrypted PAN?,97
+What should I check in vendor docs or system settings to satisfy 3.5.1.2.b?,97
+"What has to be in place if disk- or partition-level encryption is used instead of file, column, or field encryption to make PAN unreadable?",99
+How must logical access be handled when disk-level encryption is used for PAN?,99
+Can the decryption key be tied to a user account under requirement 3.5.1.3?,99
+"Where do passwords, passphrases, or cryptographic keys that unlock unencrypted data need to be kept?",99
+"For 3.5.1.3, what should an assessor check to confirm the authentication setup is compliant?",99
+What controls have to be in place to protect cryptographic keys for stored card data?,100
+How many key custodians should be allowed access under 3.6.1?,100
+Do key-encrypting keys need to be at least as strong as the data-encrypting keys they protect?,100
+Should key-encrypting keys be stored separately from data-encrypting keys?,100
+How do you verify compliance with 3.6.1 for key-management procedures?,100
+What has to be documented in the cryptographic architecture for service providers under 3.6.1.1?,101
+"Does 3.6.1.1 require a description of key use, algorithms, protocols, and device inventory?",101
+How do auditors verify the 3.6.1.1 cryptographic-architecture documentation requirement?,101
+Is keeping the same crypto keys out of production and test required in 3.6.1.1 or only a best practice?,101
+"What details about HSMs, KMSs, or other secure cryptographic devices must be included for 3.6.1.1?",101
+How must secret and private keys that protect stored card data be kept at all times under requirement 3.6.1.2?,103
+What are the allowed storage options for encryption keys used for stored account data?,103
+"When a key-encrypting key is used, what strength and separation rules apply?",103
+How do you verify compliance with 3.6.1.2 using documents and system settings?,103
+Are HSMs or PTS-approved POI devices acceptable places to keep these keys?,103
+What does requirement 3.6.1.3 require for access to cleartext key components?,104
+How do you test compliance with 3.6.1.3?,104
+"Who should be allowed to handle encryption key components, according to the guidance?",104
+Is access to key components supposed to be limited to a small number of custodians?,104
+What evidence should an assessor review to verify 3.6.1.3?,104
+What does 3.6.1.4 require for where cryptographic keys are kept?,105
+How do you test compliance with requirement 3.6.1.4?,105
+Why does PCI want keys stored in as few places as possible?,105
+What should an assessor look at to verify key storage locations under 3.6.1.4?,105
+"Under 3.6.1.4, what is the objective for customized approaches?",105
+What does requirement 3.7 say you need for key management when cryptography protects stored account data?,106
+How do you verify that the key-management policy covers strong key generation under 3.7.1?,106
+What evidence should an auditor look at to confirm cryptographic keys are generated securely for stored account data?,106
+"According to 3.7.2, what has to be included for distributing cryptographic keys securely?",106
+What testing steps are listed for checking secure key distribution in 3.7.2?,106
+What must key-management policies say about storing cryptographic keys for stored account data?,107
+How do you verify that keys protecting stored account data are kept securely?,107
+What does requirement 3.7.3 require for cryptographic key storage?,107
+What should be checked in the documented key-management procedures for 3.7.3.a?,107
+What evidence or observation is needed to confirm secure key storage under 3.7.3.b?,107
+What does 3.7.4 require for rotating cryptographic keys when their cryptoperiod ends?,108
+How do you verify that key-management procedures cover end-of-cryptoperiod key changes?,108
+What has to be defined for each key type under requirement 3.7.4?,108
+What should the assessor check in 3.7.4.a for stored account data encryption keys?,108
+How is compliance with 3.7.4.b confirmed in practice?,108
+"When do stored-data keys have to be retired, replaced, or destroyed under PCI DSS 3.7.5?",109
+"What does 3.7.5 say to do if a key’s cryptoperiod ends, its integrity is weakened, or it may be compromised?",109
+How should old cryptographic keys be handled if they still need to be kept for decrypting archived data?,109
+What evidence does 3.7.5.a require the assessor to review for key retirement and replacement?,109
+What should interviewees be able to confirm under 3.7.5.b about key-management processes?,109
+What must key-management procedures require when staff handle cleartext keys manually?,110
+How does PCI DSS say to verify split knowledge and dual control for stored account data keys under 3.7.6?,110
+When does 3.7.6 apply to key-management activities?,110
+Does simply dividing a cryptographic key into two pieces satisfy the split-knowledge rule?,110
+"If secret or private keys are kept as components or shares, how must they be generated?",110
+What does 3.7.7 require for stopping someone from swapping in a fake cryptographic key?,111
+How do you test compliance with 3.7.7 for keys protecting stored account data?,111
+What should key-management policies and procedures cover under requirement 3.7.7?,111
+What do you look for in an interview or observation to confirm key substitution is prevented?,111
+"Under 3.7.7, what is the objective for the customized approach?",111
+What does 3.7.8 require key custodians to do regarding their responsibilities?,112
+How do you prove key custodians have acknowledged their duties under 3.7.8?,112
+What should the key-management policy and procedures say about custodian acknowledgments?,112
+Which requirement covers formal written or electronic acceptance by cryptographic key custodians?,112
+"For 3.7.8, what evidence should the assessor look for to confirm acknowledgments were made?",112
+What has to be documented and given to customers when a service provider shares cryptographic keys for account data?,113
+Who does requirement 3.7.9 apply to?,113
+How is 3.7.9 checked in a service provider assessment?,113
+What guidance has to be included in the customer-facing key documentation under 3.7.9?,113
+"When shared cryptographic keys are used for transmitting or storing account data, what must the provider make sure customers receive?",113
+What has to be true for the security policies and procedures in Requirement 4 to comply with 4.1.1?,115
+How do you check whether the Requirement 4 policies and procedures are being managed properly?,115
+Are the Requirement 4 policies and operational procedures required to be documented and kept current?,115
+What does 4.1.1 say about whether the policies and procedures have to be in use and known by affected staff?,115
+What is the specific testing step for Requirement 4.1.1?,115
+What does PCI DSS 4.1.2 require about roles and responsibilities for Requirement 4 activities?,116
+How do you verify that Requirement 4 responsibilities are both assigned and understood?,116
+What should the assessor look for in documentation under 4.1.2.a?,116
+What are interviewers checking for in 4.1.2.b?,116
+What is the objective of the customized approach for Requirement 4 responsibilities?,116
+"What has to be in place to protect PAN when it crosses open, public networks?",117
+"For requirement 4.2.1, what checks are done to confirm the controls are actually working?",117
+"Do certificates used for PAN transmission need to be valid and unrevoked, and how is that handled here?",117
+What kinds of insecure protocol settings are not allowed when encrypting PAN in transit?,117
+How is it verified that untrusted keys or certificates are rejected for PAN transmissions?,117
+What inventory has to be kept for keys and certificates that protect PAN in transit?,120
+How do you test whether the trusted-keys and certificates inventory is being maintained properly?,120
+What does requirement 4.2.1.1 say the entity must do for certificates and keys used during transmission?,120
+What should the documented procedures cover for maintaining the trusted keys and certificates inventory?,120
+"Is 4.2.1.1 mandatory yet, or still treated as a best practice until 31 March 2025?",120
+What does 4.2.1.2 require for wireless networks that carry PAN or connect to the CDE?,121
+How do you verify compliance with 4.2.1.2 for wireless authentication and transmission?,121
+What cryptography controls are expected on wireless networks to protect PAN?,121
+Are wireless networks allowed to fall back to weaker protocols or encryption for 4.2.1.2?,121
+What is the objective of 4.2.1.2 in relation to cleartext PAN over wireless?,121
+"What does 4.2.2 require for PAN sent by email, chat, SMS, or similar tools?",122
+How do you verify compliance with 4.2.2 in terms of policies and procedures?,122
+What system evidence is needed to show PAN is protected with strong cryptography under 4.2.2?,122
+Does 4.2.2 still apply if a customer asks for PAN to be sent over messaging?,122
+"If cardholder data is accidentally received over an insecure messaging channel, what are the options for handling it?",122
+What has to be true for the security policies and procedures in Requirement 5 to be compliant?,124
+How do you verify that Requirement 5 policies and procedures are being managed properly?,124
+"Are the Requirement 5 security policies and operational procedures required to be documented, current, and actually used?",124
+Who needs to know the policies and procedures covered by Requirement 5?,124
+What does 5.1.1 say about how policies and procedures for Requirement 5 must be handled?,124
+What does 5.1.2 require for the people handling Requirement 5 tasks?,125
+How do you test whether Requirement 5 roles and responsibilities are assigned and understood?,125
+"According to 5.1.2.a, what documentation has to be reviewed?",125
+What does the interview step in 5.1.2.b check with personnel?,125
+What is the objective of the customized approach for Requirement 5 responsibilities?,125
+"What has to be in place on system components to meet 5.2.1, and what’s the only exception?",126
+How do you check that anti-malware is actually deployed everywhere it should be for 5.2.1?,126
+"If a system component doesn’t have anti-malware, what evaluation has to exist to justify that?",126
+What does Requirement 5.2 say malware protection must accomplish overall?,126
+"Under 5.2.1.b, what does the review of the periodic evaluation need to prove?",126
+What must a deployed anti-malware solution do with all known malware types under 5.2.2?,127
+How do you verify compliance with requirement 5.2.2 for anti-malware detection and response?,127
+"Does the anti-malware control need to detect every known malware type, or is blocking/containing enough under 5.2.2?",127
+What evidence should be checked to test 5.2.2 anti-malware requirements?,127
+What is the objective of 5.2.2 in the customized approach?,127
+What has to be checked periodically for system components that aren’t considered malware-risky?,128
+What items need to be in the documented list for systems exempt from anti-malware?,128
+How do you verify compliance with 5.2.3.a and 5.2.3.b?,128
+Do the systems listed as not at risk for malware have to match the ones without an anti-malware solution under 5.2.1?,128
+What is the purpose of 5.2.3 in relation to changing malware threats?,128
+How often must systems identified as not at risk for malware be re-evaluated under 5.2.3.1?,129
+What has to define the periodic evaluation frequency for systems not at risk for malware?,129
+What needs to be included in the targeted risk analysis for 5.2.3.1?,129
+How do you test compliance with the periodic evaluation requirement for systems not at risk for malware?,129
+"Is 5.2.3.1 mandatory yet, or still treated as a best practice until a later date?",129
+What has to be true about anti-malware mechanisms and processes under requirement 5.3?,130
+How do I verify that the anti-malware solution is set to update itself automatically?,130
+What does 5.3.1 require for keeping anti-malware current?,130
+What evidence should be checked to confirm definitions and updates were deployed promptly?,130
+Why does the standard say anti-malware updates should come from a trusted source?,130
+"What does requirement 5.3.2 say the anti-malware tool must do: scheduled and real-time scans, or continuous behavioral analysis?",131
+How do I prove 5.3.2 is set up correctly in the anti-malware config?,131
+What systems do I need to check to show 5.3.2 is actually enabled on all at-risk operating systems?,131
+What evidence does 5.3.2 require from logs or scan results?,131
+What is the customized approach objective for requirement 5.3.2?,131
+What does Requirement 5.3.2.1 say about how often periodic malware scans must run?,132
+What needs to be included in the targeted risk analysis for 5.3.2.1?,132
+How is compliance with 5.3.2.1 verified during the assessment?,132
+Which risk analysis requirement must be followed for the scan frequency under 5.3.2.1?,132
+When does 5.3.2.1 stop being a best practice and become required?,132
+What must the anti-malware tool do when removable media is plugged in or mounted?,133
+"For PCI DSS 5.3.3, is it acceptable to use either automatic scanning or continuous behavioral monitoring for removable media?",133
+How do you prove compliance with 5.3.3 during an assessment?,133
+What evidence should be reviewed to confirm the removable-media protection is turned on?,133
+"Is 5.3.3 mandatory now, or still treated as a best practice until 31 March 2025?",133
+What does 5.3.4 require for anti-malware logging and retention?,134
+How do you check that anti-malware logs are turned on and kept long enough?,134
+Which requirement tells you how long anti-malware audit logs must be retained?,134
+What should an assessor look for to verify 5.3.4 compliance?,134
+How long must historical anti-malware records be available under the customized approach?,134
+What has to be in place to stop users from turning off or changing anti-malware settings?,135
+"When can anti-malware protection be disabled or altered, and who has to approve it?",135
+How do you test compliance with requirement 5.3.5 for anti-malware controls?,135
+For how long can a documented request to disable anti-malware remain valid?,135
+What extra protections should be considered if anti-malware is temporarily turned off?,135
+What anti-phishing controls need to be in place for personnel with access to in-scope systems?,136
+How is compliance with Requirement 5.4.1 checked during the assessment?,136
+What’s the distinction between phishing controls and the security awareness training in Requirement 12.6.3.1?,136
+"Until when is Requirement 5.4.1 only a best practice, and when does it become required?",136
+What is the required action for Requirement 5.4.1 regarding detecting and protecting against phishing attacks?,136
+What has to be true for the security policies and procedures in Requirement 6?,139
+How do you check compliance with Requirement 6.1.1?,139
+Are the policies and operational procedures in Requirement 6 supposed to be kept current and actually used?,139
+Who needs to know the security policies and procedures called out in Requirement 6?,139
+What does 6.1 say about having processes and mechanisms for secure development and maintenance?,139
+What has to be documented and assigned for people doing Requirement 6 work?,140
+How do you check that Requirement 6 roles and responsibilities are in place and understood?,140
+Who needs to confirm they understand their assigned Requirement 6 duties?,140
+What does 6.1.2 require for roles and responsibilities around Requirement 6 activities?,140
+What should an assessor look at and ask to verify 6.1.2?,140
+What has to be true for bespoke and custom software to count as developed securely under 6.2.1?,141
+Which software-development stages need security considered in requirement 6.2.1?,141
+How does the assessor verify compliance with 6.2.1?,141
+"Does 6.2 cover third-party software, or only software the entity develops for its own use?",141
+What kinds of practices or frameworks are given as examples for secure software lifecycle management?,141
+How often do developers on bespoke or custom software need security training?,142
+What topics has the 6.2.2 training to cover?,142
+Does 6.2.2 require training to include how to use security testing tools?,142
+How do you prove compliance with 6.2.2.a?,142
+What evidence is checked for 6.2.2.b?,142
+What has to happen to bespoke or custom software before it goes live or gets released to customers?,143
+What are code reviews supposed to check for under requirement 6.2.3?,143
+"Do the review procedures have to be documented, and what should an assessor look at to confirm that?",143
+How do you verify that changes to custom code were reviewed properly under 6.2.3?,143
+"Can the code review be manual, automated, or both for 6.2.3?",143
+"When we do manual code review on custom code before production, who has to review it?",144
+"For 6.2.3.1, what management approval is needed before the code can be released?",144
+How do you test that a company’s manual code review process meets 6.2.3.1?,144
+What evidence should an assessor look at to confirm manual reviews happened for custom software changes?,144
+"Can the reviewer be the original developer, or does it need to be someone else under 6.2.3.1?",144
+What secure coding methods have to be defined and used by developers for bespoke and custom software under 6.2.4?,145
+Which attack types does 6.2.4 say the development process needs to prevent or mitigate?,145
+Are XSS and CSRF covered as examples in 6.2.4?,145
+How does the assessor verify compliance with 6.2.4?,145
+What high-risk vulnerabilities from the 6.3.1 process must be addressed under 6.2.4?,145
+How must new security vulnerabilities be found and ranked under 6.3.1?,147
+What risk levels have to be called out at a minimum when classifying vulnerabilities?,147
+"Does 6.3.1 cover custom, bespoke, and third-party software too?",147
+What do assessors review or do to confirm the vulnerability-management process meets 6.3.1?,147
+"What is the objective of the customized approach for 6.3, in plain terms?",147
+What inventory has to be kept for bespoke and custom software under 6.3.2?,151
+How do you verify that the software inventory is being used to find and fix vulnerabilities?,151
+What does 6.3.2.b require the assessor to compare against the inventory?,151
+Which third-party items need to be included in the bespoke/custom software inventory?,151
+"Is requirement 6.3.2 mandatory yet, or still a best practice through 31 March 2025?",151
+What is the deadline for installing patches for critical vulnerabilities under 6.3.3?,152
+How does an entity decide when to install other security patches or updates?,152
+Which requirement covers protecting system components from known vulnerabilities with patches and updates?,152
+What do assessors review to confirm the patching process is defined correctly for 6.3.3?,152
+How is patch compliance checked against the latest patch information during testing?,152
+What has to be done to protect public-facing web apps from attacks under 6.4.1?,154
+"How often do public-facing web applications need a security review, and what triggers an extra review?",154
+"If we use a WAF or similar tool, what minimum setup and behavior does PCI expect for 6.4.1?",154
+What does the assessor need to check to confirm 6.4.1 is met when using manual or automated vulnerability testing?,154
+"When verifying 6.4.1 with an automated protection tool, what evidence should be reviewed?",154
+What automated protection has to be in place for public-facing web apps under 6.4.2?,156
+"Does the solution have to sit in front of the web app and be current, log activity, and either block attacks or trigger an immediate investigation?",156
+How do assessors verify 6.4.2 for public-facing web applications?,156
+What are the minimum elements listed for the web-attack detection and prevention tool in 6.4.2?,156
+"Is 6.4.2 still a best practice, and when does it become mandatory?",156
+What controls are required for scripts that run in the customer’s browser on a payment page?,157
+How do I show that each payment-page script is approved and its integrity is protected?,157
+"What records do I need to keep for all scripts on the payment page, and what justification has to be included?",157
+"For requirement 6.4.3, how is compliance tested during an assessment?",157
+Which documents and interviews are used to verify payment page script management under 6.4.3?,157
+What has to be included in the change-control process for production system components under 6.5.1?,159
+How do you prove a recent production change met the 6.5.1 requirements?,159
+"What testing is required before a system-component change goes live, including bespoke or custom software?",159
+"Who has to approve production changes, and what kind of approval evidence is expected?",159
+What fallback or recovery steps need to be documented if a change fails or weakens security?,159
+What has to be done after a significant change to new or changed systems under 6.5.2?,160
+How does an assessor verify compliance for 6.5.2?,160
+Does 6.5.2 require updated documentation after major changes?,160
+Which PCI DSS requirement covers confirming controls after a significant change?,160
+Are significant changes supposed to be reflected in the annual scope confirmation activity?,160
+How do we keep dev/test/UAT separated from production so access controls enforce it?,161
+What evidence is needed to show pre-production is isolated from production for 6.5.3?,161
+Which requirement says pre-production environments must be separated from production?,161
+What should I review to confirm the pre-production and production environments are actually separate?,161
+What is the goal of 6.5.3 in terms of risk from pre-production systems?,161
+What has to be separated between production and pre-production environments under requirement 6.5.4?,162
+How do you prove 6.5.4 is in place during an assessment?,162
+What does 6.5.4 aim to ensure before changes are deployed?,162
+What extra control is acceptable when the team is too small to fully separate duties?,162
+Can one person have both developer and admin roles if they use different accounts in each environment?,162
+What does PCI DSS 6.5.5 require for using live card numbers in pre-production setups?,163
+When are live PANs allowed in a pre-production environment?,163
+How do you verify compliance with requirement 6.5.5 during an assessment?,163
+What evidence should an assessor review to confirm live PANs aren’t used in test environments?,163
+What is the objective of 6.5.5 under the customized approach?,163
+What has to be removed from system components before a system is put into production under 6.5.6?,164
+How do you verify that test data and test accounts are cleared out before production go-live?,164
+What should you look for in newly installed or updated applications to confirm no test accounts or test data are left in production?,164
+What process needs to be defined in policies and procedures for requirement 6.5.6?,164
+What is the objective of the customized approach for 6.5.6?,164
+What has to be true for the security policies and procedures in Requirement 7?,166
+How do you verify compliance with Requirement 7.1.1?,166
+Are the Requirement 7 policies and operating procedures supposed to be current and actually used?,166
+Who needs to know the policies and procedures tied to Requirement 7?,166
+What does PCI DSS 7.1.1 require organizations to do with the policies and procedures it names?,166
+What does 7.1.2 require for the people doing Requirement 7 tasks?,167
+How do I prove roles for Requirement 7 activities are assigned and understood?,167
+Which evidence does 7.1.2.a ask an auditor to review?,167
+What do interviewers check under 7.1.2.b?,167
+"For Requirement 7, are responsibilities supposed to be documented somewhere specific?",167
+What has to be included in the access control model under 7.2.1?,168
+How do you verify that the access control model is properly defined for 7.2.1?,168
+Does 7.2.1 require access to be based on job roles and least privilege?,168
+What does 7.2 say about how access to systems and data should be assigned?,168
+"For 7.2.1.a and 7.2.1.b, what evidence is examined to confirm access needs are defined correctly?",168
+"How should user access, including admin access, be assigned under 7.2.2?",170
+What two factors must be used when deciding access for a user in 7.2.2?,170
+What do auditors need to review to confirm 7.2.2 is being followed?,170
+What should be checked in user access settings for the 7.2.2 test?,170
+What is the objective of 7.2.2 for limiting access to systems and data?,170
+Who has to approve assigned access privileges under requirement 7.2.3?,171
+What documented evidence is needed to show a user's privileges were properly approved?,171
+How do you test that privilege approvals were handled by authorized people?,171
+What should policies and procedures say about approving all privileges?,171
+"Do the assigned privileges have to match the user's role, and how is that checked?",171
+How often do user access rights have to be reviewed under 7.2.4?,172
+What does 7.2.4 require the review to check for besides just doing it on schedule?,172
+How does an assessor verify compliance with 7.2.4.a and 7.2.4.b?,172
+"Do third-party, vendor, and cloud-service accounts fall under the 7.2.4 review requirement?",172
+What has management to do after the periodic access review is completed?,172
+What does PCI DSS 7.2.5 require for application and system account privileges?,173
+How should access for app and system accounts be limited under 7.2.5?,173
+What do auditors review to verify 7.2.5 is being followed?,173
+Which accounts are in scope for the access controls in requirement 7.2.5?,173
+When does requirement 7.2.5 stop being a best practice and become mandatory?,173
+How often do application and system account privileges need to be reviewed?,174
+What has to happen if a review finds access that isn't appropriate?,174
+What does 7.2.5.1 require management to confirm about those accounts and privileges?,174
+How do you test compliance with 7.2.5.1?,174
+When does 7.2.5.1 stop being just a best practice and become mandatory?,174
+What are the rules for user access to query stored cardholder data repositories under 7.2.6?,175
+"Who is allowed to directly query a stored CHD repository, and who is not?",175
+How can access to these repositories be granted through applications or programmatic methods?,175
+What do auditors need to review to check compliance with 7.2.6?,175
+What does the test for 7.2.6.a and 7.2.6.b require the assessor to verify?,175
+What does 7.3 say about how access to systems and data has to be managed?,176
+"For 7.3.1, what has to be in place to limit access based on need-to-know across system components?",176
+How do you verify compliance with 7.3.1 during an assessment?,176
+"What does 7.3.2 require the access control system to enforce for users, apps, and systems?",176
+How is 7.3.2 tested to confirm permissions follow job classification and function?,176
+How do I verify the access control system defaults to deny all?,177
+What does 7.3.3 require the access control system to be set to by default?,177
+Which requirement says access is blocked unless a rule explicitly allows it?,177
+What should the vendor docs and system settings show for requirement 7.3.3?,177
+Why does PCI want the default access control setting to be deny all?,177
+What does 8.1 say about how user identification and authentication processes need to be handled?,180
+"Under 8.1.1, what has to be true of the security policies and operational procedures called out in Requirement 8?",180
+How do you check compliance with 8.1.1—what evidence or methods does the testing procedure call for?,180
+"Should the Requirement 8 policies and procedures be kept current and actually used, or is just having them written enough?",180
+What does the standard expect affected personnel to know about the Requirement 8 policies and procedures?,180
+What does 8.1.2 require for the people handling Requirement 8 activities?,181
+How do you prove the roles for Requirement 8 are assigned and understood?,181
+What should an assessor check under 8.1.2.a?,181
+What should be covered when interviewing staff under 8.1.2.b?,181
+What is the goal of the customized approach for Requirement 8 responsibilities?,181
+What does 8.2 require for managing user IDs and related accounts over their lifecycle?,182
+When must a unique user ID be assigned before access is allowed to system components or cardholder data?,182
+How do you verify compliance with 8.2.1 during an assessment?,182
+What evidence should be reviewed to confirm actions can be traced to specific individuals under 8.2.1?,182
+Does 8.2.1 apply to user accounts on POS terminals that handle only one card number at a time?,182
+"When can a shared or generic login be used, and what controls have to be in place?",183
+What has to be documented and approved before a shared authentication account is allowed?,183
+How do you verify that shared credentials are being handled correctly under 8.2.2?,183
+What does 8.2.2 require about tying actions from a shared account back to one person?,183
+Does 8.2.2 apply to POS user accounts that can access only one card number at a time?,183
+What does 8.2.3 require service providers to use for remote access to each customer site?,184
+How do you verify a service provider is meeting 8.2.3 during an assessment?,184
+"For service providers with remote access to customer premises, can the same login factor be reused across customers?",184
+What is the objective behind unique authentication factors for each customer premise?,184
+What does PCI DSS say about a provider’s credential for one customer being usable for another customer?,184
+"How are user ID adds, changes, and removals supposed to be approved and limited under 8.2.4?",186
+What evidence do assessors look at to confirm 8.2.4 account lifecycle changes were handled correctly?,186
+"Who does 8.2.4 apply to—just employees, or also contractors and vendors?",186
+What does 8.2.5 require for access when someone leaves the company?,186
+"For 8.2.5, how do you verify that terminated users’ accounts and physical auth factors have been removed or disabled?",186
+"When an account has been idle for too long, how long do we have before we must remove or disable it?",187
+What has to happen to third-party remote-access accounts when they’re not actively needed?,187
+How do we prove inactive user accounts are handled correctly for requirement 8.2.6?,187
+What evidence should we look for to show third-party support accounts are being monitored for odd activity?,187
+"In PCI DSS 8.2.7, what are the rules for accounts that vendors use to remotely access or maintain systems?",187
+What does requirement 8.2.8 require after a session has been idle for 15 minutes?,189
+How do you verify compliance with 8.2.8 on user sessions?,189
+What idle-time setting should system or session timeout controls use for 8.2.8?,189
+Does 8.2.8 apply to POS accounts that can access only one card number at a time?,189
+What is the objective behind the 8.2.8 re-authentication rule?,189
+What authentication factors are allowed for user and admin access to system components under 8.3.1?,190
+How do I prove that access to system components uses one of the required authentication factors?,190
+What should be observed during testing to confirm the authentication method works as documented?,190
+Does 8.3.1 apply to POS terminals that handle only one card number at a time?,190
+"Can a digital certificate count as a ""something you have"" factor for 8.3.1?",190
+What does requirement 8.3.2 require for authentication factors in transit and at rest?,191
+How do I test whether authentication factors are unreadable during transmission and storage under 8.3.2?,191
+What should I check in vendor docs and configuration for 8.3.2 compliance?,191
+What evidence is needed to show authentication factors stored in repositories are protected by strong cryptography?,191
+How does 8.3.2 verify that intercepted authentication factors can’t be read from network traffic?,191
+What has to happen before an authentication factor is changed for a user?,192
+How do you verify the user’s identity before a password reset or token change?,192
+What does requirement 8.3.3 require for authentication factor changes?,192
+What should the reviewer look for when checking auth-factor modification procedures?,192
+Why is positive user identification required before modifying an authentication factor?,192
+"How many bad login attempts are allowed before a user ID gets locked, and how long does the lock have to last?",193
+What has to be true before a locked account can be turned back on?,193
+How do you prove the system is enforcing the lockout rules in 8.3.4?,193
+"If passwords or passphrases are used for authentication, how must they be handled when first set or reset?",193
+What evidence would an assessor look for to confirm 8.3.5 is being followed?,193
+What password complexity does requirement 8.3.6 require when a password is used for authentication?,194
+How is compliance with 8.3.6 checked during an assessment?,194
+"If a system can’t support 12-character passwords, what’s the shortest password length allowed under 8.3.6?",194
+Does 8.3.6 apply to POS user accounts that only handle one card number at a time?,194
+When does 8.3.6 stop being a best practice and become mandatory?,194
+What does requirement 8.3.7 say about reusing old passwords or passphrases?,195
+How many previous passwords or passphrases must be blocked under 8.3.7?,195
+How do you test that 8.3.7 is enforced on a system?,195
+What is the goal of the customized approach for password reuse in 8.3.7?,195
+Does 8.3.7 apply to point-of-sale user accounts that can access only one card number at a time?,195
+What has to be documented and communicated to users under requirement 8.3.8?,196
+What password and passphrase guidance must the authentication policy include?,196
+How do you verify 8.3.8 in an assessment?,196
+Do users need instructions on what to do if a password may be compromised under 8.3.8?,196
+What does 8.3.8 say about reusing old passwords or passphrases?,196
+What has to happen if a password is the only sign-in factor for a user account?,197
+How often must single-factor passwords or passphrases be changed under 8.3.9?,197
+What other option besides periodic password changes satisfies requirement 8.3.9?,197
+How do you verify compliance with 8.3.9 for accounts that use only a password or passphrase?,197
+"Which accounts or systems are out of scope for 8.3.9, such as MFA users or certain POS and service provider accounts?",197
+"When passwords are the only login factor for customer users, what guidance must a service provider give them?",199
+How often does a service provider need to tell customers to change passwords or passphrases?,199
+"Under 8.3.10, what conditions should be explained for when customer passwords must be changed?",199
+"For a service provider assessment, how do you verify compliance with 8.3.10?",199
+"Does 8.3.10 apply to consumer accounts, or only to service providers?",199
+"For service providers, what has to happen if a password is the only login factor for customer users?",200
+"How often can those single-factor customer passwords be changed, and what alternative is allowed instead?",200
+What do assessors need to inspect to confirm compliance with 8.3.10.1?,200
+Does 8.3.10.1 apply to merchant accounts or only to service providers?,200
+When does 8.3.10.1 stop being a best practice and become mandatory?,200
+"Under 8.3.11, what has to be true when we use tokens, smart cards, or certificates?",201
+How do you prove the factor is tied to one person and not shared?,201
+What controls are needed so only the intended user can use the factor?,201
+"What do you review or inspect for 8.3.11.a, 8.3.11.b, and 8.3.11.c?",201
+What is the objective for the customized approach in 8.3.11?,201
+What does requirement 8.4 say about MFA for access into the CDE?,202
+Who needs MFA for non-console access to the CDE under 8.4.1?,202
+How do you test that 8.4.1 is in place for admin access to the CDE?,202
+"Does 8.4.1 cover elevated-privilege users connecting to the CDE over a network, not a console?",202
+Is using two passwords enough to meet the MFA requirement?,202
+Is MFA required for every non-console login into the CDE under 8.4.2?,203
+How do I prove 8.4.2 is in place for non-console access to the CDE?,203
+What should I check in system or network configs to verify 8.4.2?,203
+What does an assessor need to observe to confirm MFA is required when someone logs in to the CDE?,203
+"For requirement 8.4.2, what’s the security goal of using MFA for CDE access?",203
+What does 8.4.3 require for remote access coming from outside the company network that could affect the CDE?,206
+Which remote connections have to use MFA under requirement 8.4.3?,206
+How is MFA checked for 8.4.3 during an assessment?,206
+What do assessors look at to confirm remote access MFA is set up correctly?,206
+Does 8.4.3 apply to users and third parties connecting in remotely?,206
+What has to be true about an MFA setup to keep it from being misused?,208
+"Under 8.5.1, what four conditions must the MFA system meet?",208
+How do auditors verify that the MFA implementation isn’t vulnerable to replay attacks?,208
+"When can MFA be bypassed, and what approval is needed for that exception?",208
+What should the tester look for when checking that users only get access after every factor succeeds?,208
+What has to be done if a system or application account can log in interactively?,210
+How do you verify that interactive use of those accounts is being controlled properly?,210
+"When is interactive use of a system or application account allowed, and what approvals or records are needed?",210
+What does requirement 8.6 say about managing application and system accounts and their authentication factors?,210
+"For 8.6.1, how do actions taken with an interactive system or application account stay tied to one person?",210
+What does 8.6.2 require for passwords used by app or system accounts that can log in interactively?,211
+How do you check whether those account passwords are hard coded anywhere in code or config files?,211
+What should the development process say about passwords for interactive application and system accounts?,211
+"Are passwords for interactive app/system accounts allowed to appear in scripts, property files, or custom source code?",211
+"Is 8.6.2 currently mandatory, or still treated as a best practice until 31 March 2025?",211
+What has to be done to passwords or passphrases for application and system accounts to keep them from being misused?,212
+"How often do application and system account passwords need to be changed, and what drives that frequency?",212
+What does 8.6.3 say about password complexity for application and system accounts?,212
+How do assessors check compliance with 8.6.3 in the defined approach?,212
+"Is 8.6.3 mandatory now, or is it still treated as a best practice until a certain date?",212
+What has to be true for the security policies and procedures in Requirement 9 to be compliant?,215
+How do you verify that the Requirement 9 policies and procedures are being managed properly?,215
+"Are the policies and operational procedures called out in 9.1.1 required to be documented, current, used, and known by affected staff?",215
+What is the test for Requirement 9.1.1 in an assessment?,215
+"For 9.1, what needs to be defined and understood about restricting physical access to cardholder data?",215
+What does 9.1.2 require for roles and responsibilities tied to Requirement 9?,216
+How do you verify compliance with 9.1.2 during an assessment?,216
+Which people need to be interviewed for 9.1.2 testing?,216
+Does 9.1.2 allow roles and responsibilities to be kept in a separate document or matrix?,216
+What is the objective of the customized approach for Requirement 9 activities?,216
+What physical controls are required to restrict entry to systems in the CDE?,217
+How does 9.2 say physical access to the CDE should be controlled?,217
+What does 9.2.1 require at facility entrances for CDE systems?,217
+How is compliance with 9.2.1 verified during testing?,217
+Does 9.2.1 apply to areas open to cardholders?,217
+What has to be in place to monitor individual entry and exit from sensitive areas in the CDE?,218
+How do you show the monitoring controls can’t be easily tampered with or disabled?,218
+What do you need to do with the collected access data after it’s captured?,218
+"How long must the access records be retained, unless law says otherwise?",218
+What is the testing step for requirement 9.2.1.1 on physical access monitoring?,218
+What controls are required for publicly accessible network jacks in the facility?,219
+How do you test compliance with the rule for public network jacks?,219
+What does requirement 9.2.3 say about physical access to wireless and networking equipment?,219
+How is compliance with 9.2.3 verified during an assessment?,219
+What is the objective behind restricting access to public network jacks and networking hardware?,219
+What has to happen to console access in sensitive areas when the console isn’t being used?,220
+How do you check that consoles in sensitive areas are protected from unauthorized use?,220
+What does PCI DSS 9.2.4 require for logins at consoles in sensitive areas?,220
+What should an assessor observe to confirm requirement 9.2.4 is met?,220
+What is the control objective for physical consoles located in sensitive areas?,220
+What has to be in the procedure for managing physical access to the CDE for employees and other staff?,221
+"How do you prove people in the CDE are clearly identified, like with badges?",221
+What should the review look for to confirm physical-access procedures are documented and cover all required items?,221
+"Who is allowed to use or control the badge or ID system, and how is that checked?",221
+What does PCI DSS 9.3.1 require when someone’s physical access needs change or they leave?,221
+What controls are required for physical access to sensitive areas in the CDE under 9.3.1.1?,222
+How do you confirm that people in sensitive areas are allowed in for their job duties?,222
+What needs to happen to physical access when someone is terminated?,222
+"What should happen to keys, badges, or other access devices after an employee leaves?",222
+How is 9.3.1.1 tested for authorized access and for revoking access on termination?,222
+What controls are required for visitors entering the CDE?,223
+How do you verify visitor access to the CDE is being managed correctly?,223
+Are visitors required to be escorted the whole time they’re in the CDE?,223
+What does requirement 9.3.2 say about visitor badges or ID cards?,223
+How is compliance with 9.3.2 tested for badge expiration and visitor identification?,223
+"What has to happen to a visitor badge or ID when the visitor leaves, or when it expires?",224
+How do you test that visitor badges aren’t still usable after a visit ends?,224
+What details must be recorded in the visitor log for physical access to the facility or sensitive areas?,224
+"How long do visitor logs need to be kept, unless a law says otherwise?",224
+"Under requirement 9.3.4, what do assessors need to check in the visitor log and in staff interviews?",224
+What has to be done to physically secure media that contains cardholder data under requirement 9.4.1?,225
+How do you verify that all media with cardholder data is physically secured for 9.4.1?,225
+What does 9.4.1.1 require for offline backups that contain cardholder data?,225
+How is compliance with 9.4.1.1 checked for secure storage of offline media backups?,225
+What is the objective behind physically securing media and offline backups with cardholder data?,225
+How often must the security of offline backup media locations with cardholder data be reviewed?,226
+What records or interviews are used to confirm the backup storage security review happens at least every 12 months?,226
+How must media containing cardholder data be classified under requirement 9.4.2?,226
+What evidence is checked to verify procedures exist for classifying cardholder-data media by sensitivity?,226
+"For PCI DSS 9.4.1.2, what has to be documented about offline media backup location security reviews?",226
+What has to happen when media containing cardholder data is shipped offsite under 9.4.3?,227
+How do you prove media sent outside the facility is being handled correctly for PCI?,227
+What should offsite tracking logs include for media with cardholder data?,227
+What do assessors need to check for 9.4.3 compliance on media shipments?,227
+Is regular postal mail acceptable for sending cardholder-data media outside the facility?,227
+What approval is needed before cardholder-data media leaves the facility or is handed to someone?,228
+How do assessors check that offsite media moves are properly authorized by management?,228
+"Are there any rules about who can approve media being moved out, or do they have to be titled a manager?",228
+What inventory records must be kept for electronic media that contains cardholder data?,228
+How does the testing verify that electronic media inventory logs are actually maintained?,228
+How often must inventories of electronic media containing cardholder data be done?,229
+What evidence is checked to confirm the media inventory process is defined and carried out on a yearly basis?,229
+What does requirement 9.4.5.1 say about inventorying electronic media with cardholder data?,229
+What testing steps are used to verify compliance with 9.4.5.1?,229
+What is the objective for the customized approach for media inventories?,229
+What has to happen to hard-copy cardholder data when it’s no longer needed for business or legal reasons?,230
+Which destruction methods are acceptable for paper cardholder data under requirement 9.4.6?,230
+How do you verify compliance with 9.4.6 in an assessment?,230
+What should storage containers for items waiting to be destroyed be like?,230
+How is 9.4.6 different from requirement 3.2.1?,230
+What has to happen to electronic media that still contains cardholder data when it’s no longer needed for business or legal reasons?,231
+What are the allowed ways to make cardholder data on old media unrecoverable under 9.4.7?,231
+How do you test compliance with the media-destruction requirement in 9.4.7?,231
+Does simply deleting files satisfy the requirement to dispose of electronic media with cardholder data?,231
+How is the destruction rule in 9.4.7 different from the secure-deletion requirement for retained cardholder data?,231
+What has to be in place to keep POI devices from being tampered with or swapped out?,232
+"For 9.5.1, what specific controls are required for card-reading devices that touch the card directly?",232
+How does the assessor check compliance with the POI device protection requirement?,232
+"Does the requirement call for a formal inventory, periodic inspections, and staff training for POI devices?",232
+What is the PCI requirement number for protecting point-of-interaction devices from tampering and unauthorized substitution?,232
+What has to be kept on the POI device inventory for 9.5.1.1?,233
+How does the assessor check that the POI device list is current and accurate?,233
+"Does 9.5.1.1 require the make/model, location, and serial number or unique ID for each POI device?",233
+What testing steps are used for requirement 9.5.1.1?,233
+"For deployed POI devices, what information must an up-to-date list include?",233
+What does requirement 9.5.1.2 require for point-of-interaction device inspections?,235
+How do I show 9.5.1.2 is being followed for POI devices?,235
+What should the documented process for 9.5.1.2 cover?,235
+"When checking POI devices, what are auditors supposed to confirm from staff and observation under 9.5.1.2.b?",235
+What is the objective of 9.5.1.2 in the customized approach?,235
+How should we decide how often POI devices get inspected?,237
+What has to be in the targeted risk analysis for requirement 9.5.1.2.1?,237
+How do we prove the inspection schedule and inspection type match the risk analysis?,237
+What do assessors examine to test 9.5.1.2.1?,237
+"Is 9.5.1.2.1 mandatory yet, or still a best practice until 31 March 2025?",237
+What training has to be given to personnel in POI environments under 9.5.1.3?,238
+How do you verify that POI staff were trained on tampering and device substitution risks?,238
+What checks are required before letting someone claiming to be maintenance or repair access POI devices?,238
+What should staff be told to do if they notice suspicious activity around a POI device?,238
+"In 9.5.1.3, what procedures must cover installing, replacing, or returning POI devices?",238
+What has to be true for the security policies and procedures in Requirement 10 to be compliant?,241
+How do you verify compliance with Requirement 10.1.1?,241
+Are the logging and monitoring policies in Requirement 10 supposed to be documented and kept current?,241
+What does Requirement 10.1 say about processes for logging and monitoring access to system components and cardholder data?,241
+"For Requirement 10.1.1, who needs to know the security policies and operational procedures?",241
+How are roles and responsibilities for Requirement 10 supposed to be handled?,242
+What does 10.1.2 require organizations to do with responsibilities for Requirement 10 activities?,242
+How does an assessor verify compliance with 10.1.2?,242
+What should be checked in documentation for 10.1.2?,242
+What do interviews need to confirm for personnel under 10.1.2?,242
+What has to be logged under 10.2.1 for system components and cardholder data?,243
+How do you verify 10.2.1.1 is capturing every individual user access to cardholder data?,243
+"Are audit logs required to be enabled and active on all system components, or only on systems that handle cardholder data?",243
+What does requirement 10.2 say audit logs are meant to help with?,243
+What testing step is used to check that audit logs are active for all system components under 10.2.1?,243
+"What has to be logged for anyone with admin-level access, including when they use app or system accounts interactively?",244
+How do you verify requirement 10.2.1.2 for privileged-user activity logging?,244
+What does 10.2.1.3 require about access to audit logs themselves?,244
+What should the assessor look for in audit log settings and records to prove access to logs is captured?,244
+"Under requirement 10.2.1.4, what kind of access attempts must be recorded?",244
+"What must audit logs record about changes to user IDs and passwords, especially new accounts and admin-access accounts?",246
+How do you check that credential changes are being logged as required under 10.2.1.5?,246
+What events has 10.2.1.6 say must be captured for audit-log activity status?,246
+How is compliance with the audit-log start/stop/pause logging requirement verified?,246
+"Does the standard require logging the creation of a new audit log, and if so, which requirement covers it?",246
+What does 10.2.1.7 require logging about system-level objects?,247
+How do you verify that creation and deletion of system-level objects is being captured for 10.2.1.7?,247
+"For 10.2.2, what details have to be in each audit log entry?",247
+How is compliance with 10.2.2 tested for the auditable events in 10.2.1.1 through 10.2.1.7?,247
+"Does 10.2.2 require logs to show success or failure for each event, and if so, how?",247
+How are audit logs kept from being deleted or changed without approval?,248
+"Who is allowed to read audit log files, according to 10.3.1?",248
+What do I need to check to prove log-file read access is restricted to job-related users?,248
+"Does the log-access control apply only on the source system, or anywhere the logs are stored?",248
+What is the goal of requirement 10.3 for stored activity records?,248
+What does PCI DSS 10.3.2 require for protecting current audit log files from being changed by unauthorized people?,249
+How do you verify compliance with 10.3.2 for audit log protection?,249
+"What is the 10.3.3 requirement for backing up audit logs, including logs from external-facing systems?",249
+How is 10.3.3 tested to confirm logs are being backed up to a secure central internal server or hard-to-modify media?,249
+What is the customized approach objective for requirements 10.3.2 and 10.3.3?,249
+What has to be used on audit logs to meet 10.3.4?,250
+"For 10.3.4, what kind of change to log data must trigger an alert?",250
+How do you verify the 10.3.4 control is in place?,250
+Should adding new entries to an audit log create an alert under the good-practice guidance?,250
+What does the customized approach objective say about stored activity records?,250
+What has to be reviewed in logs under requirement 10.4?,251
+How often do the audit logs in 10.4.1 need to be checked?,251
+Which types of logs must be included in the daily review for 10.4.1?,251
+How do you verify compliance with 10.4.1 in an assessment?,251
+What’s the purpose of daily log review in requirement 10?,251
+What does 10.4.1.1 require for audit log reviews?,252
+How do you verify that log reviews are being done automatically under 10.4.1.1?,252
+Which PCI DSS requirement number covers automated mechanisms for audit log review?,252
+What is the objective of the customized approach for 10.4.1.1?,252
+"Is 10.4.1.1 mandatory yet, or still a best practice until a certain date?",252
+What does requirement 10.4.2 require for logs from system components not covered by 10.4.1?,253
+How often do logs for the other in-scope system components need to be reviewed under 10.4.2?,253
+What evidence is checked to confirm periodic log reviews for 10.4.2?,253
+"Which logs are included in 10.4.2, and which system components are excluded from it?",253
+"Under 10.4.2, what does the assessor look for in policies, procedures, and review records?",253
+How often do we need to review logs on systems not covered by 10.4.1?,254
+What has to be in the targeted risk analysis for 10.4.2.1?,254
+How do assessors verify the log-review frequency for lower-risk system components under 10.4.2.1?,254
+"Is 10.4.2.1 mandatory yet, or still a best practice?",254
+What evidence is needed to show log reviews are being done at the risk-analysis frequency?,254
+What has to be done with exceptions or anomalies found during log review under 10.4.3?,255
+How do you verify 10.4.3 is in place—what should be checked in policies and procedures?,255
+What should an assessor observe or ask staff to confirm for 10.4.3?,255
+Which PCI DSS requirement says review exceptions and anomalies must be addressed?,255
+What is the objective behind handling suspicious or anomalous activity in 10.4.3?,255
+"What’s the retention period for audit log history, and how much has to be ready right away?",256
+What documentation has to be in place for audit log retention under 10.5.1?,256
+How do you verify that audit logs are kept for 12 months in 10.5.1?,256
+How is it checked that the latest three months of logs can be analyzed immediately?,256
+What does requirement 10.5.1 say about audit log history retention?,256
+What does Requirement 10.6 require for time consistency across systems?,257
+How are system clocks supposed to be synchronized under 10.6.1?,257
+What should an examiner check to confirm 10.6.1 is in place and current?,257
+Why is synchronized time important for log review and breach forensics?,257
+What other PCI DSS requirements apply to keeping time-sync technology current?,257
+What has to be set up so systems stay on the same correct time?,258
+"Which servers are allowed to get time from outside sources, and what kind of time source must it be?",258
+"If there’s more than one time server, how do they keep in sync?",258
+How do you verify compliance with requirement 10.6.2 for time settings?,258
+What does 10.6.2 say about where internal systems can get time from?,258
+What does PCI DSS 10.6.3 require for access to time synchronization data and settings?,259
+How do you verify compliance with 10.6.3 for restricting access to time data?,259
+What has to happen when time settings on critical systems are changed under 10.6.3?,259
+"How is 10.6.3 tested for logging, monitoring, and review of time-setting changes?",259
+What is the customized approach objective for requirement 10.6.3?,259
+What has to happen when a critical security control fails?,260
+Which control failures must service providers detect and alert on under 10.7.1?,260
+How do assessors verify prompt detection and response to these failures?,260
+"Does 10.7.1 apply to every merchant, or only to service providers?",260
+What do the testing steps 10.7.1.a and 10.7.1.b require the assessor to review or observe?,260
+What has to be in place to catch and alert on failures of critical security controls right away under 10.7.2?,261
+Which control-system failures does 10.7.2 specifically call out for prompt detection and alerting?,261
+"How do assessors verify 10.7.2—what documents, observations, and interviews are required?",261
+"Does 10.7.2 apply to service providers, and when does it become mandatory instead of just a best practice?",261
+What two extra critical security control systems are included in 10.7.2 compared with 10.7.1?,261
+What has to happen when a critical security control system fails?,262
+Which steps must be included in the response to a security control failure under 10.7.3?,262
+How do you prove the failure-response process for critical security controls is in place?,262
+"What records need to be kept for a critical security control failure, per 10.7.3.b?",262
+Does the requirement say to resume monitoring after a control failure is fixed?,262
+What has to be true for the security policies and procedures in Requirement 11.1.1?,265
+How do you check that the Requirement 11.1.1 policies and procedures are being managed properly?,265
+"Which requirement says the security policies and operational procedures tied to Requirement 11 must be documented, current, used, and known by the right people?",265
+"Do the procedures for Requirement 11 need to be updated when processes or technology change, or only on a regular schedule?",265
+What is the purpose of Requirement 11.1.1?,265
+What does 11.1.2 require about who handles Requirement 11 activities?,266
+How do you test that Requirement 11 roles and responsibilities are set up properly?,266
+"For 11.1.2, what evidence should show that duties are assigned and understood?",266
+What should an assessor do to confirm Requirement 11 responsibilities are documented?,266
+"Under 11.1.2, how do you verify staff know their assigned security tasks?",266
+How often do wireless access points have to be checked for unauthorized devices?,267
+What has to be done with both approved and unapproved Wi‑Fi access points under 11.2.1?,267
+"If we use automated wireless monitoring, what must happen when something is detected?",267
+How do auditors verify compliance with the wireless access point requirement?,267
+What does requirement 11.2 say about identifying and handling wireless access points?,267
+What has to be kept for authorized wireless access points under 11.2.2?,269
+Does PCI require a business reason to be recorded for each approved wireless access point?,269
+How do you check compliance with the wireless access point inventory requirement?,269
+What is the goal of maintaining an authorized wireless access point inventory?,269
+"In requirement 11.2.2, what should the review of documentation confirm?",269
+How often do internal vulnerability scans need to run under 11.3.1?,270
+What has to happen to high-risk and critical findings from internal scans?,270
+What proof do assessors look at to confirm the scan tool is current?,270
+"Who is allowed to perform the internal vulnerability scan, and do they need to be independent?",270
+Which specific evidence items in 11.3.1.a through 11.3.1.d are used to test internal vulnerability scanning?,270
+How are lower-priority vulnerabilities supposed to be handled under 11.3.1.1?,272
+What has to be included in the risk analysis used to set the fix timeline for non-high-risk vulnerabilities?,272
+How does an assessor verify 11.3.1.1 is being met?,272
+Does the scan process need follow-up rescans for these vulnerabilities?,272
+When does 11.3.1.1 stop being a best practice and become mandatory?,272
+What has to be true for internal vulnerability scans under 11.3.1.2?,273
+How do you prove authenticated internal scans are being done?,273
+What does PCI DSS expect if scan accounts can also be used to log in interactively?,273
+"Which systems are allowed to be excluded from authenticated scanning, and how should that be handled?",273
+What does Requirement 11.3.1.2.d ask you to check in the documentation?,273
+What has to happen to internal vulnerability scans after a significant change under 11.3.1.3?,274
+"When checking 11.3.1.3, what evidence shows the post-change scans were done and the issues fixed?",274
+"Who is allowed to perform the internal scans after a major change, and does that person need to be a QSA or ASV?",274
+"After a significant change, which findings from internal scans must be resolved before the change is considered complete?",274
+Is authenticated internal scanning required for scans done after significant changes?,274
+"How often do external vulnerability scans have to be run, and who has to perform them?",275
+What does an assessor need to review to confirm the quarterly scan requirement was met over the last year?,275
+What has to be true for an external scan result to count as passing under 11.3.2?,275
+When are rescans required after an external vulnerability scan finds issues?,275
+Is requirement 11.3.2 allowed to use the customized approach?,275
+What has to happen with external vulnerability scans after a major change to the environment?,277
+"Under 11.3.2.1, how are you supposed to show the post-change external scans were done?",277
+When do you need to run rescans and fix findings from the external scan results?,277
+"Who is allowed to perform the external scans after significant changes, and do they need to be independent?",277
+What CVSS threshold requires a vulnerability to be resolved for requirement 11.3.2.1?,277
+What has to be in the penetration-testing methodology under 11.4.1?,278
+How does the organization need to test the CDE and critical systems for 11.4.1?,278
+Does 11.4.1 require penetration testing from both inside and outside the network?,278
+How is compliance with 11.4.1 verified during the assessment?,278
+How long must penetration-test results and remediation records be kept?,278
+How often do we need to run internal penetration tests under 11.4.2?,280
+What has to trigger another internal penetration test after a major change or upgrade?,280
+"Who is allowed to perform the internal penetration test, and do they need to be independent?",280
+What does 11.4.2.a require the assessor to review to confirm the test was done correctly?,280
+What should be verified in 11.4.2.b during staff interviews about the tester and their independence?,280
+"What does requirement 11.4.3 require for external penetration testing, and how often must it be done?",281
+What changes trigger an external penetration test under 11.4.3?,281
+"Who is allowed to perform the external penetration test in 11.4.3, and do they need to be a QSA or ASV?",281
+How do you verify compliance with 11.4.3 during an assessment?,281
+What is the objective of the customized approach for 11.4.3?,281
+What has to happen when penetration testing finds exploitable vulnerabilities or security weaknesses?,282
+How should fixes from penetration test findings be prioritized under PCI DSS 11.4.4?,282
+What must be done after correcting issues found in a penetration test to prove they were fixed?,282
+How do you verify compliance with Requirement 11.4.4 for penetration test findings?,282
+"Under 11.4.4, what is the objective for vulnerabilities found while verifying system defenses?",282
+"If we use segmentation to isolate the CDE, how often do we need to test those controls, and when else besides the annual test?",283
+What has to be covered in a penetration test of segmentation controls under requirement 11.4.5?,283
+How do we show auditors that our segmentation testing methodology meets 11.4.5?,283
+"Who is allowed to perform the segmentation penetration test, and do they need to be a QSA or ASV?",283
+"What do the review, results check, and interview steps require under 11.4.5.a, 11.4.5.b, and 11.4.5.c?",283
+"When a service provider uses segmentation, how often do they have to test it?",284
+What has to be included in a segmentation penetration test under 11.4.6?,284
+"Who is allowed to perform the segmentation test, and do they need to be independent?",284
+What does the assessor need to check in the latest penetration test report for 11.4.6.a?,284
+Which requirement covers extra segmentation testing for service providers only?,284
+What must a multi-tenant service provider do for customers’ external penetration tests under 11.4.7?,285
+How do you check compliance with 11.4.7 for a multi-tenant service provider?,285
+Is a multi-tenant service provider allowed to block penetration testing by customers?,285
+What does Requirement 11.4.7 add for multi-tenant service providers only?,285
+What kind of evidence should be reviewed to confirm support for external penetration testing?,285
+What intrusion detection or prevention controls have to be in place for the CDE network?,287
+Where does traffic need to be monitored under requirement 11.5.1?,287
+How do you check that IDS/IPS is alerting people to suspected compromises?,287
+What evidence is needed to verify IDS/IPS signatures and baselines are current?,287
+Which requirement says network intrusions and unexpected file changes must be detected and responded to?,287
+What does requirement 11.5.1.1 add for service providers about covert malware traffic?,288
+How do you test that covert command-and-control communications are being detected or blocked?,288
+What has to be included in the incident response plan if covert malware channels are found?,288
+What do assessors need to interview or observe to confirm staff know how to handle suspected malware communications?,288
+"For 11.5.1.1, what kinds of controls are expected to stop covert malware communication channels?",288
+What does requirement 11.5.2 require a change-detection tool to do for critical files?,290
+How often must critical file comparisons run under 11.5.2?,290
+What should an assessor check to confirm a change-detection mechanism is in use for 11.5.2?,290
+What do you need to look at to verify the tool is configured to meet all parts of 11.5.2?,290
+"Under 11.5.2, what has to happen if someone changes, adds, or deletes a critical file without authorization?",290
+"What has to be in place to spot unauthorized changes on payment pages, and how often does it need to run?",292
+Which parts of the payment page must the tamper-detection tool evaluate in the consumer browser?,292
+How does an assessor verify compliance with requirement 11.6.1?,292
+"If the detection checks are not done weekly, what risk-analysis rule applies to the frequency?",292
+"What does requirement 11.6.1 say the mechanism must alert on: headers, scripts, or both?",292
+What has to be true about the organization’s overall information security policy under 12.1.1?,295
+How do you check whether the information security policy is being managed correctly for 12.1.1?,295
+Does PCI require the overall information security policy to be shared with vendors and business partners?,295
+"Which requirement says the overall information security policy must be established, published, maintained, and disseminated?",295
+What is the main purpose of having a company-wide information security policy in PCI DSS 12.1?,295
+"How often does the information security policy need a formal review, and when must it be changed?",297
+What does requirement 12.1.2 say the policy has to be kept current with?,297
+How do you verify the policy review and update process for 12.1.2?,297
+What must the security policy cover about information security roles and responsibilities under 12.1.3?,297
+How is 12.1.3 tested to confirm staff know and acknowledge their security responsibilities?,297
+Who at executive level has formal responsibility for information security under requirement 12.1.4?,298
+What evidence do assessors review to confirm information security is assigned to the right executive?,298
+"Does the requirement allow someone other than a CISO to own information security, and if so who?",298
+What is the intent behind assigning information security responsibility to executive management?,298
+How does the testing procedure verify compliance with 12.1.4?,298
+What has to be included in an acceptable use policy for end-user technologies under 12.2.1?,299
+How do you verify that end-user technology acceptable use policies are documented and actually implemented?,299
+Which kinds of devices and services are covered by the end-user technology acceptable use policy requirement?,299
+"Does the policy need explicit approval from authorized parties, and if so, what else must it cover?",299
+What is requirement 12.2 trying to achieve for end-user technologies?,299
+What has to be included in a targeted risk analysis for a PCI DSS control that lets us set our own frequency?,300
+"How often do we need to review a targeted risk analysis, and when do we update it?",300
+What does 12.3.1 require us to document in the risk analysis for requirements that call for one?,300
+How does an assessor verify compliance with 12.3.1?,300
+"Is requirement 12.3.1 mandatory yet, or still treated as a best practice?",300
+What has to be done for each PCI DSS requirement if an entity uses the customized approach under 12.3.2?,302
+What evidence must be documented and approved for a targeted risk analysis under requirement 12.3.2?,302
+How often does the targeted risk analysis need to be performed for customized-approach controls?,302
+How does an assessor verify compliance with 12.3.2?,302
+"Does requirement 12.3.2 apply to all entities, or only those using the customized approach?",302
+What does Req. 12.3.3 require organizations to keep documented and review every 12 months for cryptographic suites and protocols?,303
+What items have to be included in the crypto inventory and review under 12.3.3?,303
+How do you verify compliance with 12.3.3 during an assessment?,303
+"Which cryptographic uses are covered by 12.3.3, such as PAN storage, transmission, passwords, and authentication?",303
+When does 12.3.3 stop being a best practice and become required for PCI DSS assessments?,303
+How often do hardware and software technologies have to be reviewed under 12.3.4?,304
+What has to be included in the 12.3.4 technology review?,304
+How is compliance with 12.3.4 checked during an assessment?,304
+Does 12.3.4 require a senior-management-approved plan for outdated tech?,304
+When does 12.3.4 stop being a best practice and become required?,304
+What has executive management got to do for PCI DSS compliance under 12.4?,305
+"When does 12.4.1 apply, and who is it only for?",305
+What two things must executive management establish for a service provider under 12.4.1?,305
+How do you verify compliance with 12.4.1 during an assessment?,305
+"Does this requirement let responsibility sit with specific roles or business units, and where is that stated?",305
+"For service providers, how often do staff reviews have to happen to confirm people are following security policies and procedures?",306
+Who has to carry out the quarterly reviews under requirement 12.4.2?,306
+What kinds of work do those 12.4.2 reviews need to cover at a minimum?,306
+How does an assessor verify 12.4.2 for a service provider?,306
+Which PCI DSS requirement says service providers must do periodic reviews of personnel tasks and is only applicable to service providers?,306
+"For service providers, what has to be recorded for the reviews under 12.4.2?",307
+What do assessors need to check in the review records to satisfy 12.4.2.1?,307
+Who has to sign off on the 12.4.2 review results?,307
+"Does 12.4.2.1 apply to merchants too, or only to service providers?",307
+What remediation details must be included if a task from 12.4.2 wasn’t done?,307
+What has to be documented and kept current for PCI DSS scope?,308
+What must the in-scope system inventory include for each component?,308
+How do you check that the inventory covers all system components in scope?,308
+How do you verify the inventory is being kept up to date?,308
+What does requirement 12.5.1 say about identifying in-scope system components?,308
+"How often does PCI DSS scope need to be documented and rechecked, and when else must it be done?",309
+What has to be included in a scope review for requirement 12.5.2?,309
+Which data flows and payment channels need to be identified during PCI DSS scoping validation?,309
+"What systems, storage locations, and third-party links must be considered when confirming PCI DSS scope?",309
+How do you test compliance with requirement 12.5.2?,309
+"What does a service provider have to do to confirm PCI DSS scope, and how often?",311
+What triggers an extra scope review for a service provider besides the regular six-month check?,311
+What has to be included in the scoping validation under requirement 12.5.2.1?,311
+How do assessors verify compliance with 12.5.2.1 for service providers?,311
+"Is 12.5.2.1 mandatory for all entities, and when does that change?",311
+"When a service provider has a major org change, what PCI DSS review has to be done and who has to get the results?",312
+What does requirement 12.5.3 say service providers must document after a significant restructure?,312
+How do assessors verify compliance with 12.5.3 for a service provider?,312
+"Does 12.5.3 apply to merchants, or only to service providers?",312
+"Is 12.5.3 already mandatory, or is it still a best practice until 31 March 2025?",312
+What has to be in place for a formal security awareness program under 12.6.1?,313
+"Who must the security awareness program cover, and what should it teach them?",313
+How is compliance with 12.6.1 checked during an assessment?,313
+What role does personnel awareness play in keeping security controls effective?,313
+What information security topics do all personnel need to be made aware of?,313
+How often does the security awareness program need to be reviewed under 12.6.2?,314
+When do awareness materials have to be refreshed for new threats or vulnerabilities?,314
+What should an assessor check to confirm 12.6.2 is being met?,314
+What does requirement 12.6.2 say about keeping staff guidance on protecting cardholder data current?,314
+"Is 12.6.2 mandatory yet, or still treated as a best practice until a later date?",314
+What does PCI DSS 12.6.3 require for security awareness training frequency and timing?,315
+How must awareness training be delivered under 12.6.3?,315
+How often do staff need to acknowledge the information security policy and procedures for 12.6.3?,315
+What records or evidence are checked to test 12.6.3 compliance?,315
+What do assessors interview personnel about for requirement 12.6.3?,315
+What has to be covered in security awareness training under 12.6.3.1?,316
+"Does the training need to include phishing and social engineering, or is one of them enough?",316
+How do you verify compliance with requirement 12.6.3.1?,316
+"Is 12.6.3.1 mandatory yet, or still a best practice?",316
+What’s the requirement number for the training that addresses threats and vulnerabilities affecting cardholder data or SAD?,316
+What does requirement 12.6.3.2 say security awareness training has to cover?,317
+How do you check compliance with 12.6.3.2?,317
+Which other requirement does 12.6.3.2 point to for acceptable use of end-user technologies?,317
+"Is 12.6.3.2 mandatory yet, or still a best practice?",317
+What is the goal of the training called for in 12.6.3.2?,317
+What screening has to happen before hiring people who’ll get CDE access?,318
+How do I prove compliance with 12.7.1 for pre-hire screening?,318
+Who should be interviewed to confirm the screening process for CDE-access hires?,318
+Does 12.7 allow screening exceptions for local law or is that only noted in the test step?,318
+"Are cashiers who see only one card number at a time covered by 12.7.1, or just recommended?",318
+What does PCI DSS 12.8.1 require us to keep for every third-party service provider that handles or could affect account data?,319
+Which types of third-party service providers are considered in scope under requirement 12.8?,319
+"How do we test compliance with 12.8.1, specifically what do 12.8.1.a and 12.8.1.b ask auditors to review?",319
+What should the TPSP list include besides the provider name?,319
+Does using a PCI DSS-compliant third-party service provider make our organization PCI DSS compliant as well?,319
+What written agreements do we have to keep with third-party service providers under 12.8.2?,320
+Which TPSPs need to be covered by a written agreement for 12.8.2?,320
+What has to be stated in a TPSP acknowledgment about protecting account data?,320
+How do auditors verify compliance with 12.8.2.a and 12.8.2.b?,320
+What is the objective for the customized approach in 12.8.2?,320
+What process has to be in place before bringing on a third-party service provider?,322
+Does the approval workflow for TPSPs require due diligence before the contract starts?,322
+How do auditors check compliance with 12.8.3 for TPSP onboarding?,322
+What records or interviews are used to prove the TPSP engagement process includes pre-engagement vetting?,322
+"Before a TPSP is engaged, what must be assessed about its ability to protect account data?",322
+What does 12.8.4 require for checking a third-party service provider’s PCI DSS status?,323
+How often must TPSPs’ PCI DSS compliance be monitored under requirement 12.8.4?,323
+What evidence should an assessor review to confirm 12.8.4 is in place?,323
+Which requirement covers monitoring TPSPs’ PCI DSS compliance status every 12 months?,323
+What do the testing steps 12.8.4.a and 12.8.4.b ask the assessor to verify?,323
+What information has to be kept about PCI DSS responsibilities when a third-party service provider is involved?,325
+"How do you verify that there are defined processes for tracking which PCI DSS items belong to the TPSP, the entity, or both?",325
+What evidence should an assessor review to confirm the entity actually maintains that responsibility information?,325
+"For requirement 12.8.5, what does the standard say must be maintained about TPSP-managed, entity-managed, and shared requirements?",325
+What record-keeping is needed under the customized approach for TPSP responsibility and periodic review?,325
+What do third-party service providers have to put in customer agreements about who protects account data?,327
+"For service provider assessments, how do you verify the TPSP has a process for giving customers the required acknowledgment?",327
+"What responsibility must a TPSP acknowledge for cardholder data and sensitive authentication data it stores, processes, transmits, or could affect?",327
+What is requirement 12.9 intended to do between TPSPs and their customers?,327
+"Under 12.9.1, what written acknowledgment has to be included in agreements with customers?",327
+What must a TPSP give customers when they ask for PCI DSS compliance information?,329
+"For services a TPSP provides on behalf of customers, what responsibility details have to be shared under 12.8.5?",329
+"When does 12.9.2 apply, and what type of entity is it limited to?",329
+How do you verify a TPSP has a process to support customer requests under 12.8.4 and 12.8.5?,329
+"If a TPSP has an AOC, what is the expected response when a customer asks for proof of compliance?",329
+What has to be in place for suspected or confirmed CDE-related incidents to be handled right away?,331
+What are the minimum pieces an incident response plan needs under 12.10.1?,331
+How do I prove the incident response plan meets 12.10.1 during an assessment?,331
+What does the assessor need to check in a past incident or alert to confirm the plan was actually used?,331
+"Under requirement 12.10.1, is it enough to have a plan, or does it also need to be ready to activate immediately?",331
+"How often does the incident response plan have to be reviewed, updated, and tested?",332
+What has to be included when testing the security incident response plan?,332
+What are assessors supposed to do to check Requirement 12.10.2?,332
+What type of exercise is suggested as a good way to test the incident response plan?,332
+What is the objective of the customized approach for incident response planning?,332
+What does 12.10.3 require about staff availability for security incidents?,333
+Which personnel must be on call around the clock under 12.10.3?,333
+How is compliance with 12.10.3 verified during an assessment?,333
+What evidence should an assessor review for 12.10.3?,333
+What is the stated objective of the customized approach for incident response readiness?,333
+What training do incident response staff need under Requirement 12.10.4?,334
+How do you verify that incident response personnel have been trained appropriately and on schedule?,334
+Where is the training frequency for incident response personnel supposed to be defined?,334
+What does Requirement 12.10.4.1 say about periodic training frequency for incident response team members?,334
+What evidence should be reviewed to confirm the training cadence matches the targeted risk analysis?,334
+What has to be included in the security incident response plan under 12.10.5?,335
+Which monitoring alerts must incident response cover for Requirement 12.10.5?,335
+How do you verify 12.10.5 is implemented during an assessment?,335
+"Is monitoring alerts from payment-page tamper detection mandatory in 12.10.5 yet, or still best practice?",335
+What’s the purpose of responding to security monitoring alerts in the incident-response process?,335
+What does requirement 12.10.6 say must happen to the incident response plan after lessons learned or new industry developments?,336
+How do you test compliance with 12.10.6 in a defined approach?,336
+What documents or people are reviewed to verify the incident response plan is being updated under 12.10.6?,336
+What is the objective for 12.10.6 in the customized approach?,336
+Does 12.10.6 require a defined process for changing the incident response plan based on lessons learned?,336
+What has to be in incident response procedures if stored PAN is found somewhere it shouldn’t be?,337
+What do assessors look for to verify 12.10.7 is covered?,337
+"When PAN is discovered outside the CDE, what actions should the procedure cover?",337
+How do you confirm the incident response plan was actually used when unexpected PAN was detected?,337
+"Is 12.10.7 mandatory yet, or still a best practice until a certain date?",337
+What separation is required between a multi-tenant service provider’s customer environments and its own environment?,340
+"Can the provider access a customer environment, and under what condition?",340
+"Can a customer get into the provider’s environment, and when is that allowed?",340
+How do you check compliance with A1.1.1 logical separation?,340
+What does requirement A1.1.1 say about access control between provider and customer environments?,340
+What controls are required so one customer can only reach its own cardholder data and CDE under A1.1.2?,341
+How do you test compliance with A1.1.2 for customer access to cardholder data and the CDE?,341
+What does A1.1.3 require about the resources each customer can access?,341
+How is A1.1.3 verified during an assessment?,341
+What is the objective of the customized approach for A1.1.2 and A1.1.3?,341
+What does A1.1.4 require for checking customer-environment separation in a multi-tenant service provider?,342
+How often has the logical separation between customer environments to be validated under A1.1.4?,342
+What kind of test is used to confirm the separation controls are working for A1.1.4?,342
+What evidence would an assessor review to verify compliance with A1.1.4?,342
+Is the testing for customer-to-customer separation part of Requirement 11.4.6 or in addition to it?,342
+What has to be in place for audit logging in each customer environment under A1.2.1?,343
+How do you verify that a provider enabled logging for every customer environment as required by A1.2.1?,343
+Which customer log-access rules are required by A1.2.1?,343
+Does A1.2.1 require logs for third-party apps to be on by default and only visible to the owning customer?,343
+What is the objective of A1.2 for multi-tenant service providers?,343
+What processes have to be in place to help a forensic investigation after a suspected or confirmed security incident for a customer?,344
+How do you verify A1.2.2 is met for supporting prompt forensic investigations on related servers?,344
+What does the provider need to implement to make sure investigators can quickly look into an incident?,344
+"For A1.2.2, what should documented procedures show about forensic support for any customer?",344
+"In an incident, what mechanisms are required so forensic investigators can respond quickly and secure the environment?",344
+What has to be in place for customers to report suspected security incidents or vulnerabilities to the provider?,345
+How does the provider need to handle reported incidents and vulnerabilities after they’re received?,345
+How do you verify compliance with A1.2.3 for incident and vulnerability reporting and response?,345
+Which other PCI DSS requirement does A1.2.3 point to for remediation steps?,345
+"Is A1.2.3 mandatory yet, or is it still treated as a best practice until a specific date?",345
+What has to be true for a merchant’s POS POI terminals to keep using SSL or early TLS?,347
+How do you prove POS POI terminals using SSL or early TLS are not vulnerable to known exploits?,347
+"Is A2.1.1 available under the customized approach, or only the defined approach?",347
+Does this control apply to the terminal owner or to the service provider acting as the connection point?,347
+"If new SSL/TLS exploits come out, what has to happen to affected POS POI terminals?",347
+What has to be in a service provider’s Risk Mitigation and Migration Plan for SSL or early TLS connections to POS POI terminals?,348
+Which organizations does requirement A2.1.2 apply to?,348
+How is compliance with A2.1.2 verified during a service provider assessment?,348
+What details about SSL or early TLS usage must the migration plan describe?,348
+"Does A2.1.2 allow the customized approach, or is it defined approach only?",348
+"For A2.1.3, what must a service provider offer to customers using its service?",349
+How do you verify compliance with A2.1.3 during a service provider assessment?,349
+"Does A2.1.3 apply to merchants, or only to service providers?",349
+Is A2.1.3 allowed under the customized approach?,349
+What secure protocol option has to be available for the service under A2.1.3?,349
+What has executive management got to assign for PCI DSS compliance program ownership?,352
+What has to be in the PCI DSS charter under A3.1.1?,352
+How often do executive management and the board need an update on PCI DSS issues and remediation?,352
+How do you verify that overall accountability for PCI DSS compliance has been assigned?,352
+"What does A3.1 require, and is it allowed under the customized approach?",352
+What has to be included in a formal PCI DSS compliance program under A3.1.2?,353
+How do you verify that the compliance program for A3.1.2 is actually in place?,353
+What are the testing steps for requirement A3.1.2?,353
+Does A3.1.2 require annual assessments and ongoing validation of PCI DSS controls?,353
+Is a business-impact analysis process part of the formal PCI DSS compliance program in A3.1.2?,353
+What PCI DSS compliance duties have to be formally assigned under A3.1.3?,354
+Who needs to be responsible for day-to-day PCI DSS compliance work and annual assessments?,354
+How do you prove the PCI DSS roles under A3.1.3 are actually assigned and understood?,354
+Does A3.1.3 allow the customized approach?,354
+What business decision support task is included in A3.1.3 responsibilities?,354
+"What training has to be given to people who handle PCI DSS compliance duties, and how often?",355
+Which PCI DSS requirement covers annual training for compliance personnel?,355
+How do you prove that the required PCI DSS or security training is in place for those roles?,355
+What evidence should be checked to confirm staff with PCI DSS responsibilities got training within the last 12 months?,355
+Is A3.1.4 allowed under the customized approach?,355
+"How often does PCI DSS scope need to be reviewed and confirmed accurate, and when else besides the quarterly check?",356
+What has to be included in a scope validation for A3.2.1?,356
+"If account data is found outside the defined CDE, what are the allowed fixes?",356
+What should be checked to prove the scope review happened on schedule under A3.2.1.a?,356
+What does A3.2 require about documenting and validating PCI DSS scope?,356
+What has to be assessed before changing a system or network so PCI DSS scope is covered?,358
+Does the scope-impact review need to include new systems and new network connections?,358
+What specific steps are required under A3.2.2 for change-related scope impact?,358
+Who has to sign off on the impact assessment results for A3.2.2?,358
+How do you verify compliance with A3.2.2 during an assessment?,358
+What has to be checked after a change is finished under A3.2.2.1?,359
+How do you verify A3.2.2.1 during an assessment?,359
+Does A3.2.2.1 require updates to documentation when systems or networks change?,359
+Are new or changed systems and networks supposed to have all applicable PCI DSS controls confirmed before the change is closed?,359
+Is requirement A3.2.2.1 allowed to use the customized approach?,359
+What has to happen when the company’s org chart or leadership changes under A3.2.3?,360
+How do you verify compliance with A3.2.3 during an assessment?,360
+Does A3.2.3 allow the customized approach?,360
+Which PCI DSS requirement is A3.2.3 tied to for the reference?,360
+What kinds of organizational changes does the guidance call out as examples for A3.2.3?,360
+"When segmentation is in use, how often must it be penetration tested, and what change triggers another test?",361
+What has to be covered and proven by the segmentation penetration test for A3.2.4?,361
+How do you confirm PCI DSS scope when segmentation controls are in place?,361
+What evidence should an assessor review to verify A3.2.4 was met?,361
+Is A3.2.4 allowed under the customized approach?,361
+What has to be included in the data-discovery method for A3.2.5?,362
+"How often do we need to run data discovery, and when else must it be done?",362
+Does the process have to look beyond the current CDE for cleartext PAN?,362
+How do assessors verify A3.2.5 is being met?,362
+What evidence should be reviewed to check the data-discovery procedure under A3.2.5?,362
+What has to be in place to test whether data-discovery methods are actually working?,363
+How do you verify that discovery tools can find cleartext PAN across all system types and file formats?,363
+How often must the effectiveness of data-discovery methods be confirmed?,363
+What does requirement A3.2.5.1 say about testing data-discovery methods?,363
+What do auditors review under A3.2.5.1 to confirm compliance?,363
+What has to be in place when cleartext PAN is found outside the CDE?,364
+How do we prove our response steps for cleartext PAN outside the CDE are defined and complete?,364
+What do we need to check or do first if cleartext PAN is discovered outside the CDE?,364
+Does the response process need to identify whether track data is stored with the PAN?,364
+What do assessors look for under A3.2.5.2 to confirm remediation actually happened?,364
+What controls have to be in place to stop cleartext PAN from leaving the CDE through an unauthorized path?,365
+What has to be true about the monitoring tools or processes used for PAN exfiltration detection?,365
+How do you check that the PAN-leak controls are working as required?,365
+What evidence should be reviewed to confirm alerts are being generated and investigated for cleartext PAN leaving the CDE?,365
+Is A3.2.6 allowed to use the customized approach?,365
+What must happen when someone tries to move cleartext PAN out of the CDE through an unauthorized path?,366
+What two items have to be in the response procedures for A3.2.6.1?,366
+How do you verify A3.2.6.1 during an assessment?,366
+What do assessors look for in records when cleartext PAN is found leaving the CDE improperly?,366
+Is A3.2.6.1 allowed under the customized approach?,366
+"What critical security control failures have to be detected, alerted on, and fixed promptly under A3.3.1?",367
+How does PCI DSS say to verify that prompt failure-detection and alerting processes are in place for critical security controls?,367
+Which specific process checks should be reviewed to confirm alerts are generated for every critical control failure?,367
+Is A3.3.1 allowed to use the customized approach?,367
+What evidence is examined to show the organization has documented procedures for handling critical security control failures?,367
+What has to happen when a critical security control fails?,368
+What steps do response procedures need to include after a security control failure?,368
+How do you test that failure-response processes for security controls are in place and working?,368
+What evidence has to be kept for a security control failure under A3.3.1.1?,368
+What does A3.3.1.1.b require you to confirm in failure records?,368
+How often do we need to review hardware and software to make sure they still meet PCI DSS?,369
+What evidence does an assessor look for to confirm the technology review process is in place and working?,369
+"If a technology no longer meets PCI DSS, what does the requirement say we must have in place?",369
+Which PCI DSS requirement is about reviewing hardware and software technologies at least every 12 months?,369
+Is A3.3.2 allowed to use the customized approach?,369
+What does A3.3.3 require for checking BAU activities?,370
+How often must the BAU review under A3.3.3 be done?,370
+Who is allowed to perform the A3.3.3 reviews?,370
+What has to be included in the A3.3.3 review and documentation?,370
+How is A3.3.3 tested during an assessment?,370
+How often do we need to review user accounts and access rights for in-scope systems under A3.4.1?,371
+What has to be checked in those access reviews to satisfy A3.4.1?,371
+Which PCI DSS requirement does A3.4.1 map back to?,371
+What evidence does the assessor need to see for A3.4.1 testing?,371
+Is A3.4.1 allowed under the customized approach?,371
+What does A3.5 require for identifying and responding to suspicious events?,372
+What three elements has the detection methodology in A3.5.1 have to include?,372
+How do you verify A3.5.1 is implemented and working as intended?,372
+Do on-call staff need to get alerts right away under A3.5.1?,372
+Is A3.5.1 allowed under the customized approach?,372
