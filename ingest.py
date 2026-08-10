@@ -55,9 +55,18 @@ def load_documents(path=PDF_PATH):
 
 
 def build_index(documents):
+    # minsearch uses scikit-learn's TfidfVectorizer, whose default token pattern
+    # is \b\w\w+\b: at least two word characters, and a dot never belongs to a
+    # token. That turns "8.3.6" into "8", "3", "6" — all too short to survive —
+    # so requirement numbers disappear from the index entirely. Since half of the
+    # questions about a standard are about a specific requirement number, we widen
+    # the pattern to let a dot stay inside a token.
+    vectorizer_params = {'token_pattern': r'(?u)\b\w[\w.]*\b'}
+
     index = Index(
         text_fields=['text', 'req_ids'],
-        keyword_fields=['requirement']
+        keyword_fields=['requirement'],
+        vectorizer_params=vectorizer_params
     )
     index.fit(documents)
     return index
