@@ -1,0 +1,498 @@
+{
+  "uid": "pci-dss-assistant",
+  "title": "PCI DSS Assistant",
+  "tags": [
+    "rag",
+    "llm-zoomcamp"
+  ],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "30s",
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "panels": [
+    {
+      "id": 1,
+      "title": "Questions asked",
+      "type": "stat",
+      "datasource": {
+        "type": "postgres",
+        "uid": "pci-postgres"
+      },
+      "description": "Total answers produced in the selected period.",
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "pci-postgres"
+          },
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT count(*) AS value FROM conversations WHERE $__timeFilter(asked_at)",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      }
+    },
+    {
+      "id": 2,
+      "title": "Helpful rate",
+      "type": "stat",
+      "datasource": {
+        "type": "postgres",
+        "uid": "pci-postgres"
+      },
+      "description": "Share of thumbs-up among all votes. Only counts answers people rated.",
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "pci-postgres"
+          },
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  round(100.0 * count(*) FILTER (WHERE vote > 0) / NULLIF(count(*), 0), 1) AS value\nFROM feedback WHERE $__timeFilter(given_at)",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 50
+              },
+              {
+                "color": "green",
+                "value": 75
+              }
+            ]
+          }
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 3,
+      "title": "Median response time",
+      "type": "stat",
+      "datasource": {
+        "type": "postgres",
+        "uid": "pci-postgres"
+      },
+      "description": "Median, not mean: a single slow call should not move this number.",
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 12,
+        "y": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "pci-postgres"
+          },
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT round(percentile_cont(0.5) WITHIN GROUP (ORDER BY response_time)::numeric, 2) AS value\nFROM conversations WHERE $__timeFilter(asked_at)",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 4,
+      "title": "Spend",
+      "type": "stat",
+      "datasource": {
+        "type": "postgres",
+        "uid": "pci-postgres"
+      },
+      "description": "OpenAI cost of the answers in this period.",
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "pci-postgres"
+          },
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT round(sum(cost)::numeric, 4) AS value FROM conversations WHERE $__timeFilter(asked_at)",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 5,
+      "title": "Questions over time",
+      "type": "timeseries",
+      "datasource": {
+        "type": "postgres",
+        "uid": "pci-postgres"
+      },
+      "description": "Split by which retriever answered \u2014 shows how often users quote requirement numbers.",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 4
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "pci-postgres"
+          },
+          "format": "time_series",
+          "rawQuery": true,
+          "rawSql": "SELECT $__timeGroupAlias(asked_at, $__interval), route AS metric, count(*) AS value\nFROM conversations\nWHERE $__timeFilter(asked_at)\nGROUP BY 1, route\nORDER BY 1",
+          "refId": "A"
+        }
+      ],
+      "options": {},
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "bars",
+            "fillOpacity": 60,
+            "stacking": {
+              "mode": "normal"
+            }
+          }
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 6,
+      "title": "Response time",
+      "type": "timeseries",
+      "datasource": {
+        "type": "postgres",
+        "uid": "pci-postgres"
+      },
+      "description": "p95 matters more than the median: it is what the unluckiest user waits.",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 4
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "pci-postgres"
+          },
+          "format": "time_series",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroupAlias(asked_at, $__interval),\n  percentile_cont(0.5) WITHIN GROUP (ORDER BY response_time) AS \"median\",\n  percentile_cont(0.95) WITHIN GROUP (ORDER BY response_time) AS \"p95\"\nFROM conversations\nWHERE $__timeFilter(asked_at)\nGROUP BY 1\nORDER BY 1",
+          "refId": "A"
+        }
+      ],
+      "options": {},
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "custom": {
+            "drawStyle": "line",
+            "fillOpacity": 10
+          }
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 7,
+      "title": "Feedback",
+      "type": "piechart",
+      "datasource": {
+        "type": "postgres",
+        "uid": "pci-postgres"
+      },
+      "description": "Raw counts, so a small number of votes is visible as such.",
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 12
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "pci-postgres"
+          },
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  CASE WHEN vote > 0 THEN 'helpful' ELSE 'not helpful' END AS metric,\n  count(*) AS value\nFROM feedback\nWHERE $__timeFilter(given_at)\nGROUP BY 1",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true,
+          "values": [
+            "value",
+            "percent"
+          ]
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          }
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 8,
+      "title": "Retrieval route",
+      "type": "piechart",
+      "datasource": {
+        "type": "postgres",
+        "uid": "pci-postgres"
+      },
+      "description": "How the router split traffic between text search and hybrid fusion.",
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 6,
+        "y": 12
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "pci-postgres"
+          },
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT route AS metric, count(*) AS value\nFROM conversations\nWHERE $__timeFilter(asked_at)\nGROUP BY route",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true,
+          "values": [
+            "value",
+            "percent"
+          ]
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          }
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 9,
+      "title": "Most consulted requirements",
+      "type": "barchart",
+      "datasource": {
+        "type": "postgres",
+        "uid": "pci-postgres"
+      },
+      "description": "Which parts of the standard people actually ask about (top 3 hits only).",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 12
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "pci-postgres"
+          },
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT r.req_ids AS requirement, count(*) AS times_retrieved\nFROM retrievals r\nJOIN conversations c ON c.id = r.conversation_id\nWHERE $__timeFilter(c.asked_at) AND r.rank <= 3\nGROUP BY r.req_ids\nORDER BY times_retrieved DESC\nLIMIT 10",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "orientation": "horizontal",
+        "xTickLabelRotation": 0,
+        "legend": {
+          "showLegend": false
+        }
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      }
+    },
+    {
+      "id": 10,
+      "title": "Recent questions",
+      "type": "table",
+      "datasource": {
+        "type": "postgres",
+        "uid": "pci-postgres"
+      },
+      "description": "The raw log. Numbers tell you something changed; this tells you what people asked.",
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "pci-postgres"
+          },
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  c.asked_at AS \"time\",\n  c.question,\n  c.route,\n  round(c.response_time::numeric, 2) AS \"seconds\",\n  f.vote\nFROM conversations c\nLEFT JOIN feedback f ON f.conversation_id = c.id\nWHERE $__timeFilter(c.asked_at)\nORDER BY c.asked_at DESC\nLIMIT 50",
+          "refId": "A"
+        }
+      ],
+      "options": {},
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      }
+    }
+  ],
+  "editable": true
+}

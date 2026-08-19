@@ -1,0 +1,81 @@
+name: pci-dss-assistant
+
+x-app-env: &app-env
+  OPENAI_API_KEY: ${OPENAI_API_KEY:?set OPENAI_API_KEY in .env}
+  POSTGRES_HOST: postgres
+  POSTGRES_PORT: 5432
+  POSTGRES_DB: ${POSTGRES_DB:-pci}
+  POSTGRES_USER: ${POSTGRES_USER:-pci}
+  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pci}
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: pci-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-pci}
+      POSTGRES_USER: ${POSTGRES_USER:-pci}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pci}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-pci} -d ${POSTGRES_DB:-pci}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # Runs once and exits: downloads the standard, parses it, loads it into Postgres.
+  # `app` waits for this to succeed, so a fresh `docker compose up` always starts
+  # with the data already in place.
+  ingestion:
+    build: .
+    container_name: pci-ingestion
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment: *app-env
+    volumes:
+      - pdf_data:/app/data
+    command: ["python", "pipeline.py"]
+    restart: "no"
+
+  app:
+    build: .
+    container_name: pci-app
+    depends_on:
+      postgres:
+        condition: service_healthy
+      ingestion:
+        condition: service_completed_successfully
+    environment: *app-env
+    ports:
+      - "8501:8501"
+    volumes:
+      - pdf_data:/app/data
+
+  grafana:
+    image: grafana/grafana:11.6.1
+    container_name: pci-grafana
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_USER:-admin}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:-admin}
+      GF_USERS_DEFAULT_THEME: light
+      POSTGRES_DB: ${POSTGRES_DB:-pci}
+      POSTGRES_USER: ${POSTGRES_USER:-pci}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pci}
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana_data:/var/lib/grafana
+
+volumes:
+  postgres_data:
+  grafana_data:
+  pdf_data:

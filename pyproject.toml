@@ -3,17 +3,27 @@ name = "pci-dss-assistant"
 version = "0.1.0"
 description = "RAG assistant over the PCI DSS v4.0.1 standard"
 requires-python = ">=3.12"
+
+# What the application itself needs at runtime.
 dependencies = [
-    "jupyter>=1.1.1",
+    "dlt[postgres]>=1.30.0",
     "minsearch>=0.1.0",
     "openai>=2.41.1",
-    "pandas>=3.0.0",
-    "pydantic>=2.0.0",
+    "psycopg[binary]>=3.2.0",
     "pymupdf>=1.26.0",
     "python-dotenv>=1.2.2",
     "requests>=2.34.2",
     "sentence-transformers>=5.0.0",
     "streamlit>=1.59.0",
+]
+
+# Only the notebook needs these. `uv sync` installs them locally by default;
+# the Docker image is built with `uv sync --no-dev` and stays smaller without them.
+[dependency-groups]
+dev = [
+    "jupyter>=1.1.1",
+    "pandas>=3.0.0",
+    "pydantic>=2.0.0",
     "tqdm>=4.68.2",
 ]
 

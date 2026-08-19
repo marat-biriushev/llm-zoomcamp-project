@@ -1,32 +1,20 @@
+"""Helpers used by the evaluation notebook.
+
+The RAG classes and the pricing helpers live in `rag_helper` because the Streamlit
+app needs them too; they are re-exported here so the notebook keeps working with a
+single import.
+"""
+
 import time
 
 from tqdm.auto import tqdm
 
-from rag_helper import RAGBase, RAGHybrid
-
-# Prices per million tokens for the model we use. Update if you switch models.
-INPUT_PRICE_PER_MILLION = 0.75
-OUTPUT_PRICE_PER_MILLION = 4.50
-
-
-def calc_price(usage):
-    input_cost = (usage.input_tokens / 1_000_000) * INPUT_PRICE_PER_MILLION
-    output_cost = (usage.output_tokens / 1_000_000) * OUTPUT_PRICE_PER_MILLION
-
-    return {
-        'input_cost': input_cost,
-        'output_cost': output_cost,
-        'total_cost': input_cost + output_cost,
-    }
-
-
-def calc_total_price(usages):
-    total_cost = 0.0
-
-    for usage in usages:
-        total_cost = total_cost + calc_price(usage)['total_cost']
-
-    return total_cost
+from rag_helper import (  # noqa: F401 - re-exported for the notebook
+    RAGHybridWithUsage,
+    RAGWithUsage,
+    calc_price,
+    calc_total_price,
+)
 
 
 def llm_structured(client, instructions, user_prompt, output_type, model='gpt-5.4-mini'):
@@ -60,53 +48,6 @@ def llm_structured_retry(
             if attempt == max_retries - 1:
                 raise
             time.sleep(2 ** attempt)
-
-
-class UsageTracking:
-    """Mixin that records token usage for every LLM call.
-
-    Deliberately inherits from nothing. A mixin that also inherited RAGBase would
-    break under Jupyter's `%autoreload`: reloading recreates the classes, so the
-    RAGBase behind this mixin and the RAGBase behind RAGHybrid end up being two
-    different objects, and the method resolution order silently puts the wrong one
-    first. Keeping the mixin base-free makes every combination a simple chain.
-    """
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.usages = []
-        self.last_usage = None
-
-    def reset_usage(self):
-        self.usages = []
-        self.last_usage = None
-
-    def llm(self, prompt):
-        input_messages = [
-            {'role': 'developer', 'content': self.instructions},
-            {'role': 'user', 'content': prompt}
-        ]
-
-        response = self.llm_client.responses.create(
-            model=self.model,
-            input=input_messages
-        )
-
-        self.last_usage = response.usage
-        self.usages.append(response.usage)
-
-        return response.output_text
-
-    def total_cost(self):
-        return calc_total_price(self.usages)
-
-
-class RAGWithUsage(UsageTracking, RAGBase):
-    """Plain text-search RAG that also keeps track of what it spent."""
-
-
-class RAGHybridWithUsage(UsageTracking, RAGHybrid):
-    """The routed hybrid retrieval from step 6, with token accounting."""
 
 
 def hit_rate(relevance_total):

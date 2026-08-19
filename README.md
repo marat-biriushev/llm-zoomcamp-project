@@ -4,7 +4,12 @@ A question-answering assistant over the **PCI DSS v4.0.1** standard — the secu
 standard every company that stores, processes, or transmits payment card data has
 to comply with.
 
-> Status: work in progress. This README is updated as each step is completed.
+```bash
+cp .env.example .env      # add your OPENAI_API_KEY
+docker compose up --build
+```
+
+App at http://localhost:8501, monitoring dashboard at http://localhost:3000.
 
 ## Problem
 
@@ -67,9 +72,9 @@ LLM Zoomcamp modules; steps 8–11 cover what the course did not.
 - [x] 6 — Vector & hybrid search
 - [x] 7 — Answer evaluation
 - [x] 8 — Interface
-- [ ] 9 — Feedback & monitoring
-- [ ] 10 — Ingestion pipeline
-- [ ] 11 — Docker & docs
+- [x] 9 — Feedback & monitoring
+- [x] 10 — Ingestion pipeline
+- [x] 11 — Docker & docs
 
 ## Retrieval evaluation
 
@@ -287,6 +292,80 @@ Sources panel shows both.
 
 Screenshot `app1.png` above predates this fix and still cites the PDF index.
 
+## Ingestion pipeline
+
+Ingestion is a separate job, orchestrated by [dlt](https://dlthub.com/): it downloads
+the PDF, parses it, and loads one row per page into `pci_dss.pages` in Postgres. The
+app reads that table at startup instead of parsing the PDF itself.
+
+```bash
+uv run python pipeline.py                  # or: docker compose run --rm ingestion
+uv run dlt pipeline pci_dss info           # load history
+```
+
+What dlt contributes over a plain script: it infers and creates the schema, types the
+columns, and supports a `merge` write disposition keyed on `page` — so running it twice
+leaves 261 rows rather than 522. It also records a load history you can inspect.
+
+Splitting ingestion out matters for a reason beyond tidiness: the app no longer does
+two unrelated jobs at boot. It starts in seconds against a table, and re-ingesting a
+new revision of the standard never touches the serving path. The app still falls back
+to parsing the PDF when the table is missing, so it remains runnable on its own — the
+sidebar reports which source it used.
+
+**An honest note on scheduling.** PCI DSS v4.0.1 is a fixed document. The pipeline runs
+once at deployment and again when PCI SSC publishes a new revision. Wiring up an hourly
+cron over data that does not change would look like automation without being any.
+
+## Feedback and monitoring
+
+Every answer is written to Postgres, and every answer carries a 👍 / 👎 pair of
+buttons. A Grafana dashboard reads that data; it is provisioned from files, so it
+appears configured on first start with no clicking.
+
+```bash
+docker compose up -d       # postgres + grafana
+uv run python db.py        # create the tables
+uv run streamlit run app.py
+```
+
+Grafana is at http://localhost:3000 (`admin` / `admin`).
+
+![The monitoring dashboard](screenshots/grafana.png)
+
+### What is on it
+
+| Panel | Question it answers |
+|---|---|
+| Questions asked | how much the assistant is used |
+| Helpful rate | share of 👍 among all votes |
+| Median response time | what a typical user waits |
+| Spend | what those answers cost in OpenAI credits |
+| Questions over time | usage trend, split by which retriever answered |
+| Response time (median and p95) | typical latency, and the unluckiest user's latency |
+| Feedback | 👍 against 👎 as raw counts |
+| Retrieval route | how traffic splits between text search and hybrid fusion |
+| Most consulted requirements | which parts of the standard people actually ask about |
+| Recent questions | the raw log, with route, latency and vote |
+
+### Three decisions worth explaining
+
+**Three tables, not one.** `retrievals` holds one row per retrieved page. Had the
+sources been stored as a comma-separated column on `conversations`, the "most
+consulted requirements" panel would be impossible — and that panel is the most
+interesting one, because it says which parts of a 397-page standard people need.
+
+**Feedback is a separate table.** A vote arrives after the answer, and often never.
+That is an event with its own timestamp, not a column that starts as NULL.
+
+**Median and p95, not the mean.** One request that hangs for 30 seconds drags a mean
+average into alarm territory and hides the fact that everything else was fine. The
+median describes the typical experience; p95 describes the worst one people actually
+hit. Together they say more than an average can.
+
+The app keeps answering when Postgres is down — it just stops logging and says so in
+the sidebar. Monitoring should not be a reason to refuse service.
+
 ## Technologies
 
 | Area | Choice | Why |
@@ -297,26 +376,47 @@ Screenshot `app1.png` above predates this fix and still cites the PDF index.
 | Fusion | Reciprocal Rank Fusion, ~12 lines in `rag_helper.py` | text and vector scores are on incomparable scales, so positions are merged instead |
 | LLM | OpenAI | — |
 | Interface | Streamlit | chat UI over the same code path the notebook evaluated |
-| Monitoring | Postgres + Grafana *(step 9)* | — |
+| Storage | Postgres | parsed pages, conversations, retrieved sources and feedback |
+| Ingestion | dlt | schema inference, typed columns, `merge` writes, load history |
+| Monitoring | Grafana | dashboard provisioned from files — no manual setup |
+| Packaging | Docker Compose | one command brings up all four services |
 
-## Running it from scratch
+## Running it
 
-Requires [uv](https://docs.astral.sh/uv/) and an OpenAI API key. Everything else —
-Python itself, the dependencies, the source PDF — is fetched automatically.
+Requires Docker and an OpenAI API key. Nothing else — the standard, the embedding
+model and every dependency are fetched for you.
 
 ```bash
 git clone <this-repo>
 cd llm-zoomcamp-project
 
 cp .env.example .env      # then put your OPENAI_API_KEY in it
-uv sync                   # installs Python 3.12 and every dependency from uv.lock
+docker compose up --build
+```
 
+Four services come up in order: Postgres, then the ingestion job (which downloads and
+parses the standard into Postgres and exits), then the app, then Grafana.
+
+- app: http://localhost:8501
+- dashboard: http://localhost:3000 (`admin` / `admin`)
+
+The first build takes a while: it installs PyTorch and bakes the embedding model into
+the image so that container starts are fast and work without internet access.
+
+## Running the notebook
+
+The experiments behind every number in this README live in `rag.ipynb`. It runs
+against the same modules the app uses, outside Docker:
+
+```bash
+uv sync                   # installs Python 3.12 and the dependencies from uv.lock
 uv run jupyter notebook rag.ipynb
 ```
 
-Then run the notebook cells top to bottom.
+Requires [uv](https://docs.astral.sh/uv/). The notebook expects Postgres to be
+reachable for the later steps, so `docker compose up -d postgres` first.
 
-### What each step costs
+### What each notebook step costs
 
 | Step | Needs the API? | Time | Cost |
 |---|---|---|---|
@@ -343,10 +443,53 @@ touching the API.
 ## Repository layout
 
 ```
-ingest.py      loading the PDF and building the search index
-rag.ipynb      the working notebook — one section per step
-data/          the downloaded PDF (gitignored)
+ingest.py            parsing the PDF and building the text index
+rag_helper.py        the RAG pipeline: retrieval, prompts, fusion, routing, pricing
+pipeline.py          the dlt ingestion pipeline
+db.py                Postgres schema, writes, and reading the parsed pages
+app.py               the Streamlit application
+evaluation_utils.py  metrics and helpers used only by the notebook
+rag.ipynb            the working notebook — one section per step
+Dockerfile           shared by the app and the ingestion job
+docker-compose.yaml  postgres, ingestion, app, grafana
+grafana/             provisioned datasource and dashboard
+data/                the PDF (gitignored), ground truth and evaluation results
+screenshots/         images used in this README
 ```
+
+## Where to find each evaluation criterion
+
+| Criterion | Where |
+|---|---|
+| Problem description | [Problem](#problem) |
+| Retrieval flow | knowledge base + LLM — `rag_helper.py`, step 3 of `rag.ipynb` |
+| Retrieval evaluation | [Retrieval evaluation](#retrieval-evaluation) — 5 approaches compared, best one shipped |
+| LLM evaluation | [Answer evaluation](#answer-evaluation) — 3 prompts, LLM-as-a-judge plus a programmatic citation check |
+| Interface | [The application](#the-application) — Streamlit chat |
+| Ingestion pipeline | [Ingestion pipeline](#ingestion-pipeline) — dlt into Postgres |
+| Monitoring | [Feedback and monitoring](#feedback-and-monitoring) — feedback collected, 10-panel dashboard |
+| Containerization | `docker compose up --build` brings up all four services |
+| Reproducibility | [Running it](#running-it); versions pinned in `uv.lock`, dataset downloaded automatically |
+| Hybrid search | text + vector merged with RRF, evaluated against both alone |
+| Document re-ranking | RRF re-ranks the merged candidate lists |
+| Query rewriting | *not implemented* — see below |
+
+### What is not here
+
+**Query rewriting.** The obvious version — have an LLM rephrase the question before
+retrieval — would add a second API call to every request. Given that text search
+already reaches MRR 0.958 on questions quoting a requirement number, and the router
+sends exactly those questions to it, the headroom is in the plain-language half, where
+the gain from rewriting is a guess. Adding it without measuring it would be the same
+mistake as the `req_ids` boost in step 5. The routing itself is a form of query
+understanding: the query is classified, and retrieval adapts.
+
+**Cleaning page headers.** Every chunk begins with the running header and copyright
+line, roughly 40 tokens per page. Removing them would change `text`, which invalidates
+every metric in this README and costs another evaluation run. The boilerplate is
+identical on all 261 pages, so TF-IDF ignores it and embeddings shift by the same
+constant — the expected gain is small. Left in deliberately, and noted here rather than
+hidden.
 
 ## License and attribution
 
