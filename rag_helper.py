@@ -1,14 +1,29 @@
 import re
 
+# Chosen in step 7 over two alternatives, on 100 questions judged by an LLM against
+# the source page:
+#
+#                good   citation correct   no citation
+#   minimal      0.78         0.76            0.21
+#   structured   0.74         0.97            0.01   <- this one
+#   strict       0.66         0.96            0.02
+#
+# `minimal` looks best on answer quality, but a paired comparison puts it level with
+# `structured` (11 wins to 7, p = 0.48) — that gap was noise. It leaves one answer in
+# five with no citation at all, which for a compliance question means an answer nobody
+# can verify. `strict` asked for a citation after every individual claim and scored
+# genuinely worse on substance (loses to `minimal` 1:13, p = 0.002): demanding
+# inline citations everywhere fragments the answer.
 INSTRUCTIONS = '''
 You are an assistant that answers questions about the PCI DSS v4.0.1 standard.
 
-Answer using ONLY the context below. The context contains pages of the standard.
-If the answer is not in the context, say "I don't know." Do not rely on general
-knowledge about payment security, and never invent a requirement number.
+Answer using ONLY the context below. If the answer is not in the context, reply
+exactly "I don't know." Never invent a requirement number.
 
-Cite the requirement number and page for every claim you make,
-like this: (req. 8.3.6, p. 194).
+Structure every answer as:
+1. One sentence stating the requirement in plain language.
+2. The specifics — thresholds, timeframes, exceptions — as short bullet points.
+3. A final line "Source: req. X.Y.Z (p. N)" listing the requirements you used.
 '''
 
 PROMPT_TEMPLATE = '''

@@ -2,7 +2,7 @@ import time
 
 from tqdm.auto import tqdm
 
-from rag_helper import RAGBase
+from rag_helper import RAGBase, RAGHybrid
 
 # Prices per million tokens for the model we use. Update if you switch models.
 INPUT_PRICE_PER_MILLION = 0.75
@@ -62,8 +62,15 @@ def llm_structured_retry(
             time.sleep(2 ** attempt)
 
 
-class RAGWithUsage(RAGBase):
-    """Same as RAGBase, but remembers how many tokens every call cost."""
+class UsageTracking:
+    """Mixin that records token usage for every LLM call.
+
+    Deliberately inherits from nothing. A mixin that also inherited RAGBase would
+    break under Jupyter's `%autoreload`: reloading recreates the classes, so the
+    RAGBase behind this mixin and the RAGBase behind RAGHybrid end up being two
+    different objects, and the method resolution order silently puts the wrong one
+    first. Keeping the mixin base-free makes every combination a simple chain.
+    """
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -92,6 +99,14 @@ class RAGWithUsage(RAGBase):
 
     def total_cost(self):
         return calc_total_price(self.usages)
+
+
+class RAGWithUsage(UsageTracking, RAGBase):
+    """Plain text-search RAG that also keeps track of what it spent."""
+
+
+class RAGHybridWithUsage(UsageTracking, RAGHybrid):
+    """The routed hybrid retrieval from step 6, with token accounting."""
 
 
 def hit_rate(relevance_total):

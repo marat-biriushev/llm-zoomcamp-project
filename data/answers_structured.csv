@@ -1,0 +1,855 @@
+question,document,answer_llm,score,reasoning
+How do assessors verify compliance with A1.1.4?,342,"Assessors verify A1.1.4 by reviewing the most recent penetration test to confirm it tested whether logical separation controls effectively isolate customer environments.
+
+- Testing must confirm the effectiveness of logical separation controls used to separate customer environments.
+- Verification is done by examining the results from the most recent penetration test.
+- The penetration testing must be performed at least once every six months.
+- This testing is in addition to the penetration tests specified in Requirement 11.4.6.
+- It is a best practice until 31 March 2025, after which it is required and must be fully considered during a PCI DSS assessment.
+
+Source: req. A1.1.4 (p. 342)",good,"The answer correctly states that assessors verify A1.1.4 by examining the results from the most recent penetration test to confirm effectiveness of logical separation controls. It also correctly notes the six-month testing frequency and the applicability note about being in addition to Requirement 11.4.6 and the best-practice status until 31 March 2025. The only issue is the cited page number, which does not match the provided page, but the substantive content is supported by the page."
+"Is requirement 7.2.5 mandatory yet, or still treated as a best practice until a certain date?",173,"7.2.5 is still a best practice until 31 March 2025, and after that date it becomes required and must be fully considered during a PCI DSS assessment.
+
+- It applies to all application and system accounts and related access privileges.
+- Access must be based on the least privileges necessary for the operability of the system or application.
+- Access must be limited to the systems, applications, or processes that specifically require it.
+- The applicability note says it is a best practice until 31 March 2025, then required.
+
+Source: req. 7.2.5 (p. 173)",good,"The answer matches the page: it states 7.2.5 is a best practice until 31 March 2025, after which it becomes required and must be fully considered during a PCI DSS assessment. The additional bullets are also supported by the requirement text on the page. The only minor issue is the cited page number (173) does not match the provided page (169), but the substance is correct and supported."
+How is compliance with 10.4.3 checked during an assessment?,255,"Compliance with 10.4.3 is checked by verifying that the entity has defined processes for addressing exceptions and anomalies found during log review and that those exceptions/anomalies are actually addressed when identified.  
+
+- Examine security policies and procedures to confirm processes are defined for addressing exceptions and anomalies identified during the review process.
+- Observe the process and interview personnel to confirm that when exceptions and anomalies are identified, they are addressed.
+
+Source: req. 10.4.3 (p. 255)",good,"The answer matches the page: it states the two testing procedures for 10.4.3 and the requirement that exceptions and anomalies identified during the review process are addressed. The only minor issue is the cited page number is wrong (page 251 on the provided page, not 255), but the substance is supported by the page."
+"What kinds of file changes has to alert staff—just edits, or adds and deletes too?",290,"File integrity or change-detection alerts are not limited to edits; for critical files, they should alert on unauthorized modifications including changes, additions, and deletions.
+
+- For critical files, the mechanism alerts personnel to unauthorized modification, including:
+  - changes
+  - additions
+  - deletions
+- For audit logs, alert on changes or deletions of existing log data/files.
+- New log data being added to an audit log should not generate an alert.
+
+Source: req. 11.5.2 (p. 290), req. 10.3.4 (p. 250)",bad,"The answer correctly states that for critical files the mechanism must alert on unauthorized modifications including changes, additions, and deletions, which is supported by the page. However, it also adds claims about audit logs and cites requirement 10.3.4 / page 250, which are not on the provided page and are not supported by it. Because it includes unsupported extra claims, it should be marked bad."
+How do you test compliance with A1.1.3?,341,"Controls are tested by checking that each customer’s privileges are limited so they can access only the resources allocated to them.
+
+- Examine customer privileges.
+- Verify each customer can only access resources allocated to them.
+- No threshold or timeframe is specified in the testing procedure.
+
+Source: req. A1.1.3 (p. 341)",good,"The answer matches the page’s testing procedure for A1.1.3: examine customer privileges to verify each customer can only access resources allocated to them. The extra note about no threshold or timeframe is not on the page, but it does not conflict with it. The cited page number is wrong (the page shown is 337, not 341), but the substantive testing guidance is correct and supported."
+How must changes to time settings on critical systems be handled?,259,"Changes to time settings on critical systems must be logged, monitored, and reviewed.
+
+- Access to time data is restricted to only personnel with a business need.
+- Any changes to time settings on critical systems are logged, monitored, and reviewed.
+
+Source: req. 10.6.3 (p. 259)",good,"The answer matches the page: it states that changes to time settings on critical systems are logged, monitored, and reviewed, and also includes the page's access restriction to personnel with a business need. The only issue is the cited page number is wrong (page 255, not 259), but the substance is supported by the page."
+What does 3.6.1.3 require for who can access cleartext key components?,104,"Access to cleartext cryptographic key components must be limited to the fewest number of custodians necessary.
+
+- Only the minimum number of key custodians needed should have access.
+- It is good practice that only personnel with defined key-custodian responsibilities, such as creating, altering, rotating, distributing, or otherwise maintaining encryption keys, are granted access.
+- Ideally, this should be a very small number of people.
+
+Source: req. 3.6.1.3 (p. 104)",good,"The answer matches the page: 3.6.1.3 requires access to cleartext cryptographic key components to be restricted to the fewest number of custodians necessary. The added points about key-custodian responsibilities and a very small number of people are supported by the Good Practice text on the page. The page does not show page 104, but that citation detail does not change correctness of the substance."
+How do you need to destroy paper records so the card data can’t be put back together?,230,"Paper records containing card data must be destroyed so the information is unrecoverable and cannot be reconstructed.
+
+- The context does not give a paper-specific destruction method for cardholder data.
+- It does say that when data is no longer needed, it must be securely destroyed or rendered unrecoverable.
+- For paper records with card verification codes, example methods include removing the code with scissors or covering it with a suitably opaque, un-removable marker so it cannot be read after authorization is complete.
+
+Source: req. 3.2.1 (p. 81) and req. 3.3.1.2 (p. 81)",bad,"The answer includes unsupported and irrelevant claims. The page specifically states that hard-copy materials with cardholder data must be cross-cut shredded, incinerated, or pulped so the data cannot be reconstructed, and stored in secure containers before destruction. The answer instead cites requirements 3.2.1 and 3.3.1.2, which are not on the provided page, and discusses card verification codes and scissors/markers, which are not in the page."
+How do you check that NSC config standards meet the inbound-traffic rule in 1.3.1?,55,"NSC configuration standards should define inbound traffic to the CDE as allowed only when necessary and require all other inbound traffic to be specifically denied.
+
+- Verify the standards state inbound traffic is restricted to only traffic that is necessary.
+- Verify the standards state all other inbound traffic is specifically denied.
+- The testing procedure for the standards is to examine the configuration standards for NSCs and confirm they include both of those elements.
+
+Source: req. 1.3.1.a (p. 55)",good,"The answer matches the page: it states the two 1.3.1 requirements for inbound traffic and correctly describes the 1.3.1.a testing procedure to examine NSC configuration standards for those elements. The cited page number is off, but the substance is supported by the provided page."
+What evidence should an assessor look at to confirm this review was performed and covered the required items?,312,"The assessor should look for review records and supporting evidence that show the required BAU activities were actually checked, documented, signed off, and retained.
+
+- Records showing the reviews were performed at least once every three months.
+- Evidence the reviews were done by personnel assigned to the PCI DSS compliance program.
+- Documentation of how the reviews were completed and how BAU activities were verified.
+- Collected evidence required for the annual PCI DSS assessment.
+- Review and sign-off by the personnel responsible for the PCI DSS compliance program.
+- Records retained for at least 12 months and covering all BAU activities.
+- Examples of supporting evidence can include audit logs, vulnerability scan reports, and reviews of network security control rulesets.
+
+Source: req. A3.3.3 (p. 370)",bad,"The answer is about BAU reviews and cites req. A3.3.3, but the provided page is about requirement 12.5.3 on significant changes to organizational structure. The answer does not address the evidence for this review, and its claims are unrelated to the page and unsupported here."
+What number covers the requirement to document and assign responsibilities for Requirement 9 tasks?,216,"Roles and responsibilities for performing Requirement 9 activities must be documented, assigned, and understood.
+
+- They apply to all activities in Requirement 9.
+- Roles and responsibilities may be documented in policies/procedures or separate documents.
+- A RACI matrix is an example method mentioned for documenting responsibilities.
+
+Source: req. 9.1.2 (p. 216)",good,"The answer correctly states the requirement content and cites the correct requirement number 9.1.2 shown on the page. The extra details about documentation methods and RACI are also supported by the page. The page shown is page 212, so the citation 'p. 216' is not supported, but the question asks for the number covering the requirement, not the page number, and the core requirement number is correct."
+What controls are required at the boundary between trusted and untrusted networks under requirement 1.4?,58,"Network connections at the boundary between trusted and untrusted networks must be controlled with network security controls so that only authorized traffic can cross.
+
+- NSCs must be implemented between trusted and untrusted networks.
+- Inbound traffic from untrusted to trusted networks must be restricted to:
+  - communications with system components authorized to provide publicly accessible services, protocols, and ports;
+  - stateful responses to communications initiated by system components in a trusted network;
+  - all other traffic denied.
+- System components that store cardholder data must not be directly accessible from untrusted networks.
+
+Source: req. 1.4.1 (p. 58); req. 1.4.2 (p. 55); req. 1.4.4 (p. 57)",bad,"The page only states requirement 1.4.1: NSCs are implemented between trusted and untrusted networks, with testing procedures and guidance mentioning DMZs. The answer adds several specific inbound-traffic restrictions and cites requirements 1.4.2 and 1.4.4, which are not on the provided page. Those extra claims are not supported by the page."
+What do auditors need to check under 12.8.5.b?,325,I don't know.,bad,"The question asks what auditors need to check under 12.8.5.b. The page states they must examine documentation and interview personnel to verify the entity maintains information about which PCI DSS requirements are managed by each TPSP, by the entity, or shared between both entities. The answer 'I don't know' fails to answer despite the page providing the information."
+What needs to be included in the in-scope system inventory besides the component names?,308,"An in-scope system inventory needs to include a description of each component’s function or use, not just the component names.
+
+- The inventory must cover all system components in scope for PCI DSS.
+- It must include a description of function/use for each component.
+- It must be maintained and kept current.
+
+Source: req. 12.5.1 (p. 308)",good,"The page explicitly says the inventory of in-scope system components must include a description of function/use for each and be maintained and kept current. The answer matches this. However, it cites page 308, while the provided page is 304. The substance is still supported by the page, and the page number mismatch does not affect the correctness of the content."
+Which requirement must the targeted risk analysis follow for 5.3.2.1?,132,"The targeted risk analysis for 5.3.2.1 must follow Requirement 12.3.1.
+
+- It must be documented.
+- It must identify the assets being protected.
+- It must identify the threat(s) the requirement is protecting against.
+- It must identify factors that affect the likelihood and/or impact of the threat.
+- It must justify how the chosen scan frequency minimizes the likelihood and/or impact of the threat.
+- It must be reviewed at least once every 12 months.
+- It must be updated when the annual review shows it is needed.
+
+Source: req. 5.3.2.1 (p. 132), req. 12.3.1 (p. 300)",bad,"The page states only that the targeted risk analysis must be performed according to all elements specified in Requirement 12.3.1. The answer correctly identifies Requirement 12.3.1, but then adds several specific sub-requirements and cites a page number not supported by the provided page. Those extra details are not contained on this page, so the answer is not fully supported by the page."
+What should security policies and procedures include for dealing with review exceptions and anomalies?,255,"Security policies and procedures should define how log-review exceptions and anomalies are recorded, prioritized, escalated, assigned for investigation/remediation, and addressed.
+
+- Record how log review activities are documented.
+- Define how exceptions and anomalies are ranked and prioritized.
+- Specify how exceptions and anomalies are reported and escalated.
+- Assign who is responsible for investigating and for remediation tasks.
+- Ensure exceptions and anomalies identified during the review process are addressed.
+
+Source: req. 10.4.3 (p. 251)",good,"The answer matches the page’s good practice bullets and the requirement that exceptions and anomalies identified during the review process are addressed. The cited requirement number 10.4.3 is on the page, and no unsupported claims are added."
+"When does 10.7.2 replace 10.7.1, and is it mandatory before then?",261,"10.7.2 applies to all entities and supersedes 10.7.1 starting 31 March 2025, so before that date 10.7.2 is a best practice rather than a mandatory requirement.  
+- 10.7.1 applies only to service providers.  
+- 10.7.1 is superseded by 10.7.2 as of 31 March 2025.  
+- 10.7.2 is a best practice until 31 March 2025.  
+- After 31 March 2025, 10.7.2 must be fully considered during a PCI DSS assessment.  
+
+Source: req. 10.7.1 (p. 260), req. 10.7.2 (p. 261)",good,"The answer is supported by the page: it says 10.7.2 applies to all entities, supersedes 10.7.1 as of 31 March 2025, and is a best practice until then, after which it is required and must be fully considered during assessment. The extra claim that 10.7.1 applies only to service providers is also consistent with PCI DSS, but that specific line is not needed to answer the question and does not contradict the page. The citation to p. 260/261 is not verifiable from the provided page but does not affect the substantive correctness."
+"What has to be checked for every change to systems or networks, including new systems and new network links, under A3.2.2?",358,"All changes to systems or networks, including new systems and new network links, must have their PCI DSS scope impact determined and then be followed by confirmation that all applicable PCI DSS requirements are in place on the new or changed components.
+
+- Perform a formal PCI DSS impact assessment.
+- Identify the applicable PCI DSS requirements for the system or network.
+- Update PCI DSS scope as appropriate.
+- Get documented sign-off of the impact assessment results by responsible personnel.
+- Upon completion of the change, confirm all relevant/applicable PCI DSS requirements are implemented on all new or changed systems and networks.
+- Update documentation as applicable.
+- Examples of checks include updated network diagrams, configuration standards, required security controls, data storage documentation, and inclusion of new systems in quarterly vulnerability scanning.
+
+Source: req. A3.2.2 (p. 358); req. A3.2.2.1 (p. 359)",bad,"The answer correctly states the items explicitly listed in A3.2.2: formal PCI DSS impact assessment, identifying applicable requirements, updating scope, and documented sign-off. However, it also adds several claims not supported by the provided page, including that after completion of the change one must confirm all applicable requirements are implemented, and examples like updated network diagrams, configuration standards, security controls, data storage documentation, and quarterly vulnerability scanning. It also cites page numbers/requirements not on the provided page. Because it includes unsupported details beyond the page, it is not fully supported."
+How do you verify visitors are authorized and escorted in the CDE?,223,"Visitors must be authorized before entering the CDE, escorted at all times, clearly identified with an expiring visitor badge or other identification, and that identification must visibly distinguish visitors from personnel.
+
+- Verify documented procedures cover authorizing and managing visitor access to the CDE.
+- Check that visitors are authorized before entering the CDE.
+- Check that visitors are escorted at all times within the CDE.
+- Confirm visitor badges or other identification are used for all visitors.
+- Confirm the badge or identification visibly distinguishes visitors from personnel.
+- Confirm the badge or identification expires.
+- Confirm the badge or other identification does not permit unescorted access to the CDE.
+
+Source: req. 9.3.2 (p. 223)",good,"The answer matches the page’s requirements for visitor controls in the CDE: authorization before entry, escort at all times, clear identification with expiring badges, distinction from personnel, and no unescorted access. It also reflects the testing procedures on the page. The only issue is the cited page number is wrong (page 219, not 223), but that does not affect the substantive correctness of the answer."
+"According to 7.1.1, what has to be true of the security policies and operating procedures listed in Requirement 7?",166,"All security policies and operational procedures identified in Requirement 7 must be documented, kept up to date, in use, and known to all affected parties.
+
+- Documented
+- Kept up to date
+- In use
+- Known to all affected parties
+
+Source: req. 7.1.1 (p. 166)",good,"The answer correctly states all four conditions from Requirement 7.1.1 and answers the question directly. The only minor issue is the page citation says p. 166 while the provided page is 162, but that does not affect the substantive correctness of the answer."
+What security responsibility does the TPSP need to formally acknowledge to its customers?,327,"The TPSP must formally acknowledge that it is responsible for securing the account data it holds, stores, processes, or transmits for the customer, including any security impact on the customer’s cardholder data or sensitive authentication data.
+
+- The acknowledgment must cover account data the TPSP possesses or otherwise stores, processes, or transmits on behalf of the customer.
+- It must also cover situations where the TPSP could impact the security of the customer’s cardholder data and/or sensitive authentication data.
+- The written acknowledgment is provided to customers as part of the TPSP’s written agreements.
+
+Source: req. 12.8.2, 12.9.1 (p. 316, p. 323)",bad,"The answer correctly states the TPSP's responsibility to acknowledge security of account data it possesses/stores/processes/transmits on behalf of the customer, and the possible impact on the customer's cardholder data and sensitive authentication data. However, it cites requirement 12.8.2 and page 316, which are not supported by the provided page. The page only supports 12.9.1 on page 323. Since the question asks what responsibility must be acknowledged, the core substance is right, but the unsupported citation makes the answer not fully supported by the page."
+What evidence is checked to confirm there’s a legitimate business reason for storing SAD?,89,"The evidence checked is the documented policies and personnel interviews that verify there is a documented business justification for storing SAD.
+
+- Examine documented policies and interview personnel
+- Verify there is a documented business justification for the storage of sensitive authentication data
+- This applies for issuers and companies that support issuing services and store SAD
+
+Source: req. 3.3.3.a (p. 85)",good,"The answer matches the page: it correctly states that the testing procedure is to examine documented policies and interview personnel to verify a documented business justification for storing sensitive authentication data, and it correctly identifies the applicable requirement as 3.3.3.a for issuers and companies supporting issuing services."
+How must access and permitted actions be set when users query stored CHD through applications or other programmatic methods?,175,"Users querying stored cardholder data through applications or other programmatic methods must have access and allowed actions limited by their roles and least privilege.
+
+- Access and permitted actions must be based on user roles.
+- Only the least privileges needed to perform the job function may be granted.
+- Direct unfiltered query access to stored CHD is prohibited for end users.
+- Only the responsible administrator(s) may directly access or query repositories of stored CHD.
+
+Source: req. 7.2.6 (p. 175); req. 7.2.1 (p. 168)",good,"The answer matches the page: it states that access and allowed actions via applications or other programmatic methods must be based on user roles and least privilege, and that only responsible administrators may directly access/query stored CHD. However, it cites req. 7.2.1 and page 168, which are not on the provided page. The substance is still supported by the page, but the citation is extra and unsupported."
+"Who needs to be interviewed to verify 8.1.2, and what should they understand?",181,"1. Interview personnel with responsibility for performing activities in Requirement 8, and they should understand the roles and responsibilities as documented.
+- Verify the interviewees are the people responsible for Requirement 8 activities.
+- They should understand the roles and responsibilities that are assigned to them.
+- The requirements and responsibilities must be documented and assigned, and the personnel must understand them.
+
+Source: req. 8.1.2 (p. 181)",good,"The answer matches the page: 8.1.2.b says to interview personnel with responsibility for performing activities in Requirement 8, and verify that roles and responsibilities are assigned as documented and are understood. The extra details are supported by the page. The cited page number is incorrect, but the substance is still correct and supported by the provided page."
+What evidence should be reviewed to confirm anti-spoofing is configured on NSCs?,60,"Anti-spoofing on NSCs should be confirmed by reviewing the vendor documentation and the NSC configurations themselves.
+
+- Verify the NSCs implement measures to detect and block forged source IP addresses.
+- Confirm those measures prevent forged source IPs from entering the trusted network.
+- Vendor documentation may be especially important because anti-spoofing is often enabled by default and may not be configurable.
+
+Source: req. 1.4.3 (p. 60)",good,"The answer matches the page: it says to examine vendor documentation and configurations for NSCs to verify anti-spoofing measures are implemented, and includes the supported note that products often come with anti-spoofing enabled by default and may not be configurable. The only issue is the page shown is page 56, not 60, but that does not affect correctness of the substance."
+How do you verify compliance with 10.6.1 for system clock synchronization?,257,"System clocks and time must be synchronized using time-synchronization technology, and you verify this by checking system configuration settings.
+
+- Examine system configuration settings to verify that time-synchronization technology is implemented.
+- Verify the time-synchronization technology is kept current.
+- Keeping it current includes managing vulnerabilities and patching it according to PCI DSS Requirements 6.3.1 and 6.3.3.
+
+Source: req. 10.6.1 (p. 253)",good,"The answer matches the page: it states that system clocks and time are synchronized using time-synchronization technology, and the testing procedure is to examine system configuration settings to verify the technology is implemented and kept current. It also correctly includes the applicability note about managing vulnerabilities and patching per 6.3.1 and 6.3.3."
+How do you check that the trusted key and certificate inventory is being kept current?,120,"The inventory should be examined to verify it is maintained and kept up to date for all trusted keys and certificates used to protect PAN during transmission.
+
+- Examine documented policies and procedures to confirm processes are defined to maintain the inventory.
+- Examine the inventory itself to verify it is kept up to date.
+- For certificates, the inventory should include the issuing CA and certificate expiration date.
+
+Source: req. 4.2.1.1 (p. 120)",good,"The answer matches the page’s testing procedures for 4.2.1.1: examine documented policies/procedures for defined processes and examine the inventory to verify it is kept up to date. It also correctly notes the good practice details for certificates. The only issue is the cited page number is wrong (page 116, not 120), but the substance is supported by the page and it identifies the correct requirement number."
+What does requirement 9.4 say about protecting media that contains cardholder data?,225,"Media that contains cardholder data must be physically secured, classified, tracked when moved or sent outside the facility, and destroyed when no longer needed.
+
+- All media with cardholder data must be physically secured.
+- Offline media backups with cardholder data must be stored in a secure location.
+- The security of offline media backup locations must be reviewed at least once every 12 months.
+- All media with cardholder data must be classified according to the sensitivity of the data.
+- Media moved outside the facility, including to individuals, must be approved by management.
+- Inventory logs must be maintained for all electronic media with cardholder data.
+- Media sent outside the facility must be logged, sent by a secured/tracked delivery method, and include offsite tracking details.
+- Electronic media with cardholder data must be destroyed when no longer needed for business or legal reasons, or the data must be rendered unrecoverable.
+
+Source: req. 9.4, 9.4.1, 9.4.1.1, 9.4.1.2, 9.4.2, 9.4.3, 9.4.4, 9.4.5, 9.4.7 (p. 225-231)",bad,"The page only states that media with cardholder data is securely stored, accessed, distributed, and destroyed, and specifically that all media with cardholder data is physically secured, with offline backups stored in a secure location. The answer adds many requirements not on this page (classification, management approval, inventory logs, secured delivery, destruction details, multiple requirement numbers not on the page), so it is not supported by the provided page."
+What does 11.1.2 require about roles for Requirement 11 activities?,266,"Roles and responsibilities for performing Requirement 11 activities must be documented, assigned, and understood.
+
+- The descriptions of roles and responsibilities for Requirement 11 activities must be documented and assigned.
+- Personnel with responsibility for Requirement 11 activities must be able to show that the roles and responsibilities are assigned as documented and are understood.
+- The requirement’s customized approach objective is that day-to-day responsibilities for all Requirement 11 activities are allocated and personnel are accountable for successful, continuous operation of these requirements.
+
+Source: req. 11.1.2 (p. 266)",good,"The answer matches the page: it states that roles and responsibilities for Requirement 11 activities must be documented, assigned, and understood, and it reflects both the defined approach testing and the customized approach objective shown on the page. The page does not show page 266, but that citation does not affect correctness here."
+What should be checked to confirm visitor ID does not allow unescorted CDE access?,223,"Visitor ID should be checked to ensure it is clearly marked as a visitor badge and that it does not allow unescorted access to the CDE.
+
+- Observe the visitor badge or other identification in use.
+- Verify it does not permit unescorted access to the CDE.
+- Verify it visibly distinguishes visitors from personnel.
+- Verify it expires.
+
+Source: req. 9.3.2 (p. 223)",good,"The answer matches the page: it states the visitor ID/badge should be observed, must not permit unescorted access to the CDE, must visibly distinguish visitors from personnel, and must expire. These are all supported by requirement 9.3.2 and testing procedures 9.3.2.c, 9.3.2.d, and 9.3.2.e. The cited page number is off, but that does not affect correctness of substance."
+"For 4.1.2, what should an assessor look for in the written evidence?",116,"An assessor should verify that the documentation for Requirement 4 clearly describes the roles and responsibilities for performing Requirement 4 activities and shows they are assigned.
+
+- Examine written documentation to confirm roles and responsibilities for Requirement 4 are documented and assigned.
+- The documentation may be in policies and procedures or in separate documents.
+- A RACI matrix is an acceptable example of how roles and responsibilities may be documented.
+- The written evidence should support that personnel are aware of and understand their assigned responsibilities.
+
+Source: req. 4.1.2 (p. 116)",bad,"The answer correctly says the assessor should examine documentation to verify roles and responsibilities for Requirement 4 are documented and assigned, which matches 4.1.2.a. However, it adds details not on the page, such as the written evidence may be in policies and procedures or separate documents, a RACI matrix as an example, and that the written evidence should show personnel are aware of and understand their responsibilities. Those items are guidance from the page except the page here is only about what to look for in written evidence, and the citation to p. 116 is inconsistent with the provided page 112. Because the answer includes extra claims beyond the written evidence check and cites the wrong page, mark it bad."
+What has to be kept for every third-party service provider that handles account data or could affect its security?,319,"A list must be maintained for every third-party service provider that shares account data or could affect its security, and each entry must describe the services provided.
+
+- Include all TPSPs with whom account data is shared or that could affect the security of account data.
+- Keep a description of the services provided for each TPSP.
+- The list must be maintained as a record of TPSPs and the services they provide.
+
+Source: req. 12.8.1 (p. 319)",good,"The answer matches the page: it says a list of all TPSPs with whom account data is shared or that could affect the security of account data must be maintained, including a description of the services provided for each. The content is supported by requirement 12.8.1. The page shown is page 315, but the cited requirement number 12.8.1 is present on the page; the page number in the source citation is not material here."
+What should the review of response procedures confirm under A3.2.5.2.a?,364,"The review of response procedures must confirm that procedures for responding to cleartext PAN found outside the CDE are defined and complete.
+
+- They must cover what to do if cleartext PAN is discovered outside the CDE.
+- They must include retrieval, secure deletion, and/or migration into the currently defined CDE, as applicable.
+- They must address how the data ended up outside the CDE.
+- They must include remediation of data leaks or process gaps that caused the data to be outside the CDE.
+- They must identify the source of the data.
+- They must identify whether any track data is stored with the PANs.
+
+Source: req. A3.2.5.2.a (p. 360)",good,"The answer accurately states that the review should verify procedures for responding to cleartext PAN outside the CDE are defined and include all elements specified in the requirement. The listed elements match the page exactly, including retrieval, secure deletion and/or migration, determining how the data ended up outside the CDE, remediation of leaks or process gaps, identifying the source, and identifying whether track data is stored with the PANs."
+Do the approved privileges need to match the person's assigned role?,171,"The approved privileges need to match the person’s assigned role.
+
+- Required privileges must be approved by authorized personnel.
+- Documented approval must exist for the assigned privileges.
+- The approval must be by authorized personnel.
+- The specified privileges must match the roles assigned to the individual.
+- Access is also to be assigned based on job classification and function, using the least privileges necessary.
+
+Source: req. 7.2.3 (p. 171); req. 7.2.2 (p. 170); req. 7.2.1 (p. 168)",bad,"The answer correctly states that specified privileges must match the roles assigned to the individual, which is explicitly on the page. However, it also cites requirements 7.2.2 and 7.2.1 and mentions job classification/function and least privilege, which are not on the provided page. Since the answer includes unsupported claims and cites requirement numbers not on the page, it should be marked bad."
+What has to happen before bespoke or custom software goes live or is handed to customers under 6.2.3?,143,"Bespoke and custom software must be reviewed before release to find and fix coding vulnerabilities, and any needed corrections must be made before it goes live or is given to customers.
+
+- Code reviews must ensure the software was developed according to secure coding guidelines.
+- Code reviews must look for both existing and emerging software vulnerabilities.
+- Appropriate corrections must be implemented prior to release.
+- This applies to all bespoke and custom software, both internal and public-facing.
+- Code reviews may be manual, automated, or a combination of both.
+
+Source: req. 6.2.3 (p. 143)",good,"The answer correctly states that bespoke/custom software must be reviewed before release to identify and correct vulnerabilities, and that corrections must be implemented prior to release. It also accurately reflects the listed review objectives and notes that reviews may be manual, automated, or both. However, it cites page 143 instead of the provided page 139, but the substance is supported by the page content."
+What training must POI staff get to spot tampering or device swaps?,238,"Training for POI staff must teach them to recognize and respond to attempted tampering, unauthorized substitution, and device swaps.
+
+- Verify the identity of any third-party repair or maintenance personnel before granting access to modify or troubleshoot devices.
+- Do not install, replace, or return devices without verification.
+- Be aware of suspicious behavior around POI devices.
+- Report suspicious behavior and any signs of device tampering or substitution to the appropriate personnel.
+- Training should also cover questioning anyone claiming to do POI maintenance and verifying they are authorized and have a valid work order.
+
+Source: req. 9.5.1.3 (p. 238)",good,"The answer matches the page’s stated training elements for POI environments: verifying third-party identity, ensuring devices are not installed/replaced/returned without verification, being alert to suspicious behavior, and reporting tampering/substitution. It also correctly reflects the guidance about questioning maintenance personnel and checking authorization/work orders. The cited requirement number is on the page, though the page number in the answer is not relevant to correctness."
+How do assessors verify compliance with 6.4.1 when the control is a review process versus an automated solution?,154,"For 6.4.1, assessors verify compliance by checking either the review-process evidence or the automated-solution configuration, logs, and interviews, depending on which control is used.
+
+- If manual or automated vulnerability security assessment tools or methods are used:
+  - Examine documented processes.
+  - Interview personnel.
+  - Examine records of application security assessments.
+  - Verify the public-facing web applications are reviewed in accordance with all elements of the requirement specific to the tool/method.
+- If an automated technical solution that continually detects and prevents web-based attacks is used:
+  - Examine system configuration settings.
+  - Examine audit logs.
+  - Interview responsible personnel.
+  - Verify the solution is installed in accordance with all elements of the requirement specific to the solution.
+
+Source: req. 6.4.1 (p. 154)",good,"The answer matches the page’s testing procedures for 6.4.1: it distinguishes between the review-process path and the automated technical solution path, and lists the correct evidence assessors examine for each. The citation page number is slightly inconsistent with the provided page, but the substance is fully supported by the page."
+"Does 9.2.1 apply to areas open to consumers, or only to restricted locations?",217,"9.2.1 does not apply to areas that are publicly accessible by consumers; it applies to facility entry controls that restrict physical access to systems in the CDE in restricted locations.
+
+- It requires appropriate facility entry controls to restrict physical access to systems in the CDE.
+- The applicability note says it does not apply to locations publicly accessible by consumers (cardholders).
+
+Source: req. 9.2.1 (p. 217)",good,"The answer correctly states that 9.2.1 does not apply to locations publicly accessible by consumers/cardholders and that it is about facility entry controls restricting physical access to systems in the CDE. However, it cites page 217 instead of the provided page 213. The substance matches the page, and the citation issue does not affect correctness under this rubric."
+What do the procedures need to define about removing test data and test accounts before production?,164,"Test procedures must verify that the organization has defined processes for removing test data and test accounts from system components before the system goes into production.
+
+- Policies and procedures must define processes for removal of test data and test accounts before production.
+- Testing should confirm this happens for both off-the-shelf software and in-house applications.
+- The production environment should not contain test data or test accounts.
+
+Source: req. 6.5.6 (p. 160)",good,"The answer matches the page: it states that procedures/policies must define processes for removing test data and test accounts before production, and that testing verifies this for off-the-shelf and in-house applications. It also correctly notes that production should not contain test data or test accounts. The citation to requirement 6.5.6 is supported by the page."
+What do assessors need to review to verify compliance with 3.5.1?,94,"Assessors need to examine documentation, data repositories, audit logs, and, if applicable, controls that prevent correlation between hashed and truncated PANs to verify PAN is rendered unreadable.
+
+- Review documentation about the system used to render PAN unreadable.
+- Check the vendor, type of system/process, and encryption algorithms, if applicable.
+- Examine data repositories and audit logs, including payment application logs.
+- If hashed and truncated versions of the same PAN exist, examine the implemented controls to verify they cannot be correlated to reconstruct the original PAN.
+
+Source: req. 3.5.1.a, 3.5.1.b, 3.5.1.c (p. 94)",bad,"The answer correctly identifies what assessors need to review for 3.5.1: documentation about the system, vendor/type/algorithms if applicable, data repositories and audit logs, and correlation controls when hashed and truncated PAN versions exist. However, it cites page 94, while the provided page is 90. The substantive content is supported by the page, but the incorrect page citation is an unsupported claim."
+What does 6.1.2 require for roles and responsibilities tied to Requirement 6 activities?,140,"Roles and responsibilities for performing all activities in Requirement 6 must be documented, assigned, and understood.
+
+- Descriptions of roles and responsibilities for Requirement 6 activities must be documented and assigned.
+- Personnel responsible for Requirement 6 activities must be able to verify that the roles and responsibilities are assigned as documented and are understood.
+- Good practice notes that roles and responsibilities may be documented in policies/procedures or separate documents.
+- A RACI matrix is given as an example method for documenting roles and responsibilities.
+- As part of communication, personnel may acknowledge their acceptance and understanding of their assigned roles and responsibilities.
+
+Source: req. 6.1.2 (p. 140)",good,"The answer correctly states that Requirement 6 roles and responsibilities must be documented, assigned, and understood, and its extra details about policies/procedures, separate documents, acknowledgments, and a RACI matrix are all supported by the page. The only issue is the cited page number (p. 140) does not match the provided page, but the substantive content is correct and supported."
+What does Requirement 9 say about restricting physical access to cardholder data?,215,"Requirement 9 says physical access to cardholder data and systems in the CDE must be controlled so only authorized personnel can enter sensitive areas.
+
+- Security policies and operational procedures for Requirement 9 must be documented, kept up to date, in use, and known to all affected parties.
+- Appropriate facility entry controls must be in place to restrict physical access to systems in the CDE.
+- This does not apply to locations that are publicly accessible by consumers (cardholders).
+- Physical access to sensitive areas within the CDE must be authorized and based on individual job function.
+- Access must be revoked immediately upon termination.
+- Physical access mechanisms, such as keys and access cards, must be returned or disabled upon termination.
+
+Source: req. 9.1.1 (p. 211); req. 9.2.1 (p. 213); req. 9.3.1.1 (p. 218)",bad,"The page only states 9.1.1: all security policies and operational procedures identified in Requirement 9 must be documented, kept up to date, in use, and known to all affected parties. The answer adds multiple claims about physical access controls, public locations, authorization, termination, and cites requirement numbers not on the page. Those additions are unsupported by the provided page."
+What are some acceptable ways to confirm a user’s identity before a password reset or token change?,192,"A user’s identity can be confirmed before a password reset or token change by using a secret question/answer, knowledge-based information, or calling the user back at a known, previously established phone number.
+
+- These are examples of acceptable identity-verification methods before modifying an authentication factor.
+- The requirement applies before modifying any authentication factor, including password resets and provisioning new hardware or software tokens.
+- Another acceptable example mentioned is self-service password reset mechanisms that let the account owner verify their identity.
+
+Source: req. 8.3.3 (p. 192); req. 8.3.4 (p. 193)",bad,"The answer correctly lists the identity-verification examples from the page: secret question/answer, knowledge-based information, and calling the user back at a known, previously established phone number. However, it also claims self-service password reset mechanisms are another acceptable example and cites requirements 8.3.4 and page 193, neither of which appear on the provided page. That extra claim is not supported by the page."
+"For A3.3.1.1, what steps must the response process include?",368,"The response process for failures of critical security control systems must promptly restore security functions, document the failure, investigate the cause, address any resulting issues, decide on further actions, prevent recurrence, and resume monitoring.
+
+- Restore security functions.
+- Identify and document the duration of the security failure, including date and time start to end.
+- Identify and document the cause(s) of failure, including root cause, and the remediation required to address it.
+- Identify and address any security issues that arose during the failure.
+- Determine whether further actions are required because of the security failure.
+- Implement controls to prevent the cause of failure from recurring.
+- Resume monitoring of security controls.
+
+Source: req. A3.3.1.1 (p. 368)",good,"The answer lists the response-process steps exactly as stated on the page: restoring security functions; documenting duration; documenting cause and remediation; addressing security issues; determining further actions; preventing recurrence; and resuming monitoring. The only potential issue is the cited page number, which does not match the provided page, but the substance of the answer is fully supported by the page and it answers the question correctly."
+What should an assessor review to confirm cleartext key components are limited to necessary custodians?,104,"Cleartext cryptographic key components should be accessible only to the minimum number of required key custodians.
+
+- Review user access lists.
+- Verify access is restricted to the fewest number of custodians necessary.
+- Confirm only personnel with defined key custodian responsibilities are granted access to key components.
+
+Source: req. 3.6.1.3 (p. 104)",good,"The answer matches the page: it says the assessor should review user access lists to verify access is restricted to the fewest number of custodians necessary, and the extra statement about defined key custodian responsibilities is supported by the good practice note. However, the cited page number 'p. 104' is not on the provided page excerpt, which is page 100. Since the substance is still correct and supported, this is overall good."
+How must suspected or confirmed incidents and vulnerabilities be handled after they’re reported?,345,"Suspected or confirmed incidents and vulnerabilities must be promptly reported, addressed, and remediated using documented processes, with incidents responded to immediately and, where applicable, supported by forensic investigation and customer notification.
+
+- Maintain an incident response plan that is ready to activate for suspected or confirmed incidents.
+- Include roles, responsibilities, communication and contact strategies, and at minimum notify payment brands and acquirers.
+- Include containment and mitigation procedures for different incident types.
+- Include business recovery and continuity procedures, data backup processes, legal reporting analysis, coverage of critical system components, and payment brand procedures.
+- Designate specific personnel available 24/7 to respond to suspected or confirmed incidents.
+- Implement processes/mechanisms for customers to securely report incidents and vulnerabilities.
+- Address and remediate suspected or confirmed incidents and vulnerabilities according to Requirement 6.3.1.
+- Use prompt alerts and documented response procedures for suspicious activity.
+- Support and/or facilitate prompt forensic investigations for suspected or confirmed incidents, where applicable.
+
+Source: req. 12.10.1 (p. 331), req. 12.10.3 (p. 333), req. A1.2.3 (p. 345), req. A3.5.1 (p. 372), req. A1.2.2 (p. 344)",bad,"The page only states that processes/mechanisms must allow customers to securely report incidents and vulnerabilities, and that the provider addresses and remediates suspected or confirmed incidents and vulnerabilities according to Requirement 6.3.1. The answer adds many requirements not on the page (incident response plan details, 24/7 personnel, forensic investigations, payment brand/acquirer notification, etc.) and cites multiple requirement numbers not present on the provided page."
+Which tasks are covered by the quarterly review requirement in 12.4.2?,306,"Reviews in 12.4.2 cover specific operational tasks to confirm personnel are performing them in accordance with security policies and operational procedures.
+
+- Daily log reviews
+- Configuration reviews for network security controls
+- Applying configuration standards to new systems
+- Responding to security alerts
+- Change-management processes
+- The requirement says the list is “included, but are not limited to,” so other tasks may also be covered
+- Reviews must be done by personnel other than those responsible for the task
+- They must occur at least once every three months
+- This requirement applies only to service providers
+
+Source: req. 12.4.2 (p. 306)",bad,"The answer correctly identifies the tasks listed in 12.4.2 and the quarterly frequency, independent reviewer, and service-provider-only applicability. However, it cites the wrong page number ('p. 306' instead of the provided page 302), which is unsupported by the page/question context. The substance is otherwise supported."
+"How can the 1.2.7 review be performed, and how is that documented?",53,"1. The 1.2.7 review can be performed manually, automatically, or with system-based methods to confirm NSC configurations match approved traffic rules and documented business justifications.
+
+- It must review configurations of network security controls at least once every six months.
+- It should confirm all permitted access has a justified business reason.
+- Any discrepancies or uncertainties about a rule or configuration should be escalated for resolution.
+- If a configuration is no longer supported by a business justification, it must be removed or updated.
+- Documentation should show the organization’s procedures for performing the six-month review and the actual reviews completed at that frequency.
+
+Source: req. 1.2.7 (p. 49)",good,"The answer matches the page: it states the review can be manual, automated, or system-based; that it occurs at least every six months; that it confirms approved configurations and business justifications; that discrepancies should be escalated; and that unsupported configurations must be removed or updated. It also correctly describes the documentation/testing evidence for procedures and completed reviews. All claims are supported by the page."
+What do assessors need to check to confirm 7.2.2 is in place?,170,"Assessors need to verify that user access, including privileged access, is granted according to the user’s job classification and function and only with the minimum privileges needed for the job.
+
+- Examine policies and procedures to confirm they require access to be assigned in line with all elements of the requirement.
+- Examine user access settings, including privileged users, and interview responsible management to confirm privileges match the requirement.
+- Interview personnel responsible for assigning access to confirm privileged user access is assigned correctly.
+
+Source: req. 7.2.2 (p. 170)",good,"The answer matches the page's requirement 7.2.2 and its testing procedures 7.2.2.a-c. The substantive content is supported, though the cited page number is not the one shown, but that does not affect the correctness of the answer's substance here."
+How often do we need to prove customer environment separation still works?,342,"The separation of customer environments must be proven with penetration testing at least every six months.
+
+- Confirm the effectiveness of the logical separation controls used to separate customer environments.
+- Testing is done via penetration testing.
+- Frequency: at least once every six months.
+- This testing is in addition to the penetration tests in Requirement 11.4.6.
+- Best practice until 31 March 2025; after that, it is required.
+
+Source: req. A1.1.4 (p. 342)",good,"The answer correctly states that effectiveness of logical separation controls must be confirmed at least once every six months via penetration testing, and that this testing is in addition to Requirement 11.4.6. However, it cites the wrong page number (p. 342 instead of the provided p. 338). Since the substance is supported by the page and the incorrect page citation is not itself a contradiction of the requirement, the answer is still correct overall."
+How do you prove that Requirement 2 responsibilities are documented and assigned?,67,"Requirement 2 responsibilities are proven by showing that they are documented, assigned, and understood for all activities in Requirement 2.
+
+- Examine documentation to verify that descriptions of roles and responsibilities for performing activities in Requirement 2 are documented and assigned.
+- Interview personnel with responsibility for performing activities in Requirement 2 to verify that roles and responsibilities are assigned as documented and are understood.
+- Roles and responsibilities may be documented within policies and procedures or in separate documents.
+- A responsibility assignment matrix, such as a RACI matrix, is an example of how to document roles and responsibilities.
+- Personnel acknowledgment of their assigned roles and responsibilities can also be considered.
+
+Source: req. 2.1.2 (p. 63)",good,"The answer matches the page: it states that Requirement 2 responsibilities are documented, assigned, and understood, and cites the correct testing procedures (examine documentation and interview personnel). It also includes supported good-practice examples like policies/procedures, separate documents, RACI matrix, and personnel acknowledgment. No unsupported or contradictory claims are present."
+How do you verify the IDS/IPS setup for requirement 11.5.1?,287,"Intrusion-detection and/or intrusion-prevention techniques must monitor the CDE perimeter and critical points, alert personnel to suspected compromises, and keep engines, baselines, and signatures current.
+
+- Examine system configurations and network diagrams to verify IDS/IPS is in place to monitor all traffic:
+  - At the perimeter of the CDE.
+  - At critical points in the CDE.
+- Examine system configurations and interview responsible personnel to verify IDS/IPS alerts personnel of suspected compromises.
+- Examine system configurations and vendor documentation to verify IDS/IPS is configured to keep all engines, baselines, and signatures up to date.
+
+Source: req. 11.5.1 (p. 287)",good,"The answer matches the page’s testing procedures for 11.5.1: it says to examine system configurations and network diagrams for monitoring at the CDE perimeter and critical points, interview responsible personnel to verify alerts, and review system configurations and vendor documentation to verify engines, baselines, and signatures are kept up to date. The substance is supported by the page, though the page number cited is wrong (page 283, not 287), which does not affect the substantive correctness here."
+Why does PCI DSS want access control systems to start from a deny-all setting?,177,"A deny-all default ensures no one gets access unless a rule explicitly grants it, which supports least-privilege and reduces the chance of unintended access.
+
+- No access is granted unless specifically allowed by a rule.
+- It helps avoid the risk of systems being set to “allow all” by default.
+- It aligns with managing access based on need to know and job function.
+- It supports the objective that access rights and privileges are prohibited unless expressly permitted.
+
+Source: req. 7.3.3 (p. 177)",good,"The answer is supported by the page: it states that a default deny-all means no one is granted access unless explicitly allowed, and that default allow-all can otherwise permit access until denied. The mention of least-privilege/need-to-know is not on this page, but it is consistent with the stated objective that access rights and privileges are prohibited unless expressly permitted, so it does not contradict the page. The citation to p. 177 is not supported by the provided page, which is page 173, but the substantive answer matches the page."
+How do you verify that recent system changes followed the approved change process for 6.5.1?,159,"Recent production changes are verified by tracing them back to change control records and checking that each change followed the approved process.
+
+- Examine documented change control procedures to confirm they define all required elements for changes to all production system components.
+- Examine recent system changes and trace each one to related change control documentation.
+- For each change, verify:
+  - the reason for and description of the change were documented,
+  - the security impact was documented,
+  - the change was approved by authorized parties,
+  - testing showed the change did not adversely impact system security,
+  - for bespoke/custom software changes, updates were tested for compliance with Requirement 6.2.4 before production deployment,
+  - procedures existed to address failures and return to a secure state.
+
+Source: req. 6.5.1.a (p. 159), req. 6.5.1.b (p. 159)",good,"The answer correctly describes the verification approach from 6.5.1.a and 6.5.1.b: examine procedures, trace recent changes to documentation, and verify all required elements. However, it cites page 159, while the provided page is 155, and the content does not indicate that page number. Since the substance matches the page, the page-number citation issue alone does not make it wrong under the given rules. But the answer also presents the detailed elements as part of what to verify for recent changes, which is supported by 6.5.1.b. Overall it is correct and supported by the page."
+What is the objective behind requirement 1.2.8?,54,"Requirement 1.2.8 is intended to keep network security control configuration files current and protected so unauthorized configurations cannot be applied to the network.
+
+- Configuration information must be kept up to date.
+- Configuration files for network security controls must be secured against unauthorized changes.
+- This helps ensure the correct settings are reinstated whenever a configuration is run, such as after a reboot.
+- Customized approach objective: network security controls cannot be defined or modified using untrusted configuration objects, including files.
+
+Source: req. 1.2.8 (p. 54)",good,"The answer correctly states the objective behind 1.2.8: prevent unauthorized configurations by keeping NSC configuration files current and secure. It also accurately reflects the customized approach objective. However, it cites page 54, while the provided page is 50; this citation is incorrect. The content itself is supported by the page."
+How do you verify compliance with Requirement 1.3.3?,57,"Compliance with Requirement 1.3.3 is verified by checking that network security controls are in place between all wireless networks and the cardholder data environment and that wireless traffic is blocked by default except for authorized business traffic.
+
+- Examine configuration settings and network diagrams.
+- Verify NSCs are implemented between all wireless networks and the CDE.
+- Confirm all wireless traffic from wireless networks into the CDE is denied by default.
+- Confirm only wireless traffic with an authorized business purpose is allowed into the CDE.
+
+Source: req. 1.3.3 (p. 57)",good,"The answer matches the page’s testing procedure for Requirement 1.3.3: examine configuration settings and network diagrams to verify NSCs between all wireless networks and the CDE, with default denial of wireless traffic and allowance only for authorized business purposes. The only issue is the cited page number is wrong (page 53 in the provided page, not 57), but the substance is supported by the page and it answers the question."
+"What do you check under 9.3.1.1.c for keys, badges, and other access devices after termination?",222,"For terminated personnel, you check whether all physical access mechanisms, such as keys and access cards, were returned or disabled.
+
+- Examine physical access control lists.
+- Interview responsible personnel.
+- Verify the physical access mechanisms for terminated personnel were returned or disabled.
+
+Source: req. 9.3.1.1.c (p. 222)",good,"The answer matches the page: 9.3.1.1.c requires examining physical access control lists and interviewing responsible personnel to verify that all physical access mechanisms (such as keys, access cards, etc.) were returned or disabled for terminated personnel. The only minor issue is the cited page number, which differs from the provided page, but the substantive content is supported."
+How often do we need to run external penetration tests under 11.4.3?,281,"External penetration tests must be performed at least once every 12 months and after any significant infrastructure or application upgrade or change.
+
+- Per the entity’s defined methodology
+- At least once every 12 months
+- After any significant infrastructure or application upgrade or change
+- By a qualified internal resource or qualified external third party
+- Tester must have organizational independence; not required to be a QSA or ASV
+
+Source: req. 11.4.3 (p. 281)",good,"The answer directly matches the page: it states the required frequency (at least once every 12 months) and the trigger after significant infrastructure or application upgrades/changes, plus the other listed conditions in 11.4.3. The citation page number is different from the provided page, but that does not affect the substance of the answer."
+What evidence should an assessor look at to check annual training for PCI DSS responsibility roles?,355,"Personnel with PCI DSS compliance responsibilities should be able to show that they receive up-to-date PCI DSS and/or information security training at least once every 12 months.
+
+- Review information security policies and procedures to confirm training is required at least once every 12 months for each role with PCI DSS compliance responsibilities.
+- Interview personnel with PCI DSS compliance responsibilities.
+- Examine certificates of attendance or other records showing up-to-date PCI DSS and/or similar information security training was completed at least once every 12 months.
+
+Source: req. A3.1.4 (p. 355)",good,"The answer matches the page’s testing procedures: it says to review policies/procedures, interview personnel, and examine certificates of attendance or other records to verify annual up-to-date PCI DSS and/or information security training. However, it cites the wrong page number (355 instead of 351), but the substantive content is supported by the page."
+"Under A1, how do controls stop one customer from reaching another customer’s environment or data?",341,"Controls separate customer environments so each customer can access only its own cardholder data, CDE, and allocated resources, preventing access to other customers’ environments or data.
+
+- Implement controls so each customer has permission only to access its own cardholder data and CDE.
+- Verify customers’ privileges are set to access only their own account data and CDE.
+- Implement controls so each customer can only access resources allocated to them.
+- Multi-tenant environments should be logically separated, with no connectivity between them.
+- The provider cannot access customers’ environments without authorization, and customers cannot access the provider’s environment without authorization.
+- Access should follow appropriate access needs and least-privilege principles.
+
+Source: req. A1.1.2 (p. 341), A1.1.3 (p. 341), A1.1.1 (p. 340), 7.2.1 (p. 168)",bad,"The answer includes supported points from the page: each customer may only access its own cardholder data/CDE and resources allocated to them. However, it also adds unsupported claims not shown on the page, such as logical separation/no connectivity, provider access restrictions, least-privilege principles, and cites requirements A1.1.1 and 7.2.1 that are not on the provided page. Because it contains extra unsupported content, it is not fully supported by the page."
+"For requirement 10.3.4, what has to be in place on audit logs?",250,"Audit logs must have file integrity monitoring or change-detection in place so existing log data cannot be changed without generating an alert.
+
+- It applies to audit logs.
+- Existing log data must not be changeable without an alert.
+- The good practice note says log monitoring should alert on existing log data or files being changed or deleted.
+- New log data being added to an audit log should not generate an alert.
+
+Source: req. 10.3.4 (p. 250)",good,"The answer correctly states that file integrity monitoring or change-detection mechanisms must be used on audit logs so existing log data cannot be changed without generating alerts. It also correctly includes the page’s good-practice note that new log data added to an audit log should not generate an alert. The only potential issue is the cited page number, which does not match the provided page, but the substance is supported by the page and the question is answered."
+What is the objective of the customized approach for A1.2?,343,"The objective of the customized approach for A1.2 is to ensure log capability is available to all customers without affecting the confidentiality of other customers.
+
+- Log capability must be available to every customer.
+- Access to logs must not expose one customer’s log information to other customers.
+- The focus is on preserving the confidentiality of other customers while providing logging capability.
+
+Source: req. A1.2.1 (p. 343)",good,"The answer states the customized approach objective exactly as shown on the page: log capability is available to all customers without affecting the confidentiality of other customers. The extra bullets are consistent with that objective. The only issue is the cited page number/source reference, which is incorrect, but the substance answers the question and is supported by the page."
+What evidence is reviewed to prove internal rescans cleared all high-risk and critical vulnerabilities?,270,"The internal scan evidence reviewed is the scan report results from each scan and rescan, showing that all high-risk and critical vulnerabilities were resolved.
+
+- Examine internal scan report results from the last 12 months for the quarterly scan requirement.
+- For proving remediation, examine scan report results from each scan and rescan run in the last 12 months.
+- The reports must verify that all high-risk vulnerabilities and all critical vulnerabilities were resolved.
+
+Source: req. 11.3.1.b (p. 268)",good,"The answer matches the page: it identifies the evidence as internal scan report results from each scan and rescan run in the last 12 months and correctly states that they must show all high-risk and critical vulnerabilities are resolved. It also mentions the quarterly scan report review, which is supported by 11.3.1.a on the page. The only potential issue is the page number citation (p. 268) doesn’t match the provided page, but the substantive answer is supported by the page text and requirement 11.3.1.b is present."
+How do you verify that the Requirement 11 responsibilities are assigned and understood?,266,"Roles and responsibilities for Requirement 11 must be documented, assigned, and confirmed as understood by the personnel responsible for those activities.
+
+- Examine documentation to verify that roles and responsibilities for performing Requirement 11 activities are documented and assigned.
+- Interview personnel with responsibility for Requirement 11 activities to verify the roles and responsibilities are assigned as documented and are understood.
+- Roles and responsibilities may be documented in policies and procedures or in separate documents.
+- A RACI matrix can be used to document who is responsible, accountable, consulted, and informed.
+- Entities may consider having personnel acknowledge their acceptance and understanding of their assigned roles and responsibilities.
+
+Source: req. 11.1.2 (p. 266)",good,"The answer matches the page’s testing procedures for 11.1.2: examine documentation and interview personnel to verify roles are documented, assigned, and understood. It also includes the guidance examples (separate documents, RACI matrix, acknowledgement) that are supported by the page. The citation page number is inconsistent with the provided page, but the substance is correct and supported."
+How do you verify the diagram is kept current after environment changes?,48,"Verify the diagram by examining the documentation and interviewing responsible personnel to confirm it is accurate and updated whenever there are changes to the environment.
+
+- For a network diagram, verify it is accurate and updated when changes occur.
+- For a data-flow diagram, verify it is accurate and updated when changes occur.
+- Evidence includes examining the diagram/documentation and interviewing responsible personnel.
+- The diagram should be maintained by authorized personnel so it stays current.
+
+Source: req. 1.2.3.b (p. 49), 1.2.4.b (p. 49)",bad,"The answer correctly states the verification method from 1.2.3.b: examine documentation and interview responsible personnel to verify the network diagram is accurate and updated when changes occur. However, it also introduces a data-flow diagram and cites requirement 1.2.4.b/p. 49, which are not on the provided page and are unsupported here. Because it includes unsupported extra claims and citations, it is not fully supported by the page."
+"In 1.2.7, what has to happen to NSC settings that no longer have a business reason?",53,"Configurations of NSCs that no longer have a business justification must be removed or updated.
+
+- They are identified during the required review of NSC configurations.
+- The review happens at least once every six months.
+- The requirement specifically says configurations no longer supported by a business justification must be removed or updated.
+
+Source: req. 1.2.7 (p. 53)",good,"The answer matches the page: 1.2.7.c says configurations identified as no longer being supported by a business justification are removed or updated. The extra note about the six-month review is also supported by 1.2.7. However, the citation to page 53 is not on the provided page, but that does not change the substantive correctness of the answer."
+How do you verify compliance with 6.2.3.1 during an assessment?,144,"Manual code reviews for bespoke and custom software are verified by checking that the reviews are done by knowledgeable people other than the original author and are approved by management before release to production.
+
+- Examine documented software development procedures and interview responsible personnel to confirm the process is defined for manual code reviews in line with the requirement.
+- Examine evidence of changes to bespoke and custom software and interview personnel to confirm manual code reviews were actually performed in accordance with the requirement.
+- The reviewer must be other than the originating code author and knowledgeable about code-review techniques and secure coding practices.
+- Management approval must occur before release.
+- Manual code reviews may be done by knowledgeable internal or third-party personnel.
+- An individual formally granted accountability for release control, who is neither the original code author nor the code reviewer, can fulfill the management criterion.
+
+Source: req. 6.2.3.1 (p. 144)",good,"The answer matches the page’s testing procedures for 6.2.3.1: review documented procedures and interview personnel, then examine evidence and interview personnel again. It also correctly states the requirement that reviewers be other than the originating author and knowledgeable about code-review techniques and secure coding practices, and that management approval is required before release. The applicability notes about internal/third-party personnel and the release-control individual are also supported. The only issue is the cited page number (144) does not match the provided page (140), but the substance is supported by the page."
+What specific log fields are required for each auditable event in 10.2.2?,247,"Audit logs must record the core details needed to identify who did what, when, where, and whether it succeeded or failed for each auditable event.
+
+- User identification
+- Type of event
+- Date and time
+- Success and failure indication
+- Origination of event
+- Identity or name of affected data, system component, resource, or service (for example, name and protocol)
+
+Source: req. 10.2.2 (p. 247)",good,"The answer lists exactly the log fields required by 10.2.2 and correctly summarizes them as who/what/when/where/success-failure. The only issue is the page citation 'p. 247' does not match the provided page, but the substance is supported by the page and the question is answered correctly."
+What is the objective behind requirements 12.1.2 and 12.1.3?,297,"The objective is to keep the security policy current and ensure everyone knows and accepts their information security responsibilities.
+
+- 12.1.2: the policy is reviewed at least every 12 months and updated as needed for business objective or risk changes.
+- 12.1.3: the policy clearly defines information security roles and responsibilities for all personnel, and personnel are aware of and acknowledge them.
+
+Source: req. 12.1.2, 12.1.3 (p. 293)",good,"The answer matches the page’s stated purposes/objectives: 12.1.2 is about keeping the information security policy current in response to evolving threats and changes to business objectives/risks, and 12.1.3 is about clearly defining roles/responsibilities and ensuring personnel are aware of and acknowledge them. No unsupported claims are made."
+How do you check that systems only show full PAN to approved roles?,91,"Systems should mask PAN on display so that only approved roles with a documented legitimate business need can see more than the BIN and last four digits.
+
+- Document the roles that are allowed to see more than the BIN and last four digits, including full PAN, and the business need for each role.
+- Verify system configurations allow full PAN only for those documented roles and mask PAN for all other requests.
+- Check actual displays, such as screens and paper receipts, to confirm PAN is masked.
+- Confirm all roles not specifically authorized to see full PAN only see masked PANs.
+
+Source: req. 3.4.1 (p. 91)",good,"The answer matches the page’s testing procedures: document approved roles and business need, verify system configurations restrict full PAN to those roles and mask other requests, and check displays to confirm masking. The only minor issue is the cited page number (p. 91) does not match the provided page 87, but the substance is supported by the page."
+"Is 12.5.2.1 mandatory yet, or still a best practice until a later date?",311,"12.5.2.1 is still a best practice until 31 March 2025; after that date, it becomes required for service providers and must be fully considered during a PCI DSS assessment.
+
+- Applies only when the entity being assessed is a service provider.
+- Requires PCI DSS scope to be documented and confirmed at least once every six months and upon significant change to the in-scope environment.
+- The scoping validation must include all elements in Requirement 12.5.2.
+- For service provider assessments, reviewers must verify scope reviews are performed:
+  - at least once every six months
+  - after significant changes
+
+Source: req. 12.5.2.1 (p. 311)",good,"The answer directly matches the page: it says 12.5.2.1 is a best practice until 31 March 2025 and then becomes required, and it correctly summarizes the service-provider-only scope review frequency and validation elements. The only issue is the cited page number (p. 311) does not match the provided page 307, but the substance is supported by the page."
+How do you test that forged source IPs are being blocked at network controls?,60,"To test that forged source IPs are being blocked, examine the vendor documentation and network security control configurations to verify anti-spoofing measures are implemented to detect and block forged source IP addresses from entering the trusted network.
+
+- Review vendor documentation for the anti-spoofing feature.
+- Review NSC configurations to confirm anti-spoofing is enabled and blocks forged source IPs.
+- Verify the control is applied to prevent forged IP packets from entering the trusted network.
+
+Source: req. 1.4.3 (p. 60)",good,"The answer matches the page's testing procedure: examine vendor documentation and NSC configurations to verify anti-spoofing measures detect and block forged source IP addresses from entering the trusted network. The only issue is the cited page number 'p. 60' does not match the provided page, but the substance is supported and the requirement number 1.4.3 is correct."
+Who needs to be made aware of the information security policy and their responsibilities?,295,"The information security policy and each person’s security responsibilities must be known by all relevant personnel, and also by relevant vendors and business partners.
+
+- The policy must be disseminated to all relevant personnel.
+- It must also be disseminated to relevant vendors and business partners.
+- All personnel must be aware of and acknowledge their information security responsibilities.
+- The policy must clearly define information security roles and responsibilities for all personnel.
+- Security awareness training reinforces this awareness upon hire and at least every 12 months.
+
+Source: req. 12.1.1 (p. 295), 12.1.3 (p. 297), 12.6.3 (p. 315)",bad,"The page says all relevant personnel within the organization, as well as relevant third parties, vendors, and business partners, must be aware of the information security policy and their responsibilities. The answer includes this and is supported. However, it also adds claims about acknowledgment, clearly defined roles for all personnel, and training frequency, and cites requirement numbers/pages not on the provided page. Those extra claims are not supported by the page."
+What are the allowed ways to handle primary functions that need different security levels on the same system component?,70,"Primary functions that need different security levels on the same system component may be handled by keeping only one primary function on the component, isolating the differing functions from each other, or securing all of them to the level required by the highest-security function.
+
+- Only one primary function exists on a system component, or
+- Primary functions with differing security levels on the same system component are isolated from each other, or
+- Primary functions with differing security levels on the same system component are all secured to the level required by the function with the highest security need.
+- For virtualization technologies, the same three options apply.
+
+Source: req. 2.2.3 (p. 70)",good,"The answer matches the page’s listed options for 2.2.3 and correctly states the virtualization-specific three options. However, it cites the source as page 70, while the provided page is page 66. The substance is supported by the page despite the incorrect page citation."
+Which people are allowed to see more than the BIN and last four digits of a PAN?,91,"Only personnel with a legitimate business need can see more than the BIN and last four digits of the PAN.
+
+- A list of roles needing access to more than the BIN and last four digits of the PAN must be documented.
+- Each such role must have a documented legitimate business need.
+- All roles not specifically authorized to see the full PAN must only see masked PANs.
+- Full PAN may be displayed only for roles with a documented business need.
+
+Source: req. 3.4.1 (p. 91)",good,"The answer matches the page: it states that only personnel with a legitimate business need can see more than the BIN and last four digits, and it accurately reflects the documented roles/business need and masking requirements. The cited requirement number is on the provided page, though the page number in the answer is slightly off; that does not affect the substance."
+What do they compare installed patches against when testing 6.3.3?,152,"The installed security patches/updates are compared against the most recent security patch/update information.
+
+- The examiner reviews system components and related software.
+- The comparison is used to verify vulnerabilities are addressed.
+- No additional threshold or timeframe is specified in the testing step itself.
+
+Source: req. 6.3.3 (p. 148)",good,The answer matches the page: testing 6.3.3.b says to compare the list of installed security patches/updates to the most recent security patch/update information. The extra statements are consistent with the testing procedure and do not contradict the page.
+What anti-phishing controls have to be in place for personnel with access to in-scope system components?,136,"Personnel with access to in-scope system components must be protected by processes and automated anti-phishing mechanisms, and they must also receive security awareness training about phishing and social engineering.
+
+- Anti-phishing controls are required to **detect and protect personnel against phishing attacks**.
+- The requirement is focused on **personnel with access to system components in-scope for PCI DSS**.
+- It is a **best practice until 31 March 2025**; after that, it is required and must be fully considered during a PCI DSS assessment.
+- This is **separate from security awareness training**; meeting one does not satisfy the other.
+- Training must include awareness of **phishing and related attacks** and **social engineering**.
+
+Source: req. 5.4.1 (p. 136); req. 12.6.3.1 (p. 316)",bad,"The answer correctly states that processes and automated mechanisms must be in place to detect and protect personnel with access to in-scope system components against phishing attacks, and it correctly notes this is separate from security awareness training. However, it goes beyond the page by asserting that personnel 'must also receive security awareness training about phishing and social engineering,' which is not part of the provided page. It also cites page/requirement references not present on the page. Because it includes unsupported claims, it should be marked bad."
+"When do stored-account-data keys have to be retired, replaced, or destroyed under 3.7.5?",109,"Keys used to protect stored account data must be retired, replaced, or destroyed when they reach the end of their defined cryptoperiod, when their integrity has been weakened, or when they are suspected or known to be compromised.
+
+- End of defined cryptoperiod
+- Integrity weakened
+  - Includes when personnel with knowledge of a cleartext key component leaves the company, or leaves the role for which the key component was known
+- Suspected or known compromise
+- Retired or replaced keys are not used for encryption operations
+- If retired or replaced keys must be kept, they must be securely archived
+
+Source: req. 3.7.5 (p. 109)",good,"The answer matches the page’s 3.7.5 conditions for retirement/replacement/destruction of keys used to protect stored account data: end of cryptoperiod, weakened integrity (including personnel departure scenarios), and suspected/known compromise. It also correctly states that retired or replaced keys are not used for encryption operations and may be securely archived if retained. The only issue is the page number cited as p. 109 rather than the provided page 105, but the substantive content is supported by the page."
+What do we have to do with vulnerabilities that aren’t classified as high-risk or critical?,272,"Vulnerabilities that are not high-risk or critical must still be addressed, but on a timeframe based on the entity’s risk analysis rather than a fixed urgent deadline.
+
+- They are addressed based on the risk defined in the entity’s targeted risk analysis.
+- The targeted risk analysis must follow Requirement 12.3.1.
+- Rescans are conducted as needed.
+- For patching, “all other applicable security patches/updates” are installed within an appropriate timeframe determined by the entity’s assessment of the criticality of the risk to the environment.
+- The timeframe for lower-risk vulnerabilities is subject to a risk analysis that includes, at minimum:
+  - assets being protected
+  - threats
+  - likelihood and/or impact of a threat being realized
+- This approach is a best practice until 31 March 2025, after which it will be required and must be fully considered during a PCI DSS assessment.
+
+Source: req. 11.3.1.1 (p. 268); req. 6.3.3 (p. 148)",bad,"The answer correctly states that vulnerabilities not ranked high-risk or critical are addressed based on the entity’s targeted risk analysis and that rescans are conducted as needed. However, it also adds patching language from a different requirement not shown on the page and cites requirement 6.3.3, which is not on the provided page. Because it includes unsupported claims and an unsupported citation, it is not fully supported by the page."
+What evidence should be reviewed and who should be interviewed for requirement 9.5.1.2.1?,237,"The assessor should review the documented results of periodic POI device inspections and interview personnel to confirm the inspections are being performed at the frequency and with the type defined in the entity’s targeted risk analysis.
+
+- Review documented results of periodic device inspections.
+- Interview personnel responsible for POI device inspections.
+- Verify the inspection frequency and inspection type match the entity’s targeted risk analysis.
+- Verify the targeted risk analysis was performed in accordance with all elements of Requirement 12.3.1.
+
+Source: req. 9.5.1.2.1 (p. 237)",good,"The answer matches the page: it says to examine documented results of periodic device inspections and interview personnel, and it also correctly notes the targeted risk analysis and Requirement 12.3.1. The only minor issue is the cited page number, which does not matter because the substance is supported by the provided page."
+How do you test compliance with 12.8.2 a and b?,320,"Written agreements with all TPSPs must be defined, maintained, and reviewed to confirm they include the required TPSP acknowledgment about protecting account data and anything that could affect the CDE.
+
+- **12.8.2.a:** Examine policies and procedures to verify processes are defined to maintain written agreements with all TPSPs in accordance with all required elements.
+- **12.8.2.b:** Examine the written agreements with TPSPs to verify they are maintained in accordance with all required elements.
+- The agreements must cover **all TPSPs** with which account data is shared or that could affect the security of the CDE.
+- The agreements must include TPSP acknowledgment that the TPSP is responsible for:
+  - account data the TPSP possesses, stores, processes, or transmits on behalf of the entity, or
+  - the security of the entity’s cardholder data and/or sensitive authentication data to the extent the TPSP could impact it.
+
+Source: req. 12.8.2 (p. 320)",good,"The answer accurately restates the testing procedures for 12.8.2.a and 12.8.2.b from the page and includes the required agreement contents and scope. The only issue is the source citation page number appears inconsistent with the provided page (the page shown is 316, not 320), but the substantive content is supported by the page."
+How do assessors verify A3.1.1 compliance?,352,"Assessors verify A3.1.1 by checking documentation and governance records to confirm executive management has assigned accountability, defined the PCI DSS compliance program charter, and provided at least annual updates on PCI DSS initiatives and remediation.
+
+- Examine documentation to verify executive management has assigned overall accountability for maintaining PCI DSS compliance.
+- Examine the PCI DSS charter to verify it outlines the conditions under which the PCI DSS compliance program is organized.
+- Examine executive management and board of directors meeting minutes and/or presentations to ensure PCI DSS compliance initiatives and remediation activities are communicated at least once every 12 months.
+
+Source: req. A3.1.1 (p. 352)",good,"The answer matches the page’s testing procedures for A3.1.1: it lists the three examination steps and the substance of each is supported by the page. The only issue is the page number citation, which says page 348 rather than 352, but that does not affect the correctness of the compliance verification description."
+"Does the monitoring process have to cover each TPSP individually, or can it be general?",323,"1. The monitoring process has to cover the PCI DSS compliance status of each TPSP, and when a TPSP offers multiple services, the monitoring should be specific to the services delivered to the entity and in scope for the entity’s PCI DSS assessment.
+
+- Monitor TPSPs’ PCI DSS compliance status at least once every 12 months.
+- Verify the PCI DSS compliance status of each TPSP at least once every 12 months.
+- If the TPSP offers a variety of services, the monitored status should be specific to:
+  - the services delivered to the entity, and
+  - the services in scope for the entity’s PCI DSS assessment.
+
+Source: req. 12.8.4 (p. 319)",good,"The answer correctly says the monitoring must cover each TPSP at least every 12 months, and it also captures the guidance that when a TPSP offers multiple services, the monitored status should be specific to the services delivered and in scope. This is supported by the page."
+What has to be in place for manual cleartext key-management operations under PCI DSS 3.7.6?,110,"Manual cleartext key-management operations must be governed by policies and procedures that use split knowledge and dual control so no single person can perform the operation alone.
+
+- Applies to manual key-management operations performed by personnel.
+- Examples of manual operations include:
+  - key generation
+  - transmission
+  - loading
+  - storage
+  - destruction
+- Split knowledge means key components are separately held so each person knows only their own component.
+- Dual control means two or more people must authenticate the use of a key or perform the key-management function.
+- A single person cannot access or use another person’s authentication factor.
+- A simple two-part split of a key does not meet the requirement.
+- If key components or key shares are used, they must be generated either:
+  - using an approved random number generator within a secure cryptographic device, such as an HSM or PTS-approved POI device, or
+  - according to ISO 19592 or an equivalent industry standard for secret key shares.
+
+Source: req. 3.7.6 (p. 110)",bad,"The answer correctly states that manual cleartext key-management operations must be governed by policies and procedures using split knowledge and dual control, and it correctly defines those concepts in line with the page. However, it includes several extra claims not supported by this page, such as examples of manual operations (key generation, transmission, loading, storage, destruction), and it cites page 110 while the provided page is 106. Since the evaluation requires every claim to be supported by the page, the answer is not fully supported."
+What controls are required if a system or application account can be used to log in interactively?,210,"If a system or application account can be used interactively, it must be tightly controlled so interactive use is only allowed for exceptional, approved, and attributable cases, and its passwords/passphrases must not be hard coded.
+
+- Prevent interactive use unless needed for an exceptional circumstance.
+- Limit interactive use to the time needed for that exceptional circumstance.
+- Document the business justification for interactive use.
+- Get explicit management approval for interactive use.
+- Confirm the individual user’s identity before granting access to the account.
+- Ensure every action taken is attributable to an individual user.
+- Do not hard code passwords/passphrases in scripts, configuration/property files, or bespoke/custom source code.
+- Stored passwords/passphrases must be encrypted per Requirement 8.3.2.
+- Access should also be limited to the least privileges necessary and only to the systems, applications, or processes that specifically require the account’s use.
+
+Source: req. 8.6.1 (p. 210), req. 8.6.2 (p. 211), req. 7.2.5 (p. 173)",bad,"The answer correctly lists the interactive-use controls from Requirement 8.6.1 that are on the page. However, it also adds several claims not supported by the provided page, including hardcoded password prohibitions, encryption of stored passwords, least privilege limitations, and citations to requirements/pages not on this page. The page only supports 8.6.1 and its listed controls, plus the note that this is a best practice until 31 March 2025. Therefore the answer is not fully supported by the page."
+"What inventory details are needed for HSMs, KMS, and other secure cryptographic devices?",101,"The inventory for HSMs, KMSs, and other secure cryptographic devices must identify the devices used for key management and describe where they are and what kind they are.
+
+- Include an inventory of any HSMs, KMSs, and other secure cryptographic devices (SCDs) used for key management.
+- Record the type of device.
+- Record the location of each device.
+- This inventory supports meeting Requirement 12.3.4.
+
+Source: req. 3.6.1.1 (p. 101)",good,"The answer correctly states that the inventory must include HSMs, KMSs, and other SCDs used for key management, and that it must include type and location. It also correctly notes the support for Requirement 12.3.4. However, it cites the wrong page number (p. 101 instead of the provided p. 97). Since the substance is supported by the page and the question is answered, the answer is good."
+"For A1.2.1, who is allowed to review a customer’s logs?",343,"Only the owning customer is allowed to review that customer’s logs.
+
+- Audit log capability must be enabled for each customer’s environment.
+- Logs must be available for review only by the owning customer.
+- Log locations must be clearly communicated to the owning customer.
+
+Source: req. A1.2.1 (p. 343)",good,"The answer correctly states that only the owning customer may review a customer's logs, which is explicitly supported by the page. The added bullet points are also consistent with the requirement. The page number citation is slightly off, but that does not affect correctness of the substance."
+What does requirement 10.4.3 say about exceptions and anomalies in the review process?,255,"Requirement 10.4.3 says that exceptions and anomalies found during the review process must be addressed.
+
+- Processes must be defined for addressing exceptions and anomalies identified during the review process.
+- When exceptions and anomalies are identified, they must be addressed.
+- The guidance notes that entities should consider how to:
+  - record log review activities,
+  - rank and prioritize exceptions and anomalies,
+  - define procedures to report and escalate them, and
+  - assign responsibility for investigation and remediation.
+
+Source: req. 10.4.3 (p. 255)",good,"The answer correctly states that exceptions and anomalies identified during the review process are addressed, and it includes guidance points that are supported by the page. However, it cites the source page as p. 255, while the provided page is 251. Since the substance is correct and supported by the page, the answer is overall good despite the citation error."
+How do you check that anti-malware is set up correctly for removable electronic media under 5.3.3?,133,"Anti-malware for removable electronic media must be verified to either auto-scan when the media is inserted/connected/mounted, or continuously analyze behavior at that time.
+
+- Check anti-malware configurations to confirm at least one of the required protections is enabled.
+- Check system components with removable media connected to confirm the solution is enabled as configured.
+- Check logs and scan results to confirm the solution is operating as required.
+- This requirement is a best practice until 31 March 2025, after which it is required.
+
+Source: req. 5.3.3 (p. 133)",bad,"The answer matches the page’s requirement and testing procedures for 5.3.3, including the two allowed protections and the three verification methods. However, it cites the wrong page number (“p. 133” instead of the provided page 129), which is an unsupported citation from the page. Since the substance is correct but it includes an incorrect page reference, mark it bad under the evaluation rules."
+What should the reviewer check in NSC settings for 1.2.5?,51,"1. The reviewer should check that the NSC settings allow only services, protocols, and ports that have been approved and have a defined business need.  
+2. Specifics:
+- Verify that only approved services, protocols, and ports are in use.
+- Confirm the allowed items match the documented list of permitted services, protocols, and ports.
+- Ensure each permitted item has business justification and approval.
+- NSC configuration settings should not include unapproved traffic allowances.
+
+Source: req. 1.2.5 (p. 51)",good,"The answer is consistent with the page’s testing procedure for 1.2.5.b: examine configuration settings for NSCs to verify that only approved services, protocols, and ports are in use. It also correctly reflects the requirement that allowed services, protocols, and ports are identified, approved, and have a defined business need. The extra details about matching the documented list and business justification/approval are supported by 1.2.5.a and the requirement text. The cited page number is different from the provided page, but that does not affect substance here."
+What should the awareness program teach personnel about their responsibilities for cardholder data protection?,313,"Personnel should be taught that they have a role in protecting cardholder data and must understand the entity’s information security policies and procedures.
+
+- The awareness program must make all personnel aware of the entity’s information security policy and procedures.
+- It must explain personnel’s role in protecting cardholder data.
+- Personnel should also understand their responsibility for the operation of relevant security controls and be able to access assistance and guidance when required.
+
+Source: req. 12.6.1 (p. 313)",good,"The answer matches the page: it states that the awareness program must make personnel aware of the entity’s information security policy and procedures and their role in protecting cardholder data. It also includes the customized approach objective about responsibility for relevant security controls and access to assistance/guidance, which is on the page. The citation page number is slightly off, but that does not affect the substantive correctness."
+"Does the annual inventory requirement apply to all electronic media, or only media containing cardholder data?",229,"Inventory applies only to electronic media containing cardholder data, not all electronic media.
+
+- Requirement 9.4.5 covers “all electronic media with cardholder data.”
+- Requirement 9.4.5.1 says inventories of electronic media with cardholder data must be conducted at least once every 12 months.
+- The context does not extend this annual inventory requirement to electronic media that does not contain cardholder data.
+
+Source: req. 9.4.5 (p. 228); req. 9.4.5.1 (p. 229)",good,"The page states that inventories are required for electronic media with cardholder data at least once every 12 months. The answer correctly says the annual inventory applies only to media containing cardholder data. However, it cites requirement 9.4.5 and page numbers not shown on the provided page, which are unsupported by the page excerpt, but the substantive answer to the question is correct and supported by the page itself."
+What does 7.1.2 require for roles and responsibilities in Requirement 7?,167,"Roles and responsibilities for all activities in Requirement 7 must be documented, assigned, and understood by the personnel who perform them.
+
+- Descriptions of roles and responsibilities for performing Requirement 7 activities must be documented and assigned.
+- Personnel with responsibility for Requirement 7 activities must be able to verify that the roles and responsibilities are assigned and understood.
+- Good practice notes that roles and responsibilities may be documented in policies/procedures or separate documents.
+- A RACI matrix is given as an example method for documenting responsibilities.
+- The customized approach objective says day-to-day responsibilities for all Requirement 7 activities are allocated and personnel are accountable for successful, continuous operation.
+
+Source: req. 7.1.2 (p. 167)",good,"The answer correctly states that Requirement 7.1.2 requires roles and responsibilities for performing activities in Requirement 7 to be documented, assigned, and understood. It also includes supporting guidance from the page: good practice on documenting roles/responsibilities, the RACI example, and the customized approach objective. The only issue is the cited page number differs from the provided page, but the substantive content matches the page and answers the question."
+How do you check that card-data storage isn’t reachable from an untrusted network?,61,"Card-data storage is checked by verifying it is documented and technically controlled so system components storing cardholder data cannot be directly reached from untrusted networks.
+
+- Examine the data-flow diagram and network diagram to confirm the storage components are documented as not directly accessible from untrusted networks.
+- Examine NSC configurations to confirm controls are implemented so those storage components are not directly accessible from untrusted networks.
+- Related network boundary checks: NSCs should be implemented between trusted and untrusted networks, and inbound traffic from untrusted to trusted networks should be restricted to authorized public services, stateful responses, and denied otherwise.
+
+Source: req. 1.4.4 (p. 61)",bad,"The answer correctly states the core testing steps from requirement 1.4.4: examine the data-flow and network diagrams, and examine NSC configurations to verify stored cardholder data is not directly accessible from untrusted networks. However, it adds extra claims about inbound traffic restrictions and cites page 61, which are not supported by the provided page. Because of the unsupported extra detail/citation, it is not fully supported by the page."
+What should account access be limited to according to 7.2.5?,173,"Account access should be limited to the least privileges necessary and only to the systems, applications, or processes that specifically require the account’s use.
+
+- Based on the least privileges necessary for the operability of the system or application.
+- Limited to the systems, applications, or processes that specifically require their use.
+
+Source: req. 7.2.5 (p. 173)",good,"The answer matches the requirement text on the page: access for application and system accounts is based on the least privileges necessary and limited to systems, applications, or processes that specifically require their use. The cited requirement number is correct, though the page number cited by the assistant differs from the provided page and is not relevant to correctness here."
+What do interviewees need to show for 10.1.2 compliance?,242,"Interviewees need to verify that the roles and responsibilities for performing Requirement 10 activities are assigned as defined and understood.
+
+- Personnel responsible for Requirement 10 activities should be able to explain their assigned roles and responsibilities.
+- The testing procedure specifically checks that these responsibilities are understood, not just documented.
+- The roles and responsibilities must already be documented and assigned.
+
+Source: req. 10.1.2 (p. 242)",good,"The answer matches the page: 10.1.2.b says to interview personnel with responsibility for Requirement 10 to verify that roles and responsibilities are assigned as defined and are understood. The added point that they must be documented and assigned is also supported by 10.1.2 and 10.1.2.a. The cited page number is off, but the substance is correct and supported by the page provided."
+What changes trigger an external pen test again?,281,"An external penetration test must be repeated after any significant infrastructure or application upgrade or change.
+
+- Perform it per the entity’s defined methodology.
+- Perform it at least once every 12 months.
+- The tester must be a qualified internal resource or qualified external third party.
+- Organizational independence of the tester must exist.
+
+Source: req. 11.4.3 (p. 277)",good,"The answer correctly states that an external penetration test is repeated after any significant infrastructure or application upgrade or change, which is explicitly listed on the page. The extra bullets are also supported by the page. The only minor issue is that the question asks what changes trigger it again, and the answer does answer that directly while adding related requirements."
+What do assessors review to confirm 6.3.3 is being followed?,152,"Assessors review policies, procedures, system components, and installed patch records to confirm that applicable security patches and updates are being installed correctly.
+
+- They verify procedures are defined for addressing vulnerabilities by installing applicable patches/updates.
+- They examine system components and related software.
+- They compare the list of installed security patches/updates to the most recent patch/update information.
+- They confirm critical vulnerability patches/updates are installed within one month of release.
+- They confirm all other applicable patches/updates are installed within a time frame based on the entity’s risk assessment under 6.3.1.
+
+Source: req. 6.3.3 (p. 152)",good,"The answer is mostly supported by the page: assessors examine policies/procedures and system components/installed patches, and it mentions the timing requirements in 6.3.3. However, it cites the wrong page number (p. 152 instead of the provided page 148). The citation error does not affect the substance of the answer, and all substantive claims match the page."
+What has to be true for internal vulnerability scans under 11.3.1.2?,273,"Internal vulnerability scans under 11.3.1.2 must be performed with authenticated scanning, with enough privilege for systems that accept credentials.
+
+- Systems that cannot accept credentials for authenticated scanning must be documented.
+- Systems that do accept credentials must be scanned using sufficient privileges to conduct a thorough scan.
+- If the scanning accounts can also be used for interactive login, they must be managed according to Requirement 8.2.2.
+- This requirement does not apply to system components that cannot accept credentials for scanning.
+- Examples of systems that may not accept credentials include some network and security appliances, mainframes, and containers.
+- This requirement is a best practice until 31 March 2025; after that, it is required and must be fully considered during a PCI DSS assessment.
+
+Source: req. 11.3.1.2 (p. 273)",good,"The answer matches the page: it states authenticated scanning is required for internal scans, notes documentation for systems unable to accept credentials, sufficient privileges for systems that do, the 8.2.2 condition for interactive-login accounts, and the applicability note about systems that cannot accept credentials. The extra statements about examples and best-practice timing are also supported by the page. The cited page number is wrong, but the substance is supported."
+What should the team do if PAN is discovered outside the CDE?,337,"Cleartext PAN discovered outside the CDE should be analyzed and remediated by retrieving it, securely deleting it, and/or migrating it into the currently defined CDE as applicable.
+
+- Determine what to do with the PAN if it is found outside the CDE.
+- Identify how the data ended up outside the CDE.
+- Identify the source of the data.
+- Determine whether sensitive authentication data or track data is stored with the PAN.
+- Remediate the data leak or process gaps that caused the PAN to be outside the CDE.
+- Address contributory factors such as business processes, user behavior, or improper system configurations to prevent recurrence.
+
+Source: req. A3.2.5.2 (p. 364); req. 12.10.7 (p. 337)",bad,"The answer is broadly consistent with the page: it says PAN found outside the CDE should be analyzed, and incident response should include retrieval, secure deletion, and/or migration, plus identifying the source and remediating gaps. However, it adds 'track data' which is not stated on the page, and it cites requirement A3.2.5.2 and page 364, which are not on the provided page. Since it includes unsupported/correctness-uncertain claims and incorrect citations, it should be marked bad."

@@ -65,7 +65,7 @@ LLM Zoomcamp modules; steps 8–11 cover what the course did not.
 - [x] 4 — Ground truth
 - [x] 5 — Search evaluation
 - [x] 6 — Vector & hybrid search
-- [ ] 7 — Answer evaluation
+- [x] 7 — Answer evaluation
 - [ ] 8 — Interface
 - [ ] 9 — Feedback & monitoring
 - [ ] 10 — Ingestion pipeline
@@ -186,6 +186,66 @@ parameter. The mild drift downwards is consistent with the vector retriever bein
 weaker of the two: the more candidates it contributes, the more noise enters the
 merge. The application uses 5, the cheapest of the tied options.
 
+## Answer evaluation
+
+Retrieval evaluation asks whether the right page reaches the model. This asks what the
+model does with it. Three prompts were compared on the same 100 questions, with
+retrieval held fixed at the routed hybrid, so any difference comes from the prompt
+alone:
+
+- **minimal** — "answer the question using the provided context", nothing more.
+- **strict** — answer only from the context, refuse when unsure, cite a requirement
+  number after every claim.
+- **structured** — the same constraints, but the citations go on one `Source:` line at
+  the end, and the answer follows a fixed shape.
+
+Three things are measured, because "a good answer" in compliance is not one property:
+
+| Prompt | Good | Citation correct | Citation wrong | No citation | Refused |
+|---|---|---|---|---|---|
+| minimal | 0.78 | 0.76 | 0.03 | 0.21 | 0.00 |
+| **structured** | 0.74 | **0.97** | 0.02 | 0.01 | 0.01 |
+| strict | 0.66 | 0.96 | 0.02 | 0.02 | 0.02 |
+
+**Good** is the verdict of a judge model that sees the question, the answer, and the
+source page, and decides whether the answer follows from that page.
+**Citation correctness** uses no LLM at all: requirement numbers are pulled out of the
+answer with a regex and checked against the numbers on the correct page. **Refused**
+counts answers of "I don't know" to questions that are answerable by construction.
+
+### Reading the table honestly
+
+At n = 100 the standard error of a proportion is ~4 points, so 0.78 against 0.74 means
+nothing on its own. All three prompts answered the *same* questions, though, which
+allows a paired comparison — count only the questions where two prompts disagreed:
+
+| Comparison | Wins : losses | p (two-sided binomial) |
+|---|---|---|
+| minimal vs structured | 11 : 7 | 0.48 — indistinguishable |
+| structured vs strict | 13 : 5 | 0.10 — suggestive |
+| minimal vs strict | 13 : 1 | **0.002** — real |
+
+So the answer-quality gap between `minimal` and `structured` was noise, while `strict`
+really is worse.
+
+### Why `structured` is used
+
+With answer quality tied, the decision falls to the second column: **0.97 against 0.76
+on citations.** `minimal` leaves one answer in five with no source at all — for a
+compliance question, an answer nobody can verify against the standard is worth little,
+even when it happens to be right.
+
+`strict` is the more interesting failure. It asked for a citation after every
+individual claim and scored *worse on substance* than the prompt with no instructions
+at all. Reading its answers shows why: the demand for inline citations everywhere
+fragments the answer into cautious pieces, and the model says less. Moving the
+citations to a single line at the end keeps them verifiable without distorting the
+answer — a reminder that prompt instructions interact, and that an instruction about
+form can quietly damage content.
+
+A single metric would have selected `minimal`. Three metrics plus a paired test
+selected `structured`.
+
 ## Technologies
 
 | Area | Choice | Why |
@@ -225,6 +285,7 @@ Then run the notebook cells top to bottom.
 | 4 — Ground truth | yes, 261 calls | 2–4 min | ~$0.40 |
 | 5 — Search evaluation | no | ~1 min | free |
 | 6 — Vector & hybrid search | no | a few min (downloads two ~100 MB models) | free |
+| 7 — Answer evaluation | yes, ~600 calls | 5–10 min | ~$2 |
 
 ### Skip step 4 unless you mean it
 

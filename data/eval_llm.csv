@@ -1,0 +1,4 @@
+prompt,good,citation correct,citation wrong,no citation,refused
+minimal,0.78,0.76,0.03,0.21,0.0
+structured,0.74,0.97,0.02,0.01,0.01
+strict,0.66,0.96,0.02,0.02,0.02
