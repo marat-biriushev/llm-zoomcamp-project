@@ -10,6 +10,11 @@ PDF_PATH = 'data/pci-dss-v4_0_1.pdf'
 # Requirement numbers look like "1.2.3", "12.10.7" or "A1.1.1"
 REQ_ID_PATTERN = re.compile(r'^(\d{1,2}\.\d{1,2}(?:\.\d{1,2})*|A\d\.\d[\d.]*)\s', re.MULTILINE)
 
+# Every page footer carries the number printed in the document, e.g. "Page 198".
+# It differs from the PDF page index by the four pages of front matter, so a
+# citation of "page 202" would send the reader to the wrong place in the document.
+PRINTED_PAGE_PATTERN = re.compile(r'^Page (\d+)\s*$', re.MULTILINE)
+
 
 def download_pdf(url=PDF_URL, path=PDF_PATH):
     import os
@@ -43,9 +48,14 @@ def load_documents(path=PDF_PATH):
             continue
 
         req_ids = sorted(set(REQ_ID_PATTERN.findall(text)))
+        printed = PRINTED_PAGE_PATTERN.search(text)
 
         documents.append({
+            # 'page' is the PDF page index and doubles as the document id
             'page': page_number,
+            # 'printed_page' is what the document itself calls this page — the number
+            # to cite, and the one a reader will look for
+            'printed_page': int(printed.group(1)) if printed else page_number,
             'req_ids': ', '.join(req_ids),
             'requirement': req_ids[0].split('.')[0] if req_ids else '',
             'text': text.strip(),

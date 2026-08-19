@@ -66,7 +66,7 @@ LLM Zoomcamp modules; steps 8–11 cover what the course did not.
 - [x] 5 — Search evaluation
 - [x] 6 — Vector & hybrid search
 - [x] 7 — Answer evaluation
-- [ ] 8 — Interface
+- [x] 8 — Interface
 - [ ] 9 — Feedback & monitoring
 - [ ] 10 — Ingestion pipeline
 - [ ] 11 — Docker & docs
@@ -246,6 +246,47 @@ form can quietly damage content.
 A single metric would have selected `minimal`. Three metrics plus a paired test
 selected `structured`.
 
+## The application
+
+```bash
+uv run streamlit run app.py
+```
+
+A chat interface over the same `RAGHybrid` the notebook evaluated — the same
+retrieval, the same prompt, no separate code path that could drift from what was
+measured.
+
+![A plain-language question answered via hybrid retrieval](screenshots/app1.png)
+
+The answer follows the structure the prompt asks for: one sentence of plain language,
+the specifics as bullets, and a `Source:` line with the requirement numbers.
+
+![A question quoting a requirement number, routed to text search](screenshots/app2.png)
+
+Note the difference in the Sources header between the two: the first question was
+answered *via hybrid*, the second *via text (requirement number)* — the router in
+action.
+
+Every answer comes with a collapsible **Sources** panel listing the pages that were
+retrieved, the requirement numbers on them, and which branch of the router handled the
+question. That last detail matters when debugging: an answer that looks wrong is
+usually a retrieval problem, and knowing whether text search or fusion produced the
+context points straight at the cause.
+
+The indexes are built once per server process behind `@st.cache_resource`. Streamlit
+re-runs the whole script on every interaction, so without the cache all 261 pages
+would be re-embedded on every question.
+
+### Two page numbers
+
+The PDF has four pages of front matter, so its page index runs four ahead of the
+number printed in the document: PDF page 202 is "Page 198" of the standard. Citing the
+PDF index would send a reader to the wrong place, so `load_documents` parses the
+printed number out of each page footer, and that is the number quoted in answers. The
+Sources panel shows both.
+
+Screenshot `app1.png` above predates this fix and still cites the PDF index.
+
 ## Technologies
 
 | Area | Choice | Why |
@@ -255,7 +296,7 @@ selected `structured`.
 | Vector search | sentence-transformers + `minsearch.VectorSearch` | embeddings run locally, so retrieval costs nothing and needs no API key |
 | Fusion | Reciprocal Rank Fusion, ~12 lines in `rag_helper.py` | text and vector scores are on incomparable scales, so positions are merged instead |
 | LLM | OpenAI | — |
-| Interface | Streamlit *(step 8)* | — |
+| Interface | Streamlit | chat UI over the same code path the notebook evaluated |
 | Monitoring | Postgres + Grafana *(step 9)* | — |
 
 ## Running it from scratch

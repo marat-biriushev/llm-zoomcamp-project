@@ -62,7 +62,9 @@ class RAGBase:
         lines = []
 
         for doc in search_results:
-            lines.append(f"[requirement {doc['req_ids']}, page {doc['page']}]")
+            # cite the page number printed in the standard, not the PDF page index
+            page = doc.get('printed_page', doc['page'])
+            lines.append(f"[requirement {doc['req_ids']}, page {page}]")
             lines.append(doc['text'])
             lines.append('')
 
