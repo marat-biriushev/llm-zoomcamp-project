@@ -50,7 +50,7 @@ LLM Zoomcamp modules; steps 8–11 cover what the course did not.
 | 3 | First RAG | context → prompt → OpenAI → answer with citations | Retrieval flow |
 | 4 | Ground truth | LLM-generated questions for each page | — |
 | 5 | Search evaluation | hit rate and MRR for text search | Retrieval evaluation |
-| 6 | Vector & hybrid search | embeddings in Qdrant, re-measured against the baseline | Retrieval evaluation, hybrid search |
+| 6 | Vector & hybrid search | local embeddings, RRF fusion, routing by question type | Retrieval evaluation, hybrid search |
 | 7 | Answer evaluation | several prompts compared with LLM-as-a-judge | LLM evaluation |
 | 8 | Interface | Streamlit chat UI | Interface |
 | 9 | Feedback & monitoring | Postgres + Grafana dashboard | Monitoring |
@@ -64,7 +64,7 @@ LLM Zoomcamp modules; steps 8–11 cover what the course did not.
 - [x] 3 — First RAG
 - [x] 4 — Ground truth
 - [x] 5 — Search evaluation
-- [ ] 6 — Vector & hybrid search
+- [x] 6 — Vector & hybrid search
 - [ ] 7 — Answer evaluation
 - [ ] 8 — Interface
 - [ ] 9 — Feedback & monitoring
@@ -85,11 +85,11 @@ meaningless.
 
 | Configuration | Hit rate | MRR |
 |---|---|---|
-| no boost | 0.962 | 0.895 |
-| `req_ids` × 0.5 | 0.962 | 0.894 |
-| `req_ids` × 3 | 0.962 | 0.895 |
-| `req_ids` × 10 | 0.962 | 0.895 |
-| text only (`req_ids` × 0) | 0.880 | 0.739 |
+| no boost | 0.958 | 0.890 |
+| `req_ids` × 0.5 | 0.958 | 0.890 |
+| `req_ids` × 3 | 0.958 | 0.890 |
+| `req_ids` × 10 | 0.958 | 0.890 |
+| text only (`req_ids` × 0) | 0.863 | 0.718 |
 
 Boosting the requirement-number field turned out to be irrelevant, while *having*
 the field is decisive. A requirement number matches exactly one page, so any positive
@@ -103,13 +103,59 @@ and those are found trivially. Measured separately:
 
 | Question type | Configuration | Hit rate | MRR |
 |---|---|---|---|
-| mentions a requirement number | no boost | 0.975 | 0.953 |
-| mentions a requirement number | text only | 0.840 | 0.694 |
-| plain language | no boost | 0.942 | 0.809 |
-| plain language | text only | 0.942 | 0.806 |
+| mentions a requirement number | no boost | 0.977 | 0.958 |
+| mentions a requirement number | text only | 0.822 | 0.675 |
+| plain language | no boost | 0.928 | 0.788 |
+| plain language | text only | 0.925 | 0.783 |
 
-**The honest headline number is the plain-language one: hit rate 0.942, MRR 0.809.**
-That is what a user who does not already know the requirement number experiences.
+Two things become visible only after splitting. Dropping `req_ids` costs almost
+nothing on plain-language questions (0.788 → 0.783) and is catastrophic on numbered
+ones (0.958 → 0.675) — the field exists entirely to serve one kind of question. And
+the plain-language figure, **hit rate 0.928 / MRR 0.788**, is the honest headline for
+text search: it is what a user who does not already know the requirement number
+experiences. The aggregate 0.958 is flattered by the easy half of the set.
+
+### Vector and hybrid search
+
+Embeddings are computed locally with `sentence-transformers`, so retrieval costs
+nothing and needs no API key. Two models were compared: `all-MiniLM-L6-v2`
+(general purpose, 256-token window) and `multi-qa-MiniLM-L6-cos-v1` (trained for
+question-to-passage retrieval, 512-token window).
+
+The window matters here. Pages are 394 tokens on average and 687 at most, so a
+256-token model silently discards the tail of three quarters of them — and the tail
+is where the testing procedures and guidance live.
+
+Hybrid search merges the text and vector result lists with **Reciprocal Rank Fusion**.
+Their scores are on incomparable scales, so RRF combines positions instead:
+`score(doc) = Σ 1 / (60 + rank)`.
+
+| Approach | MRR | Hit rate | MRR, plain questions | MRR, numbered questions |
+|---|---|---|---|---|
+| **routed (text \| hybrid)** | **0.897** | **0.969** | **0.804** | **0.958** |
+| text (TF-IDF) | 0.890 | 0.958 | 0.788 | 0.958 |
+| hybrid (RRF) | 0.748 | 0.951 | 0.803 | 0.712 |
+| vector (multi-qa) | 0.522 | 0.679 | 0.702 | 0.404 |
+| vector (MiniLM) | 0.508 | 0.671 | 0.694 | 0.386 |
+
+### Why the application routes instead of picking one retriever
+
+The two right-hand columns tell the real story: **the best retriever depends on the
+question.**
+
+- A question quoting a requirement number is an exact-match problem. TF-IDF nails it
+  (MRR 0.958); embeddings are nearly useless, because `8.3.6` carries no meaning in
+  vector space (MRR 0.404). Fusion actively *hurts* here — mixing in the vector
+  ranking drags the one exactly matching page down, costing a quarter of the MRR
+  (0.958 → 0.712).
+- A plain-language question is a semantic problem, and there hybrid beats text search
+  (0.803 against 0.788).
+
+So the application detects a requirement number in the question and skips fusion when
+it finds one. That takes the better number from each column and beats every single
+retriever overall. The detection is a regular expression tight enough not to fire on
+"PCI DSS 4.0.1" or "3.50 dollars"; it is verified against all 351 requirement numbers
+in the standard.
 
 ### Number of retrieved pages
 
@@ -123,33 +169,74 @@ Hit rate rises mechanically with more results, so it cannot justify the choice o
 own. MRR is flat, meaning the extra pages only pile up at the bottom of the list while
 costing tokens and diluting the context. The application retrieves 5.
 
+### Fusion candidates
+
+How many candidates each retriever hands to the fusion step, measured on
+plain-language questions:
+
+| `candidates` | Hit rate | MRR |
+|---|---|---|
+| 5 | 0.961 | 0.807 |
+| 10 | 0.957 | 0.803 |
+| 20 | 0.952 | 0.801 |
+| 30 | 0.957 | 0.803 |
+
+A spread of 0.006 MRR with no monotone trend — this is noise, not a tunable
+parameter. The mild drift downwards is consistent with the vector retriever being the
+weaker of the two: the more candidates it contributes, the more noise enters the
+merge. The application uses 5, the cheapest of the tied options.
+
 ## Technologies
 
 | Area | Choice | Why |
 |------|--------|-----|
 | PDF parsing | PyMuPDF | reads page text directly, no OCR needed |
 | Text search | minsearch | in-memory TF-IDF, no infrastructure; serves as the retrieval baseline |
-| Vector search | Qdrant *(step 6)* | stores dense and sparse vectors in one collection, so hybrid search needs no extra service |
+| Vector search | sentence-transformers + `minsearch.VectorSearch` | embeddings run locally, so retrieval costs nothing and needs no API key |
+| Fusion | Reciprocal Rank Fusion, ~12 lines in `rag_helper.py` | text and vector scores are on incomparable scales, so positions are merged instead |
 | LLM | OpenAI | — |
 | Interface | Streamlit *(step 8)* | — |
 | Monitoring | Postgres + Grafana *(step 9)* | — |
 
-## Running it so far
+## Running it from scratch
 
-Requires [uv](https://docs.astral.sh/uv/) and an OpenAI API key.
+Requires [uv](https://docs.astral.sh/uv/) and an OpenAI API key. Everything else —
+Python itself, the dependencies, the source PDF — is fetched automatically.
 
 ```bash
 git clone <this-repo>
 cd llm-zoomcamp-project
 
 cp .env.example .env      # then put your OPENAI_API_KEY in it
-uv sync
+uv sync                   # installs Python 3.12 and every dependency from uv.lock
 
 uv run jupyter notebook rag.ipynb
 ```
 
-Run the cells top to bottom. Step 1 downloads the standard and turns it into 261
-documents.
+Then run the notebook cells top to bottom.
+
+### What each step costs
+
+| Step | Needs the API? | Time | Cost |
+|---|---|---|---|
+| 1 — Data | no | ~15 s (plus a 4.4 MB download) | free |
+| 2 — Text search | no | instant | free |
+| 3 — First RAG | yes, a few calls | seconds | fractions of a cent |
+| 4 — Ground truth | yes, 261 calls | 2–4 min | ~$0.40 |
+| 5 — Search evaluation | no | ~1 min | free |
+| 6 — Vector & hybrid search | no | a few min (downloads two ~100 MB models) | free |
+
+### Skip step 4 unless you mean it
+
+`data/ground_truth.csv` is committed, and step 5 reads it from disk. Re-running the
+generation cell costs money **and** produces different questions, which makes the
+metrics incomparable with the ones recorded in this README. Skip the cell with
+`ThreadPoolExecutor` in it.
+
+For the same reason, avoid "Run All" in Jupyter. After a kernel restart, the
+"Resuming after a restart" cell near the top of the notebook rebuilds every in-memory
+object — documents, index, client, ground truth — in a couple of seconds and without
+touching the API.
 
 ## Repository layout
 
